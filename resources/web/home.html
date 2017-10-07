@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
+			<link rel="stylesheet" href="/css/materialize.min.css" />
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<link rel="stylesheet" href="/css/base.css" />
+			<link rel="stylesheet" href="/css/home.css" />
+		{% endblock %}
+	</head>
+	<body>
+		<div id="canvas-wrap">
+		<canvas id="background"></canvas>
+		<div class="container">
+			{% for eventBatch in events|batch(3) %}
+				<div class="row">
+					{% for event in eventBatch %}
+						<div class="pallete">
+							<img src="/{{ event.eventImage|e }}" class = "responsive-img imgTile" />
+							<div class="overlayBackground"></div>
+							<div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>
+							<div class="overlayText">
+								<div class="text"><b>{{ event.eventName }}</b><br/>{{ event.eventTagline }}</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="/js/script.js"></script>

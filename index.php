@@ -12,6 +12,12 @@ $loader = new Twig_Loader_Filesystem('resources');
 $twig = new Twig_Environment($loader);
 $uri = $_SERVER['REQUEST_URI'];
 $uri = explode('/', $uri);
+
+if(empty($uri[1])){
+	$event = new Event;
+	$events = $event->getEvents();
+	echo $twig->render('web/home.html', array('events' => $events));
+}
 if ($uri[1] == 'adminPanel') {
 	if (empty($uri[2])) 
 	{
