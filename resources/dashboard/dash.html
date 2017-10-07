@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{%block title%}Admin Panel{%endblock%}</title>
+		
+		{%block stylesheets%}
+			<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+			<link rel="stylesheet" href="/css/dashboard.css" />
+			<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
+		{%endblock%}
+	</head>
+	<body>
+		<div class='row'>
+			<div class='col-2 nav'>
+				<h2>TM adminPanel</h2>
+				<ul>
+					<a href="/adminPanel"><li class = "active" id="dash"><i class="fa fa-tv"></i>Dashboard</li></a>
+					<a href="/adminPanel/events"><li id="events"><i class="fa fa-tags"></i>Events</li></a>
+					<a href="/adminPanel/addEvent"><li id="addEvent"><i class="fa fa-plus-square-o"></i>Add Event</li></a>
+					<li><i class="fa fa-calendar"></i>Time Table</li>
+					<li><i class="fa fa-vcard-o"></i>Sponsors</li>
+				</ul>
+			</div>
+			<div  id='body' class='col-10'>
+				<div id='header' class='col-12'><header><i class="fa fa-user"></i>WebMaster</header></div>
+				<div id='main' class='col-12'>
+					
+					{% block main%}
+						<div id="count">
+						 <span>Total Number of visitors : {{ counter }}</span>  
+						 </div>
+						  
+						  <div id="reg">
+
+						  	Total Number of Registrations 
+							 
+							<button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}">Show/hide</button>
+
+						  </div>
+						  <div id="spoiler" style="display:none"> 
+									
+							<table>
+
+						    <tr>
+						    	
+						    <th>Name</th>
+						    <th>Email-Id</th>
+						    <th>Contact-No</th>
+						    <th>Event</th>
+						    <th>Date</th>
+						    </tr>
+							{% for totl in totlcount %}
+
+						        <tr>
+							     <td>{{ totl.Name|e }}</td>
+							        <td>{{ totl.Email_id|e }}</td>
+							        <td>{{ totl.Contact_No|e }}</td>
+							        <td>{{ totl.Event|e }}</td>
+							        <td>{{ totl.Date|e }}</td>
+							        </tr>
+							{% endfor %}
+							    	</table>
+
+							</div>
+
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
+
+{% block script %}
+<script type="text/javascript">
+	var path = window.location.pathname.split("/");
+	if(path[2] != null){
+		var ele = document.getElementById(path[2]);
+		ele.className += " active";
+		document.getElementById("dash").classList.remove("active");
+	}
+</script>
+{% endblock %}
