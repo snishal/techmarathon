@@ -1,0 +1,85 @@
+body{
+	background-color: black;
+}
+#canvas-wrap { 
+  position:relative;
+  width:100%;
+  height: 100%;
+}
+#canvas-wrap canvas {
+ position:absolute; 
+ top:0; 
+ left:0; 
+ z-index:0; 
+ width: 100%;
+}
+.container{
+  margin-top: 10%;
+}
+.pallete{
+	position: relative;
+  margin: 5%;
+}
+.imgTile{
+	display: block;
+}
+.overlayBackground{
+	position: absolute;
+	top: 0;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+	width: 100%;
+	height: 100%;
+	transition: 0.5s ease-in-out;
+}
+.pallete:hover .overlayBackground{
+	background: rgba(0, 186, 83, 0.6);
+}
+.overlayIcon{
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 40%;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.pallete:hover .overlayIcon{
+	cursor: pointer;
+	top: 40%;
+	height: 100%;
+}
+.circle-arrow{
+	color: white;
+	border: solid white;
+	border-radius: 50%;
+}
+.overlayText{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+.pallete:hover .overlayText{
+	height: 15%;
+}
+.text{
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
