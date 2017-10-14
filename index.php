@@ -34,7 +34,7 @@ if ($uri[1] == 'adminPanel') {
 	$counts = new Event;
 	$totlreg = $counts->getTotalRegistrations();
 
-	echo $twig->render('dashboard/dash.html', array('counter' => $count, 'totlcount' => $totlreg ));
+	echo $twig->render('dashboard/dash.html', array( 'title' => 'Admin Panel', 'counter' => $count, 'totlcount' => $totlreg));
 
 	} else {
 		if ($uri[2] == 'addEvent') {
@@ -51,7 +51,7 @@ if ($uri[1] == 'adminPanel') {
 			if (empty($uri[3])) {
 				$event = new Event;
 				$events = $event->getEvents();
-				echo $twig->render('dashboard/event.html', array('events' => $events));
+				echo $twig->render('dashboard/event.html', array( 'title' => 'Events', 'events' => $events));
 			} elseif (strstr($uri[3], 'deleteEvent')) {
 				$eventId = $_GET['id'];
 
