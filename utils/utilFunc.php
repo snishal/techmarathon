@@ -1,5 +1,63 @@
 <?php
 
+function updateCount()
+	{
+		 $server = "techmarathon.co.in";
+	 $user = "webmaster";
+	 $pass = "iPTnnG1EolksQRrA";
+	 $dbName = "techmarathon";
+		$db = new DB;
+		$db->mk_conn($server, $user, $pass, $dbName);
+		$sql1 = "update counter set ViewCount = ViewCount+1 where ViewCount = ViewCount";
+		$res = $db->query($sql1);
+		$sql2 = "Select ViewCount from counter";
+		$result = $db->query($sql2);
+		return $result;
+	
+	}
+
+	function getCount() {
+
+		 $server = "techmarathon.co.in";
+	 $user = "webmaster";
+	 $pass = "iPTnnG1EolksQRrA";
+	 $dbName = "techmarathon";
+		$db = new DB;
+		$db->mk_conn($server, $user, $pass, $dbName);
+		$sql = "SELECT ViewCount from counter";
+		$result = $db->query($sql);
+		$db->close();
+
+		$row = $result->fetch_assoc();
+
+		return $row['ViewCount'];
+
+	}
+
+	function getRegistrations()
+	{
+		 $server = "techmarathon.co.in";
+	 $user = "webmaster";
+	 $pass = "iPTnnG1EolksQRrA";
+	 $dbName = "techmarathon";
+		$db = new DB;
+		$db->mk_conn($server, $user, $pass, $dbName);
+		$sql = "SELECT * from registration ";
+		$result = $db->query($sql);
+		$db->close();
+
+		$events = array();
+
+		$row = $result->fetch_assoc();
+		while ($row) {
+			array_push($events, $row);
+			$row = $result->fetch_assoc();
+		}
+
+		return $events;
+		
+	}
+
 function file_upload($target_dir, $name)
 {
 	$uploadOk = 1;
@@ -42,4 +100,5 @@ function file_upload($target_dir, $name)
 		}
 	}
 }
+
 ?>
