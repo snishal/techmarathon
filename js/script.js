@@ -1,15 +1,12 @@
+/*
 var circles = [],
     canvas = document.getElementById("background"),
     context = canvas.getContext("2d"),
     
     // SETTINGS 
-    opacity = 0.6,                                      // the opacity of the circles 0 to 1
-    colors = ['rgba(0, 186, 83,' + opacity + ')',       // an array of rgb colors for the circles
-              'rgba(0, 183, 199,' + opacity + ')',
-              'rgba(241, 196, 15,' + opacity + ')',
-              'rgba(231, 76, 60,' + opacity + ')',
-              'rgba(231, 76, 60,' + opacity + ')'
-             ],
+    opacity = 1,                                      // the opacity of the circles 0 to 1
+    colors = ['rgba(13, 165, 102,' + opacity + ')'      // an array of rgb colors for the circles
+              ],
     minSize = 1,                                        // the minimum size of the circles in px
     maxSize = 10,                                       // the maximum size of the circles in px
     numCircles = 300,                                   // the number of circles
@@ -139,3 +136,7 @@ window.onresize = function () {
     //buildArray();
     animate();
 };
+*/
+particlesJS.load('particles-js', '/js/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});

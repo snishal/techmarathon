@@ -12,24 +12,25 @@
 	</head>
 	<body>
 		<div id="canvas-wrap">
-		<canvas id="background"></canvas>
-		<div class="container">
-			{% for eventBatch in events|batch(3) %}
-				<div class="row">
-					{% for event in eventBatch %}
-						<div class="pallete">
-							<img src="/{{ event.eventImage|e }}" class = "responsive-img imgTile" />
-							<div class="overlayBackground"></div>
-							<div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>
-							<div class="overlayText">
-								<div class="text"><b>{{ event.eventName }}</b><br/>{{ event.eventTagline }}</div>
+			<div id="particles-js"></div>
+			<div class="container">
+				{% for eventBatch in events|batch(3) %}
+					<div class="row">
+						{% for event in eventBatch %}
+							<div class="pallete col-12">
+								<img src="/{{ event.eventImage|e }}" class = "responsive-img imgTile" />
+								<div class="overlayBackground"></div>
+								<div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>
+								<div class="overlayText">
+									<div class="text"><b>{{ event.eventName }}</b><br/>{{ event.eventTagline }}</div>
+								</div>
 							</div>
-						</div>
-					{% endfor %}
-				</div>
-			{% endfor %}
-		</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
 		</div>
 	</body>
 </html>
+<script type="text/javascript" src="/js/particles.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
