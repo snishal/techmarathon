@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{%block title%}{{ title }}{%endblock%}</title>
+		{%block stylesheets%}
+		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+		<link rel="stylesheet" href="/css/base.css" />
+		<link rel="stylesheet" href="/css/dashboard.css" />
+		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
+		{%endblock%}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class='row'>
+			<div class='col-2' id="navbar">
+				<div class="nav">
+					<h2><i class="fa fa-list" aria-hidden="true" onclick="toggleMenu()"></i>TM adminPanel</h2>
+					<ul id="menu">
+						<a href="/adminPanel"><li class = "active" id="dash"><i class="fa fa-tv"></i>Dashboard</li></a>
+						<a href="/adminPanel/events"><li id="events"><i class="fa fa-tags"></i>Events</li></a>
+						<a href="/adminPanel/addEvent"><li id="addEvent"><i class="fa fa-plus-square-o"></i>Add Event</li></a>
+						<li><i class="fa fa-calendar"></i>Time Table</li>
+						<li><i class="fa fa-vcard-o"></i>Sponsors</li>
+					</ul>
+				</div>
+			</div>
+			<div id='body' class='col-10'>
+				<div class="row">
+					<div id='header' class='col-12'><header><i class="fa fa-user"></i>WebMaster</header></div>
+				</div>
+				<div class="row">
+					<div id='main' class='col-12'>
+						
+						{% block main%}
+							<div id="tile">
+								<div id="count">
+									<span>Total Number of visitors : {{ counter }}</span>
+								</div>
+								
+								<div id="reg">
+									Total Number of Registrations
+									
+									<button title="Click to show/hide content" type="button" onclick="showRegistration()">Show/hide</button>
+								</div>
+							</div>
+							<div id="spoiler" style="display:none">
+								
+								<table>
+									<tr>
+										
+										<th>Name</th>
+										<th>Email-Id</th>
+										<th>Contact-No</th>
+										<th>Event</th>
+										<th>Date</th>
+									</tr>
+									{% for totl in totlcount %}
+										<tr>
+											<td>{{ totl.Name|e }}</td>
+											<td>{{ totl.Email_id|e }}</td>
+											<td>{{ totl.Contact_No|e }}</td>
+											<td>{{ totl.Event|e }}</td>
+											<td>{{ totl.Date|e }}</td>
+										</tr>
+									{% endfor %}
+								</table>
+							</div>
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+
+	{% block script %}
+		<script type="text/javascript">
+			var path = window.location.pathname.split("/");
+			if(path[2] != null){
+				var ele = document.getElementById(path[2]);
+				ele.className += " active";
+				document.getElementById("dash").classList.remove("active");
+			}
+			var toogle = false;
+			function toggleMenu(){
+				var menu = document.getElementById("menu");
+				if(toogle){
+					menu.style.display = "none";
+					toogle = false;
+				}else{
+					menu.style.display = "block";
+					toogle = true;
+				}
+			}
+			if (matchMedia) {
+				const mq = window.matchMedia("(min-width: 768px)");
+				mq.addListener(WidthChange);
+				WidthChange(mq);
+			}
+				// media query change
+			function WidthChange(mq) {
+				if (mq.matches) {
+					toogle = false;
+					menu.style.display = "block";
+				}else{
+					menu.style.display = "none";
+				}
+			}
+			function showRegistration(){
+				
+				var ele = document.getElementById('spoiler');
+				if(ele.style.display=='none') {
+					ele.style.display='block';
+				}else{
+						ele.style.display='none';
+				}
+			
+			}
+		</script>
+	{% endblock %}
+</html>
