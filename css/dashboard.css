@@ -1,3 +1,6 @@
+button:hover{
+	cursor: pointer;
+}
 .nav{
 	width: inherit;
 	box-shadow: 2px 0px 5px #888888;
@@ -59,40 +62,57 @@
 #header i{
 	margin-right: 1%;
 }
-
+#main{
+	padding: 5%;
+}
+#tile{
+	display: flex;
+	color: white;
+}
 #count{
 	background: #ffb3b3 ;
-	width: 90%;
-    padding: 50px;
+	width: 40%;
+    padding: 4%;
     margin: 5% auto;
     position: relative;
     height: 120px;
-    box-sizing: border-box;  
-    display: flex;
-    justify-content: space-between;
     box-shadow: 1px 3px 5px #888888;
     
     font-size: 20px;
-    border-radius: 25px;
+    border-radius: 1%;
 
-    -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
-    transition: width 1s;
-
-}
-#count:hover{
-	color: white;
-	width: 40%;
 }
 #count span{
 	display: inline;
 	text-align: center;
 }
 
+#reg{
+	background: #ffb3b3 ;
+	width: 40%;
+    padding: 3%;
+    margin: 5% auto;
+    position: relative;
+    height: 120px;
+    box-shadow: 1px 3px 5px #888888;
+    
+    font-size: 20px;
+    border-radius: 1%;
+
+}
+
+button{
+	width: 100px;
+	border-radius: 3%;
+	height: 50px;
+	background-color: #f1b695;
+}
+
+
 table {
+	width: 80%;
 	margin-top: 10%;
-	margin-left: 8%;
-    border-collapse: collapse;
-    width: 80%;
+	border-collapse: collapse;
 }
 
 th, td {
@@ -110,41 +130,16 @@ a {
 	opacity: 0;
 	color: black;
 }
-tr:hover  a{background-color: #f5f5f5;
-opacity: 1;}
-
-
-#reg{
-	background: #ffb3b3 ;
-	width: 90%;
-    padding: 50px;
-    margin: 5% auto;
-    position: relative;
-    height: 120px;
-    box-sizing: border-box;  
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 1px 3px 5px #888888;
-    
-    font-size: 20px;
-    border-radius: 25px;
-
-    -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
-    transition: width 1s;
-}
-
-button{
-	width: 100px;
-	border-radius: 25px;
-	height: 50px;
-	background-color: #f1b695;
+tr:hover  a{
+	background-color: #f5f5f5;
+	opacity: 1;
 }
 
 @media only screen and (max-width: 768px) {
 	/* For mobile phones: */
 	
 	#navbar{
-		height: 10vh;
+		height: 12vh;
 	}
 	.nav{
 		height: auto;
@@ -155,6 +150,18 @@ button{
 	}
 	.nav h2 i:hover{
 		cursor: pointer;
+	}
+	#tile{
+		display: block;
+		padding: 1%;
+	}
+	#count{
+		width: 100%;
+		padding: 12%
+	}
+	#reg{
+		width: 100%;
+		padding: 7%;
 	}
 
 }

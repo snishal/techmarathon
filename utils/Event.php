@@ -129,57 +129,6 @@ class Event {
 
 	}
 
-	public function updateCount()
-	{
-		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		//$sql = "Select ViewCount from counter";
-		//$result = $db->query($sql);
-		//$d = $result;
-		$sql1 = "update counter set ViewCount = ViewCount+1 where ViewCount = ViewCount";
-		$res = $db->query($sql1);
-		$sql2 = "Select ViewCount from counter";
-		$result = $db->query($sql2);
-		//$row = $result->fetch_assoc();
-		//$db->close();
-		//return $row['ViewCount'];
-		return $result;
-	
-	}
-
-	public function getCount() {
-
-		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$sql = "SELECT ViewCount from counter";
-		$result = $db->query($sql);
-		$db->close();
-
-		$row = $result->fetch_assoc();
-
-		return $row['ViewCount'];
-
-	}
-
-	public function getTotalRegistrations()
-	{
-		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$sql = "SELECT * from registration ";
-		$result = $db->query($sql);
-		$db->close();
-
-		$events = array();
-
-		$row = $result->fetch_assoc();
-		while ($row) {
-			array_push($events, $row);
-			$row = $result->fetch_assoc();
-		}
-
-		return $events;
-		
-	}
 
 }
 

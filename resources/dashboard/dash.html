@@ -32,14 +32,16 @@
 					<div id='main' class='col-12'>
 						
 						{% block main%}
-							<div id="count">
-								<span>Total Number of visitors : {{ counter }}</span>
-							</div>
-							
-							<div id="reg">
-								Total Number of Registrations
+							<div id="tile">
+								<div id="count">
+									<span>Total Number of visitors : {{ counter }}</span>
+								</div>
 								
-								<button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}">Show/hide</button>
+								<div id="reg">
+									Total Number of Registrations
+									
+									<button title="Click to show/hide content" type="button" onclick="showRegistration()">Show/hide</button>
+								</div>
 							</div>
 							<div id="spoiler" style="display:none">
 								
@@ -103,6 +105,16 @@
 				}else{
 					menu.style.display = "none";
 				}
+			}
+			function showRegistration(){
+				
+				var ele = document.getElementById('spoiler');
+				if(ele.style.display=='none') {
+					ele.style.display='block';
+				}else{
+						ele.style.display='none';
+				}
+			
 			}
 		</script>
 	{% endblock %}
