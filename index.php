@@ -1,43 +1,51 @@
-<?php session_start();
-
-if (!isset($_SESSION['id'])) {
-	$_SESSION['id'] = 1;
-}
+<?php
+session_start();
 
 require_once 'vendor/autoload.php';
 require_once 'utils/form.php';
 require_once 'utils/Event.php';
-require_once 'utils/DB.php';
+require_once'utils/utilFunc.php';
+
+if (!isset($_SESSION['id'])) { 
+    $_SESSION['id'] = 1;
+}
+
+if($_SESSION['id']==1){
+	updateCount();
+	$_SESSION['id'] = 2; 
+}
+
 $loader = new Twig_Loader_Filesystem('resources');
 $twig = new Twig_Environment($loader);
 $uri = $_SERVER['REQUEST_URI'];
 $uri = explode('/', $uri);
 
-if (empty($uri[1])) {
+$pageFound = false;
+
+if(empty($uri[1])){
+	$pageFound = true;
 	$event = new Event;
 	$events = $event->getEvents();
 	echo $twig->render('web/home.html', array('events' => $events));
-} else if ($uri[1] == 'adminPanel') {
-	if (empty($uri[2])) {
-		$event = new Event;
+}
+if ($uri[1] == 'adminPanel') {
+	if (empty($uri[2])) 
+	{
+		$pageFound = true;
+		$event = new Event;	
+	
+	$count = getCount();
 
-		if ($_SESSION['id'] == 1) {
-			$event->updateCount();
-			$_SESSION['id'] = 2;
-		}
+	$counts = new Event;
+	$registrations = getRegistrations();
 
-		$count = $event->getCount();
-
-		$counts = new Event;
-		$totlreg = $counts->getTotalRegistrations();
-
-
-	echo $twig->render('dashboard/dash.html', array( 'title' => 'Admin Panel', 'counter' => $count, 'totlcount' => $totlreg));
+	echo $twig->render('dashboard/dash.html', array( 'title' => 'Admin Panel', 'counter' => $count, 'totlcount' => $registrations));
 
 
 
 	} else {
 		if ($uri[2] == 'addEvent') {
+			$pageFound = true;
 			$form = new Form;
 			$form->startForm('/utils/request.php', 'post', array('header' => '<h2>Add Event</h2>', 'class' => 'form', 'enctype' => 'multipart/form-data'));
 			$form->addItem('text', 'eventName', array('placeholder' => 'eventName'));
@@ -49,10 +57,12 @@ if (empty($uri[1])) {
 			echo $twig->render('forms/form.html', array('title' => 'Add Event', 'form' => $form, 'script' => 'var editor = CKEDITOR.replace( "eventDescription" );'));
 		} elseif ($uri[2] == 'events') {
 			if (empty($uri[3])) {
+				$pageFound = true;
 				$event = new Event;
 				$events = $event->getEvents();
 				echo $twig->render('dashboard/event.html', array( 'title' => 'Events', 'events' => $events));
 			} elseif (strstr($uri[3], 'deleteEvent')) {
+				$pageFound = true;
 				$eventId = $_GET['id'];
 
 				$event = new Event;
@@ -70,6 +80,7 @@ if (empty($uri[1])) {
 				}
 
 			} elseif (strstr($uri[3], 'updateEvent')) {
+				$pageFound = true;
 				$id = $_GET['id'];
 				$event = new Event;
 				$form = new Form;
@@ -84,9 +95,9 @@ if (empty($uri[1])) {
 				echo $twig->render('forms/form.html', array('title' => 'Update Event', 'form' => $form, 'script' => 'var editor = CKEDITOR.replace( "eventDescription" );'));
 			}
 		}
-		exit;
 	}
-} else {
+} 
+if(!$pageFound) {
 	echo $twig->render('404.html');
 }
 ?>
