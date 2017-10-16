@@ -1,13 +1,34 @@
 body {
-    background-color: black;
+    background-color: #00bebe;
+  -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 }
 
+#headline{
+  margin-top: 15%;
+  background: black;
+  color: white;
+  font-family: 'Inconsolata';
+  font-weight: bold;
+  font-size: 16vmin;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  fill: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main{
+    display: none;
+}
 
 /*header starts here*/
 
 a,
 a:active {
-    color: #0da566;
+    color: #00bebe;
     text-decoration: none;
 }
 
@@ -157,7 +178,7 @@ a.after:after {
 }
 
 .pallete:hover .overlayBackground {
-    background: rgba(0, 186, 83, 0.6);
+    background: rgba(0, 90, 90, 0.6);
 }
 
 .overlayIcon {
@@ -189,7 +210,7 @@ a.after:after {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #4caf50;
+    background-color: #00bebe;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -220,7 +241,7 @@ a.after:after {
 
 .footer {
 
-    color: #0da566;
+    color: #00bebe;
     
 }
 

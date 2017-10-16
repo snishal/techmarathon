@@ -1,74 +1,8 @@
-/*body{
-  font-family: 'Poppins', sans-serif;
-  margin:0px;
-  box-sizing:border-box;
-}*/
-.wrapper{
-  margin:50px;
-}
-a, a:visited, a:active{
-	text-decoration:none;
-	color:#0da566;
-  padding:16px;
-}
-a:hover{
-	color:red;
-}
-a.before:before,a.after:after{
-  content: "";
-  transition:0.5s all ease;
-  position:absolute;
-}
-a.before:before{
-  top:-0.25em;
-}
-a.after:after{
-  bottom:-0.25em;
-}
-a.before:before,a.after:after{
-  height:5px;
-  height:0.35rem;
-  width:0;
-  background:grey;
-}
-
-.square{
-  box-sizing:border-box;
-  position:relative;
-  font-size:20px;
-  overflow:hidden;
-}
-.square a { 
- padding:0.2em 0.4em;
-}
-.square:before,.square:after{
-  content: "";
-  box-sizing:border-box;
-  transition:0.5s all ease;
-  position:absolute;
-  width:5px;
-  height:0;
-  background:red;
-}
-.square:before{ /*before content that is left line*/
-  left:0;
-  bottom:-0.2em;
-}
-.square:after{ /*after content that is right line*/
-  right:0;
-  top:-0.2em;
-}
-.square a:before{
-  left:0;
-  transition:0.50s all ease;
-}
-.square a:after{
-  right:0;
-  transition:0.50s all ease;
-}
-.square:hover:before,.square:hover:after{
-  height:calc(100% + 0.4em);
-}
-.square:hover a:before,.square:hover a:after{
-  width:50%; /*top and bottom line*/
+body{
+  color: white;
+  background-color: #00bebe;
+  -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 }

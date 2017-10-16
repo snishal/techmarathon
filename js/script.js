@@ -1,142 +1,202 @@
-/*
-var circles = [],
-    canvas = document.getElementById("background"),
-    context = canvas.getContext("2d"),
-    
-    // SETTINGS 
-    opacity = 1,                                      // the opacity of the circles 0 to 1
-    colors = ['rgba(13, 165, 102,' + opacity + ')'      // an array of rgb colors for the circles
-              ],
-    minSize = 1,                                        // the minimum size of the circles in px
-    maxSize = 10,                                       // the maximum size of the circles in px
-    numCircles = 300,                                   // the number of circles
-    minSpeed = -3,                                     // the minimum speed, recommended: -maxspeed
-    maxSpeed = 3,                                    // the maximum speed of the circles
-    expandState = true;                                      // the direction of expansion
+odoo.default({ el:'.js-odoo', from: '', to: 'TECHMARATHON', animationDelay: 1000 });
+function WordShuffler(holder,opt){
+var that = this;
+var time = 0;
+this.now;
+this.then = Date.now();
 
-function buildArray() {
-    'use strict';
-    
-    for (var i =0; i < numCircles ; i++){
-        var color = Math.floor(Math.random() * (colors.length - 1 + 1)) + 1,
-            left = Math.floor(Math.random() * (canvas.width - 0 + 1)) + 0,
-            top = Math.floor(Math.random() * (canvas.height - 0 + 1)) + 0,
-            size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize,
-            leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
-            topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
-            expandState = expandState;
-           
-            while(leftSpeed == 0 || topSpeed == 0){
-                leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
-                topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10;
-            }
-        var circle = {color:color, left:left, top:top, size:size, leftSpeed:leftSpeed, topSpeed:topSpeed, expandState:expandState };
-        circles.push(circle);
+this.delta;
+this.currentTimeOffset = 0;
+
+this.word = null;
+this.currentWord = null;
+this.currentCharacter = 0;
+this.currentWordLength = 0;
+var options = {
+fps : 20,
+timeOffset : 5,
+textColor : '#000',
+fontSize : "50px",
+useCanvas : false,
+mixCapital : false,
+mixSpecialCharacters : false,
+needUpdate : true,
+colors : [
+'#f44336','#e91e63','#9c27b0',
+'#673ab7','#3f51b5','#2196f3',
+'#03a9f4','#00bcd4','#009688',
+'#4caf50','#8bc34a','#cddc39',
+'#ffeb3b','#ffc107','#ff9800',
+'#ff5722','#795548','#9e9e9e',
+'#607d8b'
+]
+}
+if(typeof opt != "undefined"){
+for(key in opt){
+options[key] = opt[key];
+}
+}
+
+this.needUpdate = true;
+this.fps = options.fps;
+this.interval = 1000/this.fps;
+this.timeOffset = options.timeOffset;
+this.textColor = options.textColor;
+this.fontSize = options.fontSize;
+this.mixCapital = options.mixCapital;
+this.mixSpecialCharacters = options.mixSpecialCharacters;
+this.colors = options.colors;
+this.useCanvas = options.useCanvas;
+
+this.chars = [
+'A','B','C','D',
+'E','F','G','H',
+'I','J','K','L',
+'M','N','O','P',
+'Q','R','S','T',
+'U','V','W','X',
+'Y','Z'
+];
+this.specialCharacters = [
+'!','§','$','%',
+'&','/','(',')',
+'=','?','_','<',
+'>','^','°','*',
+'#','-',':',';','~'
+]
+if(this.mixSpecialCharacters){
+this.chars = this.chars.concat(this.specialCharacters);
+}
+this.getRandomColor = function () {
+var randNum = Math.floor( Math.random() * this.colors.length );
+return this.colors[randNum];
+}
+//if Canvas
+
+this.position = {
+x : 0,
+y : 50
+}
+//if DOM
+if(typeof holder != "undefined"){
+this.holder = holder;
+}
+if(!this.useCanvas && typeof this.holder == "undefined"){
+console.warn('Holder must be defined in DOM Mode. Use Canvas or define Holder');
+}
+this.getRandCharacter = function(characterToReplace){
+if(characterToReplace == " "){
+return ' ';
+}
+var randNum = Math.floor(Math.random() * this.chars.length);
+var lowChoice =  -.5 + Math.random();
+var picketCharacter = this.chars[randNum];
+var choosen = picketCharacter.toLowerCase();
+if(this.mixCapital){
+choosen = lowChoice < 0 ? picketCharacter.toLowerCase() : picketCharacter;
+}
+return choosen;
+
+}
+this.writeWord = function(word){
+this.word = word;
+this.currentWord = word.split('');
+this.currentWordLength = this.currentWord.length;
+}
+this.generateSingleCharacter = function (color,character) {
+var span = document.createElement('span');
+span.style.color = color;
+span.innerHTML = character;
+return span;
+}
+this.updateCharacter = function (time) {
+
+this.now = Date.now();
+this.delta = this.now - this.then;
+
+if (this.delta > this.interval) {
+this.currentTimeOffset++;
+
+var word = [];
+if(this.currentTimeOffset === this.timeOffset && this.currentCharacter !== this.currentWordLength){
+this.currentCharacter++;
+this.currentTimeOffset = 0;
+}
+for(var k=0;k<this.currentCharacter;k++){
+    word.push(this.currentWord[k]);
     }
-}
-
-function build(){
-    'use strict';
-    
-    for(var h = 0; h < circles.length; h++){
-        var curCircle = circles[h];
-        context.fillStyle = colors[curCircle.color-1];
-        context.beginPath();
-        if(curCircle.left > canvas.width+curCircle.size){
-            curCircle.left = 0-curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
-        }else if(curCircle.left < 0-curCircle.size){
-            curCircle.left = canvas.width+curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
-        }else{
-            curCircle.left = curCircle.left+curCircle.leftSpeed;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
+    for(var i=0;i<this.currentWordLength - this.currentCharacter;i++){
+        word.push(this.getRandCharacter(this.currentWord[this.currentCharacter+i]));
         }
-        
-        if(curCircle.top > canvas.height+curCircle.size){
-            curCircle.top = 0-curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
-
-        }else if(curCircle.top < 0-curCircle.size){
-            curCircle.top = canvas.height+curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
+        if(that.useCanvas){
+        c.clearRect(0,0,stage.x * stage.dpr , stage.y * stage.dpr);
+        c.font = that.fontSize + " sans-serif";
+        var spacing = 0;
+        word.forEach(function (w,index) {
+        if(index > that.currentCharacter){
+        c.fillStyle = that.getRandomColor();
         }else{
-            curCircle.top = curCircle.top+curCircle.topSpeed;
-            if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == false){
-              curCircle.size = curCircle.size-0.1;
-            }
-            else if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == true){
-              curCircle.size = curCircle.size+0.1;
-            }
-            else if(curCircle.size == maxSize && curCircle.expandState == true){
-              curCircle.expandState = false;
-              curCircle.size = curCircle.size-0.1;
-            }
-            else if(curCircle.size == minSize && curCircle.expandState == false){
-              curCircle.expandState = true;
-              curCircle.size = curCircle.size+0.1;
-            }
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
+        c.fillStyle = that.textColor;
         }
-        
-        context.closePath();
-        context.fill();
-        context.ellipse;
-    }
-}
-
-
-var xVal = 0;
-
-window.requestAnimFrame = (function (callback) {
-    'use strict';
-    return window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-        window.setTimeout(callback, 1000/60);
-    };
-})();
-
-function animate() {
-    'use strict';
-    var canvas = document.getElementById("background"),
-        context = canvas.getContext("2d");
-
-    // clear the canvas
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-
-    // draw the next frame
-    xVal++;
-    build();
-
-    //console.log("Prep: animate ==> requestAnimFrame");
-    // request a new frame
-    requestAnimFrame(function () {
-        animate();
-    });
-}
-window.onload = function () {
-    'use strict';
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 5;
-    buildArray();
-    animate();
-};
-
-
-window.onresize = function () {
-    'use strict';
-    console.log("resize");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    //buildArray();
-    animate();
-};
-*/
-particlesJS.load('particles-js', '/js/particles.json', function() {
-  console.log('callback - particles.js config loaded');
-});
+        c.fillText(w, that.position.x + spacing, that.position.y);
+        spacing += c.measureText(w).width;
+        });
+        }else{
+        if(that.currentCharacter === that.currentWordLength){
+        that.needUpdate = false;
+        }
+        this.holder.innerHTML = '';
+        word.forEach(function (w,index) {
+        var color = null
+        if(index > that.currentCharacter){
+        color = that.getRandomColor();
+        }else{
+        color = that.textColor;
+        }
+        that.holder.appendChild(that.generateSingleCharacter(color, w));
+        });
+        }
+        this.then = this.now - (this.delta % this.interval);
+        }
+        }
+        this.restart = function () {
+        this.currentCharacter = 0;
+        this.needUpdate = true;
+        }
+        function update(time) {
+        time++;
+        if(that.needUpdate){
+        that.updateCharacter(time);
+        }
+        requestAnimationFrame(update);
+        }
+        this.writeWord(this.holder.innerHTML);
+        console.log(this.currentWord);
+        update(time);
+        }
+        setTimeout(
+        function() {
+        var headline = document.getElementById('headline');
+        $('#headline').addClass('animated fadeOutUpBig');
+        }, 6000);
+        setTimeout(function(){
+        $('#headline').removeClass('animated fadeOutUpBig');
+        $('#headline').addClass('animated zoomIn');
+        var headline = document.getElementById('headline');
+        headline.innerHTML="EVEN MORE BIGGER";
+        var headText = new WordShuffler(headline,{
+        textColor : '#fff',
+        timeOffset : 5,
+        mixCapital : true,
+        mixSpecialCharacters : true
+        });
+        }, 6300);
+        setTimeout(
+            function(){
+                document.body.style.background = "black";
+                document.getElementById('headline').style.display = "none";
+                document.getElementById('main').style.display = "block";
+                particlesJS.load('particles-js', '/js/particles.json', function() {
+                    console.log('callback - particles.js config loaded');
+                });
+            }, 11000);
