@@ -146,14 +146,14 @@ a.after:after {
     display: block;
 }
 .overlayBackground{
-	position: absolute;
-	top: 0;
+    position: absolute;
+    top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-	width: 100%;
-	height: 100%;
-	transition: 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-in-out;
 }
 
 .pallete:hover .overlayBackground {
@@ -215,6 +215,95 @@ a.after:after {
 
 /*events end here*/
 
+
+/*about us starts here */
+.aboutus_heading {
+    font-weight: bold;
+    font-size: 70px;
+    color: #0da566;
+    display: block;
+    display: box;
+    box-align: center;
+    text-align: center;
+    position: relative;  
+}
+
+.dduc {
+    color: white;
+}
+
+.sanganika {
+    color: white;
+}
+
+.techmarathon {
+    color: white;
+}
+
+.dduc p {
+    margin-left: 100px;
+    text-align: center;
+}
+
+.sanganika p {
+    margin-left: 100px;
+    text-align: center;
+}
+
+.techmarathon p {
+    margin-left: 100px;
+    text-align: center;
+}
+/* about us ends here */
+
+/* ourteam starts here */
+
+.ourteam {
+    position: relative;
+    width: 250px;
+    height: 350px;
+}
+
+.ourteam img {
+    height: 350px;
+}
+
+.p-tag{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    margin-left: 805px;
+    margin-top: -210px;
+}
+
+.vp-tag{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    margin-left: 308px;
+    margin-top: 128px;
+}
+
+.s-tag{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    margin-left: 805px;
+    margin-top: -210px;
+}
+
+.js-tag{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    position: absolute;
+    margin-left: 308px;
+    margin-top: 128px;
+}
+/* ourteam ends here */
 
 /*footer starts here*/
 
