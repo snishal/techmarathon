@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="/css/animate.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/home.css" /> {% endblock %}
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+     {% endblock %}
 </head>
 
 <body>
@@ -57,6 +59,108 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+
+    <% block aboutus %>
+    <div class="container">
+        <a class="aboutus_heading">ABOUT US</a><br>
+        <div class="dduc">
+            <h3>DDUC</h3>
+            <p>What started off in a school building in Karampura in 1990 has today grown into an institution that has 2,500 students on its rolls with 700 students getting a degree every year. 
+            After over two decades of functioning in a place that did not have the expected standards of a college, Deen Dayal Upadhyaya College finally moved into a new state-of-the-art campus building in Dwarka. 
+            The new campus brags a green building with water harvesting, water recycling, solid-waste management, hostel, an auditorium, amphitheatre, indoor sports facilities, gymnasium, laboratories and lecture halls, library, and a computer centre. 
+            The college emphasizes on the need for quality education and urges the teaching faculty to inculcate human values among the students.</p>
+        </div><br><br>
+        <div class="sanganika">
+            <h3>SANGANIKA</h3>
+            <p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. 
+            Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. 
+            This year Tech Marathon arrives on 17-18th February, 2017.</p>
+        </div><br><br>
+        <div class="techmarathon">
+            <h3>TECH MARATHON</h3>
+            <p>"Everyone can run a few miles, only winners can run a marathon." 
+            This Marathon you run with your minds. 
+
+            Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi. 
+            Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. 
+            This year, Tech Marathon comes on 17-18th Feb, 2017. 
+            Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more, we present to you new events such as SQLized, Appcombat and TV Fandom. 
+
+            So come forth, fire up your sabers and fight !! 
+            At this technical extravaganza we guarantee you an experience felt never before. 
+            Stay tuned for updates!! Got queries? Drop us a message.</p>
+        </div><br><br><br>
+    </div> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+
+        })();
+    </script>
+    <% endblock %>
+
+    <% block ourteam %>
+    
+        <a class="aboutus_heading">OUR TEAM</a><br><br>
+       <!-- <div class="ourteam-table">
+        <table>
+            <tr>
+                <td><img src="/images/Ad Mad.jpg"></td>
+                <td>President</td>
+            </tr>
+            <tr>
+                <td>Vice President</td>
+                <td><img src="/images/Ad Mad.jpg"></td>
+            </tr>
+            <tr>
+                <td><img src="/images/Ad Mad.jpg"></td>
+                <td>Secretary</td>
+            </tr>
+            <tr>
+                <td>Joint Secretary</td>
+                <td><img src="/images/Ad Mad.jpg"></td>
+            </tr>
+        </table>
+        </div>
+        -->
+
+            <div class="ourteam">
+                <img src="/images/Ad Mad.jpg" class="" style="margin-left: 250px;"><a class="p-tag">President</a>
+            </div><br>
+            <div class="ourteam">
+                <a class="vp-tag">Vice President</a>
+                <img src="/images/Ad Mad.jpg" class="" style="margin-left: 750px;">
+            </div><br>
+            <div class="ourteam">
+                <img src="/images/Ad Mad.jpg" class="" style="margin-left: 250px;"><a class="s-tag">Secretary</a>
+            </div><br>
+            <div class="ourteam">
+                <a class="js-tag">Joint Secretary</a>
+                <img src="/images/Ad Mad.jpg" class="" style="margin-left: 750px;">
+            </div><br>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+
+        })();
+    </script>
+    <% endblock %>
+
+    {% block footer%}
+    <footer class="row footer">
+        <div class="col-4 footer-left">
+            <img src="../images/Ad Mad.jpg" class='footer-logo'></img>
+            <div class="footer-links">
+                <a class="foot-link" href="#">Home |</a>
+                <a class="foot-link" href="#">Events |</a>
+                <a class="foot-link" href="#">Schedule |</a>
+                <a class="foot-link" href="#">About |</a>
+                <a class="foot-link" href="#">FAQ |</a>
+                <a class="foot-link" href="#">Contact</a>
         {% endblock %} {% block footer%}
         <footer class="row footer">
             <div class="col-4 footer-left">
