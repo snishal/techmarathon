@@ -296,7 +296,7 @@ a.after:after {
 .aboutus_heading {
     font-weight: bold;
     font-size: 70px;
-    color: #0da566;
+    color: #00bebe;
     display: block;
     display: box;
     box-align: center;
@@ -304,29 +304,15 @@ a.after:after {
     position: relative;  
 }
 
-.dduc {
-    color: white;
+.desc{
+  color: white;
 }
 
-.sanganika {
-    color: white;
+.desc h3{
+    color: #00bebe;
 }
 
-.techmarathon {
-    color: white;
-}
-
-.dduc p {
-    margin-left: 100px;
-    text-align: center;
-}
-
-.sanganika p {
-    margin-left: 100px;
-    text-align: center;
-}
-
-.techmarathon p {
+.desc p {
     margin-left: 100px;
     text-align: center;
 }
@@ -334,17 +320,17 @@ a.after:after {
 
 /* ourteam starts here */
 
-.ourteam {
+.ourTeam {
     position: relative;
     width: 250px;
     height: 350px;
 }
 
-.ourteam img {
+.ourTeam img {
     height: 350px;
 }
 
-.p-tag{
+.teamLeftTag{
     color: white;
     font-weight: bold;
     font-size: 30px;
@@ -353,7 +339,7 @@ a.after:after {
     margin-top: -210px;
 }
 
-.vp-tag{
+.teamRightTag{
     color: white;
     font-weight: bold;
     font-size: 30px;
@@ -362,23 +348,6 @@ a.after:after {
     margin-top: 128px;
 }
 
-.s-tag{
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    position: absolute;
-    margin-left: 805px;
-    margin-top: -210px;
-}
-
-.js-tag{
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    position: absolute;
-    margin-left: 308px;
-    margin-top: 128px;
-}
 /* ourteam ends here */
 
 /*footer starts here*/
