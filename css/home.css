@@ -1,14 +1,88 @@
 body {
-    background-color: black;
+    background-color: #000000;
+  -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 }
 
+#headline{
+  margin-top: 15%;
+  background: black;
+  color: white;
+  font-family: 'Inconsolata';
+  font-weight: bold;
+  font-size: 16vmin;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  fill: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pulse {
+  margin:100px;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #00bebe;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(0,190, 190, 0.4);
+  animation: pulse 2s infinite;
+  display: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0,190,190, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(0,190,190, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(0,190,190, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(0,190,190, 0.4);
+    box-shadow: 0 0 0 0 rgba(0,190,190, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 10px rgba(0,190,190, 0);
+      box-shadow: 0 0 0 10px rgba(0,190,190, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(0,190,190, 0);
+      box-shadow: 0 0 0 0 rgba(0,190,190, 0);
+  }
+}
+
+#main{
+    display: none;
+}
 
 /*header starts here*/
 
 a,
 a:active {
-    color: #0da566;
+    color: #00bebe;
     text-decoration: none;
+}
+
+.logo{
+    display: flex;
+    color: white;
+    
+}
+.logo_text{
+    color: #00bebe;
+    font-size: 25px;
+    margin-left: 10%; 
+    margin-top: 11%;
+    font-family: 'Orbitron';
+    font-weight: bold;
 }
 
 .nav-logo {
@@ -19,15 +93,16 @@ a:active {
 }
 
 .header {
-
-    background-color: black;
     padding: 1.5%;
     text-align: center;
     letter-spacing: 1.8px;
 }
 
 .navigation-bar {
-    margin: 20px;
+    margin: 30px;
+    padding-bottom: 30px;
+    border-bottom: solid thin #00bebe;
+    text-align: right;
 }
 
 .nav-link:hover {
@@ -61,6 +136,7 @@ a.after:after {
     position: relative;
     font-size: 19px;
     overflow: hidden;
+    padding: 10px;
 }
 
 .square a {
@@ -157,7 +233,7 @@ a.after:after {
 }
 
 .pallete:hover .overlayBackground {
-    background: rgba(0, 186, 83, 0.6);
+    background: rgba(0, 90, 90, 0.6);
 }
 
 .overlayIcon {
@@ -189,7 +265,7 @@ a.after:after {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #4caf50;
+    background-color: #00bebe;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -309,7 +385,7 @@ a.after:after {
 
 .footer {
 
-    color: #0da566;
+    color: #00bebe;
     
 }
 

@@ -4,9 +4,11 @@
 <head>
     <title>{{ title }}</title>
     {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/css/materialize.min.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/home.css" />
@@ -15,45 +17,47 @@
 </head>
 
 <body>
-    <div id="canvas-wrap">
-        <div id="particles-js"></div> 
-    {% block header%}
-    <header class="row header">
-        <div class="col-2">
-            <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
-        </div>
-        <div class="col-8">
-            <div class="navigation-bar">
-                <span class="square"><a class="nav-link tenth before after" href="#">Home</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Events</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Schedule</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">About us</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Register</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Contact us</a></span>
+    <div class="js-odoo" id='headline'></div>
+    <div id = 'main'>
+        <div id="canvas-wrap">
+    	    <div id="particles-js"></div> 
+        {% block header%}
+        <header class="row header">
+            <div class="logo col-2">
+                <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
+                <span class="logo_text">TECHMARATHON</span>
             </div>
-        </div>
-        <div class="col-2">
-            <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
-        </div>
-    </header>
-    {% endblock %} {% block events %}
-    
-        <div class="container">
-            {% for eventBatch in events|batch(3) %}
-            <div class="row">
-                {% for event in eventBatch %}
-                <div class="pallete">
-                    <img src="/{{ event.eventImage|e }}" class="responsive-img imgTile" />
-                    <div class="overlayBackground"></div>
-                    <div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>
-                    <div class="overlayText">
-                        <div class="text"><b>{{ event.eventName }}</b>
-                            <br/>{{ event.eventTagline }}</div>
+            <div class="col-3">
+            </div>
+            <div class="col-7">
+                <div class="navigation-bar">
+                    <span class="square"><a class="nav-link tenth before after" href="#">Home</a></span>
+                    <span class="square"><a class="nav-link tenth before after" href="#">Events</a></span>
+                    <span class="square"><a class="nav-link tenth before after" href="#">Schedule</a></span>
+                    <span class="square"><a class="nav-link tenth before after" href="#">About us</a></span>
+                    <span class="square"><a class="nav-link tenth before after" href="#">Register</a></span>
+                    <span class="square"><a class="nav-link tenth before after" href="#">Contact us</a></span>
+                </div>
+            </div>
+        </header>
+        {% endblock %} {% block events %}
+        
+            <div class="container">
+                {% for eventBatch in events|batch(3) %}
+                <div class="row">
+                    {% for event in eventBatch %}
+                    <div class="pallete">
+                        <img src="/{{ event.eventImage|e }}" class="responsive-img imgTile" />
+                        <div class="overlayBackground"></div>
+                        <div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>
+                        <div class="overlayText">
+                            <div class="text"><b>{{ event.eventName }}</b>
+                                <br/>{{ event.eventTagline }}</div>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 {% endfor %}
-            </div>
-            {% endfor %}
         </div>
     {% endblock %}
 
@@ -88,40 +92,12 @@
             Stay tuned for updates!! Got queries? Drop us a message.</p>
         </div><br><br><br>
     </div> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-
-        })();
-    </script>
     <% endblock %>
 
     <% block ourteam %>
     
         <a class="aboutus_heading">OUR TEAM</a><br><br>
-       <!-- <div class="ourteam-table">
-        <table>
-            <tr>
-                <td><img src="/images/Ad Mad.jpg"></td>
-                <td>President</td>
-            </tr>
-            <tr>
-                <td>Vice President</td>
-                <td><img src="/images/Ad Mad.jpg"></td>
-            </tr>
-            <tr>
-                <td><img src="/images/Ad Mad.jpg"></td>
-                <td>Secretary</td>
-            </tr>
-            <tr>
-                <td>Joint Secretary</td>
-                <td><img src="/images/Ad Mad.jpg"></td>
-            </tr>
-        </table>
-        </div>
-        -->
-
-            <div class="ourteam">
+       <div class="ourteam">
                 <img src="/images/Ad Mad.jpg" class="" style="margin-left: 250px;"><a class="p-tag">President</a>
             </div><br>
             <div class="ourteam">
@@ -135,63 +111,59 @@
                 <a class="js-tag">Joint Secretary</a>
                 <img src="/images/Ad Mad.jpg" class="" style="margin-left: 750px;">
             </div><br>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-
-        })();
-    </script>
     <% endblock %>
 
     {% block footer%}
-    <footer class="row footer">
-        <div class="col-4 footer-left">
-            <img src="../images/Ad Mad.jpg" class='footer-logo'></img>
-            <div class="footer-links">
-                <a class="foot-link" href="#">Home |</a>
-                <a class="foot-link" href="#">Events |</a>
-                <a class="foot-link" href="#">Schedule |</a>
-                <a class="foot-link" href="#">About |</a>
-                <a class="foot-link" href="#">FAQ |</a>
-                <a class="foot-link" href="#">Contact</a>
+        <footer class="row footer">
+            <div class="col-4 footer-left">
+                <img src="../images/Ad Mad.jpg" class='footer-logo'></img>
+                <div class="footer-links">
+                    <a class="foot-link" href="#">Home |</a>
+                    <a class="foot-link" href="#">Events |</a>
+                    <a class="foot-link" href="#">Schedule |</a>
+                    <a class="foot-link" href="#">About |</a>
+                    <a class="foot-link" href="#">FAQ |</a>
+                    <a class="foot-link" href="#">Contact</a>
+                </div>
+                <div class="footer-college-name">Deen Dayal Upadhyaya College</div>
             </div>
-            <div class="footer-college-name">Deen Dayal Upadhyaya College</div>
+            <div class="col-4 footer-center">
+            	<br/><!--padding ki bharpai kar dega ye-->
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <div>Sector 3, Dwarka, Delhi</div>
+                </div>
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <div>9871169186</div>
+                </div>
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <div><a class="foot-link" href="#">DDUC_TM-mail@gmail.com</a></div>
+                </div>
+            </div>
+            <div class="col-4 footer-right">
+                <div class="footer-about">
+                    <h4>About this Event</h4>
+                    <!--<strike>   ye meri styling me kaam aega  -->
+                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                </div>
+                <div class="footer-icons">
+                    <a class="foot-link" href="#"><i class="fa fa-facebook"></i></a>
+                    <a class="foot-link" href="#"><i class="fa fa-instagram"></i></a>
+                    <a class="foot-link" href="#"><i class="fa fa-twitter"></i></a>
+                    <a class="foot-link" href="#"><i class="fa fa-linkedin"></i></a>
+                    <a class="foot-link" href="#"><i class="fa fa-github"></i></a>
+                    <a class="foot-link" href="#"><i class="fa fa-quora"></i></a>
+                </div>
+            </div>
+        </footer>
+        {% endblock %}
         </div>
-        <div class="col-4 footer-center">
-            <br/><!--padding ki bharpai kar dega ye-->
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <div>Sector 3, Dwarka, Delhi</div>
-            </div>
-            <div>
-                <i class="fa fa-phone"></i>
-                <div>9871169186</div>
-            </div>
-            <div>
-                <i class="fa fa-envelope"></i>
-                <div><a class="foot-link" href="#">DDUC_TM-mail@gmail.com</a></div>
-            </div>
-        </div>
-        <div class="col-4 footer-right">
-            <div class="footer-about">
-                <h4>About this Event</h4>
-                <!--<strike>   ye meri styling me kaam aega  -->
-                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-            </div>
-            <div class="footer-icons">
-                <a class="foot-link" href="#"><i class="fa fa-facebook"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-instagram"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-twitter"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-linkedin"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-github"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-quora"></i></a>
-            </div>
-        </div>
-    </footer>
-    {% endblock %}
     </div>
 </body>
 <script type="text/javascript" src="/js/particles.js"></script>
+<script src="https://cdn.rawgit.com/coderitual/odoo/feature/codevember16/lib/odoo.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
 </html>
