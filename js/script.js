@@ -85,16 +85,13 @@ if(!this.useCanvas && typeof this.holder == "undefined"){
 console.warn('Holder must be defined in DOM Mode. Use Canvas or define Holder');
 }
 this.getRandCharacter = function(characterToReplace){
-if(characterToReplace == " "){
-return ' ';
-}
-var randNum = Math.floor(Math.random() * this.chars.length);
-var lowChoice =  -.5 + Math.random();
-var picketCharacter = this.chars[randNum];
-var choosen = picketCharacter.toLowerCase();
-if(this.mixCapital){
-choosen = lowChoice < 0 ? picketCharacter.toLowerCase() : picketCharacter;
-}
+    var randNum = Math.floor(Math.random() * this.chars.length);
+    var lowChoice =  -.5 + Math.random();
+    var picketCharacter = this.chars[randNum];
+    var choosen = picketCharacter.toLowerCase();
+    if(this.mixCapital){
+    choosen = lowChoice < 0 ? picketCharacter.toLowerCase() : picketCharacter;
+    }
 return choosen;
 
 }
@@ -193,10 +190,22 @@ for(var k=0;k<this.currentCharacter;k++){
         }, 6300);
         setTimeout(
             function(){
-                document.body.style.background = "black";
+                $('#headline').html('');
+                $('#headline').css('background', '#00bebe');
+                $('#headline').removeClass('js-odoo animated zoomIn');
+                $('#headline').addClass('pulse');
+            }, 11000);
+
+        setTimeout(
+            function(){
+                document.body.style.background = '#00bebe'
+            }, 13000);
+        setTimeout(
+            function(){
+                document.body.style.background = 'black'
                 document.getElementById('headline').style.display = "none";
                 document.getElementById('main').style.display = "block";
                 particlesJS.load('particles-js', '/js/particles.json', function() {
                     console.log('callback - particles.js config loaded');
                 });
-            }, 11000);
+            }, 13500);

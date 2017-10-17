@@ -1,5 +1,5 @@
 body {
-    background-color: #00bebe;
+    background-color: #000000;
   -webkit-transition: background-color 0.5s ease-in-out;
     -moz-transition: background-color 0.5s ease-in-out;
     -o-transition: background-color 0.5s ease-in-out;
@@ -20,6 +20,45 @@ body {
   align-items: center;
 }
 
+.pulse {
+  margin:100px;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #00bebe;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(0,190, 190, 0.4);
+  animation: pulse 2s infinite;
+  display: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0,190,190, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(0,190,190, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(0,190,190, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(0,190,190, 0.4);
+    box-shadow: 0 0 0 0 rgba(0,190,190, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 10px rgba(0,190,190, 0);
+      box-shadow: 0 0 0 10px rgba(0,190,190, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(0,190,190, 0);
+      box-shadow: 0 0 0 0 rgba(0,190,190, 0);
+  }
+}
+
 #main{
     display: none;
 }
@@ -32,6 +71,20 @@ a:active {
     text-decoration: none;
 }
 
+.logo{
+    display: flex;
+    color: white;
+    
+}
+.logo_text{
+    color: #00bebe;
+    font-size: 25px;
+    margin-left: 10%; 
+    margin-top: 11%;
+    font-family: 'Orbitron';
+    font-weight: bold;
+}
+
 .nav-logo {
     /*for navigation logo changes, here*/
     width: 50%;
@@ -40,15 +93,16 @@ a:active {
 }
 
 .header {
-
-    background-color: black;
     padding: 1.5%;
     text-align: center;
     letter-spacing: 1.8px;
 }
 
 .navigation-bar {
-    margin: 20px;
+    margin: 30px;
+    padding-bottom: 30px;
+    border-bottom: solid thin #00bebe;
+    text-align: right;
 }
 
 .nav-link:hover {
@@ -82,6 +136,7 @@ a.after:after {
     position: relative;
     font-size: 19px;
     overflow: hidden;
+    padding: 10px;
 }
 
 .square a {

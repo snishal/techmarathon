@@ -4,7 +4,8 @@
 <head>
     <title>{{ title }}</title>
     {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/css/materialize.min.css" />
     <link rel="stylesheet" href="/css/animate.css" />
@@ -20,10 +21,13 @@
     	    <div id="particles-js"></div> 
         {% block header%}
         <header class="row header">
-            <div class="col-2">
+            <div class="logo col-2">
                 <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
+                <span class="logo_text">TECHMARATHON</span>
             </div>
-            <div class="col-8">
+            <div class="col-3">
+            </div>
+            <div class="col-7">
                 <div class="navigation-bar">
                     <span class="square"><a class="nav-link tenth before after" href="#">Home</a></span>
                     <span class="square"><a class="nav-link tenth before after" href="#">Events</a></span>
@@ -32,9 +36,6 @@
                     <span class="square"><a class="nav-link tenth before after" href="#">Register</a></span>
                     <span class="square"><a class="nav-link tenth before after" href="#">Contact us</a></span>
                 </div>
-            </div>
-            <div class="col-2">
-                <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
             </div>
         </header>
         {% endblock %} {% block events %}
