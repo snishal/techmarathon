@@ -8,12 +8,8 @@
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/home.css" /> {% endblock %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Nosifer" rel="stylesheet">
-
 </head>
 
 <body>
@@ -26,56 +22,18 @@
         </div>
         <div class="col-8">
             <div class="navigation-bar">
-                <span class="square"><a class="nav-link tenth before after a_nav" href="#">Home</a></span>
-                <span class="square"><a class="nav-link tenth before after a_nav" href="#">Events</a></span>
-                <span class="square"><a class="nav-link tenth before after a_nav" href="#">Schedule</a></span>
-                <span class="square"><a class="nav-link tenth before after a_nav" href="#">About us</a></span>
-                <span class="square"><a class="nav-link tenth before after a_nav" href="#">Register</a></span>
-                <span class="square"><a class="nav-link tenth before after a_nav" href="#">Contact us</a></span>
+                <span class="square"><a class="nav-link tenth before after" href="#">Home</a></span>
+                <span class="square"><a class="nav-link tenth before after" href="#">Events</a></span>
+                <span class="square"><a class="nav-link tenth before after" href="#">Schedule</a></span>
+                <span class="square"><a class="nav-link tenth before after" href="#">About us</a></span>
+                <span class="square"><a class="nav-link tenth before after" href="#">Register</a></span>
+                <span class="square"><a class="nav-link tenth before after" href="#">Contact us</a></span>
             </div>
         </div>
         <div class="col-2">
             <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
         </div>
     </header>
-
-
-    <!-- Sponsors and registration -->
-    <div class = "row">
-    <div class = 'col l3'>
-
-        <img src="/images/4.jpg" class="col s6  animated rollIn imges" style = "-webkit-animation-delay: .8s;">
-        <img src="/images/2.jpg" class="col s6 offset-s6  animated rollIn imges" style = "-webkit-animation-delay: 1.2s;">
-        <img src="/images/5.jpg" class="col s6  animated rollIn imges"  style = "-webkit-animation-delay: 1.6s;">
-
-    </div>
-
-    <div class = 'col l6 header1'>
-
-        <h2 class ="animated zoomIn" > Tech MaraThoN </h2>
-        <h2 class ="animated fadeInDown" id="sm"><small>2K18</small> </h2>
-        
-        <h3>
-
-           <a class="waves-effect waves-light btn animated zoomIn">Register</a>
-           <a class="waves-effect waves-light btn animated zoomIn">Sponsor</a>
-        
-         </h3>
-
-    </div>
-
-    <div class = 'col l3'>
-
-      <img src="/images/4.jpg" class="col s6  animated rollIn imges"  style = "-webkit-animation-delay: .8s;">
-      <img src="/images/2.jpg" class="col s6 offset-s6  animated rollIn imges"  style = "-webkit-animation-delay: 1.2s;">
-      <img src="/images/5.jpg" class="col s6   animated rollIn imges"  style = "-webkit-animation-delay: 1.6s;">
-    
-    </div>
- </div>
-    <br /><br /><br />
-
-    <!-- Sponsors block ends here -->
-
     {% endblock %} {% block events %}
     
         <div class="container">
@@ -95,10 +53,7 @@
             </div>
             {% endfor %}
         </div>
-    {% endblock %}
-
-
-     {% block footer%}
+    {% endblock %} {% block footer%}
     <footer class="row footer">
         <div class="col-4 footer-left">
             <img src="../images/Ad Mad.jpg" class='footer-logo'></img>
@@ -146,12 +101,6 @@
     {% endblock %}
     </div>
 </body>
-
-
-
-
-
-
 <script type="text/javascript" src="/js/particles.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
 </html>
