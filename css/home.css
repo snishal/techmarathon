@@ -101,10 +101,15 @@ body {
 }
 
 .navigation-bar {
-    margin: 30px;
+    margin-top: 30px;
     padding-bottom: 30px;
     border-bottom: solid thin #00bebe;
     text-align: right;
+}
+
+.nav-link {
+    /*link text color*/
+    font-size: 20px;
 }
 
 .nav-link:hover {
@@ -201,12 +206,6 @@ body {
 .imges {
     margin: auto;
     display: block;
-    height: 100px;
-    padding-top: 20px;
-    border-radius: 50%;
-
-
-    box-shadow: 0 0 5px 5px #888;
 }
 
 .imges:hover {
@@ -452,3 +451,21 @@ body {
 
 
 /*footer ends here*/
+
+/* Mobile Phone Media Query */
+@media only screen and (max-width: 768px) {
+    
+    #headline{
+        margin-top: 50%;
+    }
+    .nav-logo{
+        height: 10%;
+        width: 30%;
+    }
+    .logo_text{
+        font-size: 18px;
+    }
+    .btn{
+        width: 40%;
+    }
+}
