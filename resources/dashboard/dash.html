@@ -26,7 +26,10 @@
 			</div>
 			<div id='body' class='col-10'>
 				<div class="row">
-					<div id='header' class='col-12'><header><i class="fa fa-user"></i>WebMaster</header></div>
+					<div id='header' class='col-12'>
+						<i id="logout" class="fa fa-sign-out fa-2x" data-toggle="tooltip" title="Logout" aria-hidden="true" onclick="logout()"></i>
+						<header><i class="fa fa-user fa-2x"></i>WebMaster</header>
+					</div>
 				</div>
 				<div class="row">
 					<div id='main' class='col-12'>
@@ -70,9 +73,10 @@
 				</div>
 			</div>
 		</div>
-		
+		<form action="/" method="post" id="logForm">
+			<input type="hidden" name="logout">
+		</form>
 	</body>
-
 	{% block script %}
 		<script type="text/javascript">
 			var path = window.location.pathname.split("/");
@@ -115,6 +119,10 @@
 						ele.style.display='none';
 				}
 			
+			}
+			function logout(){
+				var form = document.getElementById('logForm');
+				form.submit();
 			}
 		</script>
 	{% endblock %}
