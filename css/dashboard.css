@@ -59,9 +59,18 @@ button:hover{
 	padding: 20px;
 	text-align: right;
 	color: white;
+	display: flex;
+	justify-content: space-between;
 }
 #header i{
 	margin-right: 1%;
+}
+#header header{
+	display: flex;
+	font-weight: bold;
+}
+#logout:hover{
+	cursor: pointer;
 }
 #main{
 	padding: 5%;
