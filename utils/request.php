@@ -1,7 +1,7 @@
 <?php
-
 require_once 'Event.php';
 require_once 'utilFunc.php';
+
 
 if (isset($_POST['addEvent'])) {
 

@@ -9,6 +9,7 @@ class Form {
 		$this->form = $this->form . "<form action='$action' method='$method' ";
 
 		if (is_array($extraParams)) {
+			
 			foreach ($extraParams as $key => $value) {
 				if ($key != 'header') {
 					$this->form = $this->form . " $key = '$value' ";
@@ -60,8 +61,13 @@ class Form {
 				}
 			}
 
-			$this->form = $this->form . "/><br/>";
+			$this->form = $this->form . "/>";
+			if($type == "checkbox"){
+				$this->form = $this->form.$extraParams['value'];
+			}
+			$this->form = $this->form."<br/>";
 		}
+
 	}
 
 	function endForm() {
