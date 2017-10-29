@@ -371,8 +371,9 @@ body {
     color: white;
 }
 
-.desc h3 {
+.desc h3, .desc2 h3 {
     color: #00bebe;
+    text-align: center;
 }
 
 .desc p {
@@ -380,6 +381,14 @@ body {
     text-align: center;
 }
 
+.desc2 td {
+  text-align: center;
+  width: 50%
+}
+
+.desc2 p {
+  color: white;
+}
 
 /* about us ends here */
 
@@ -390,28 +399,23 @@ body {
     position: relative;
     width: 250px;
     height: 350px;
+    text-align: center;
 }
 
 .ourTeam img {
     height: 350px;
 }
 
-.teamLeftTag {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    position: absolute;
-    margin-left: 805px;
-    margin-top: -210px;
+.teamTags {
+  width: 250px;
+  height: 100px;
+  text-align: center; 
 }
 
-.teamRightTag {
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    position: absolute;
-    margin-left: 308px;
-    margin-top: 128px;
+.teamTagsEdit {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 

@@ -100,16 +100,27 @@
                     </div>
                     <br>
                     <br>
-                    <div class="desc">
-                        <h3>SANGANIKA</h3>
-                        <p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 17-18th February, 2017.</p>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="desc">
-                        <h3>TECH MARATHON</h3>
-                        <p>"Everyone can run a few miles, only winners can run a marathon." This Marathon you run with your minds. Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi. Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 17-18th Feb, 2017. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more, we present to you new events such as SQLized, Appcombat and TV Fandom. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before. Stay tuned for updates!! Got queries? Drop us a message.</p>
-                    </div>
+                    <table class="desc2">
+                        <tr>
+                            <td><h3>SANGANIKA</h3></td>
+                            <td><h3>TECH MARATHON</h3></td>
+                        </tr>
+                        <tr>
+                            <td><p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence.
+                            Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College.
+                        This year Tech Marathon arrives on 17-18th February, 2017.</p></td>
+                            <td><p>"Everyone can run a few miles, only winners can run a marathon."
+                            This Marathon you run with your minds.
+                            Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.
+                            Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year.
+                            This year, Tech Marathon comes on 17-18th Feb, 2017.
+                            Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more, we present to you new events such as SQLized, Appcombat and TV Fandom.
+                            So come forth, fire up your sabers and fight !!
+                            At this technical extravaganza we guarantee you an experience felt never before.
+                        Stay tuned for updates!! Got queries? Drop us a message.</p></td>
+                        </tr>
+                    </table>
+
                     <br>
                     <br>
                     <br>
@@ -117,27 +128,26 @@
             {% endblock %}
 
             {% block ourteam %}
-                <a class="aboutus_heading">OUR TEAM</a>
-                <br>
-                <br>
-                <div class="ourTeam">
-                    <img src="/images/Ad Mad.jpg" class="" style="margin-left: 250px;"><a class="teamLeftTag">President</a>
+                <a class="aboutus_heading">OUR TEAM</a><br><br>
+                <div>
+                    <table>
+                        <tr>
+                            <td class="ourTeam"><img src="/images/Ad Mad.jpg" id="president"></td>
+                            <td class="ourTeam"><img src="/images/Ad Mad.jpg" id="vicepresident"></td>
+                            <td class="ourTeam"><img src="/images/Ad Mad.jpg" id="secretary"></td>
+                            <td class="ourTeam"><img src="/images/Ad Mad.jpg" id="vicepresident"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="teamTags"><label class="teamTagsEdit">PRESIDENT</label></td>
+                            <td class="teamTags"><label class="teamTagsEdit">VICE PRESIDENT</label></td>
+                            <td class="teamTags"><label class="teamTagsEdit">SECRETARY</label></td>
+                            <td class="teamTags"><label class="teamTagsEdit">JOINT SECRETARY</label></td>
+                        </tr>
+                    </table>
                 </div>
-                <br>
-                <div class="ourTeam">
-                    <a class="teamRightTag">Vice President</a>
-                    <img src="/images/Ad Mad.jpg" class="" style="margin-left: 750px;">
-                </div>
-                <br>
-                <div class="ourTeam">
-                    <img src="/images/Ad Mad.jpg" class="" style="margin-left: 250px;"><a class="teamLeftTag">Secretary</a>
-                </div>
-                <br>
-                <div class="ourTeam">
-                    <a class="teamRightTag">Joint Secretary</a>
-                    <img src="/images/Ad Mad.jpg" class="" style="margin-left: 750px;">
-                </div>
-                <br>
+                <br><br>
             {% endblock %}
                 
             {% block footer%}
