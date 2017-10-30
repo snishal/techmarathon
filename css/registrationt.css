@@ -1,4 +1,18 @@
-body{background-color: #00bebe;}
+*{
+  color: white;
+}
+h2, u{
+ color: #00bebe; 
+}
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+fieldset{
+  padding: 50px;
+}
+input[type="checkbox"]{
+  border: 2px solid white;
+  background-color: white;
+}
+/*body{background-color: #00bebe;}
 .w3-col{color: white;}
 #user1{margin-top:13%;margin-left: 17%;}
 #college{margin-top: 19%;}
@@ -84,4 +98,4 @@ input:checked {
 { 
 
 
-}
+}*/

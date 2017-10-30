@@ -1,34 +1,41 @@
-<!DOCTYPE html>
-<html>
+{%extends 'web/home.html'%}
 
-<head>
-   <title>{%block title%}{{ title }}{%endblock%}</title>
-		{%block stylesheets%}
- 	
- 	<link rel="stylesheet" href="/css/registrationt.css" />
- 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
- 	{%endblock%}
-	</head>
-<body>
-		<div id="user1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-			 <div id="college" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-bars"></i></div>
-			  <div id="mobile" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-phone"></i></div>
-			  <div id="email1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-			   <div id="user2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-			  <div id="email2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-			   <div id="user3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-			  <div id="email3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-			  <div id="user4" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-			  <div id="email4" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-			  <div class="row">
-	{{ form.displayForm() }}
-
-
-</body>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="/js/materialize.min.js"></script>	
-</html>
+    {%block stylesheets%}
+	    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<link rel="stylesheet" href="/css/materialize.min.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/home.css" />
+        <link rel="stylesheet" href="/css/registrationt.css" />
+    {%endblock%}
+    {%block main%}
+    <div class='row container'>
+        {{ form.displayForm() }}
+    </div>
+    {%endblock%}
+    {% block scripts %}
+		<script type="text/javascript" src="/js/particles.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/animation.js"></script>
+		<script type="text/javascript" src="/js/materialize.min.js"></script>	
+		<script type="text/javascript">
+			$('#headline').css('display', "none");
+			$('#main').css('display', "block");
+			particlesJS.load('particles-js', '/js/particles.json', function() {
+            	console.log('callback - particles.js config loaded');
+        	});
+		</script>
+	<!--<div id="user1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="college" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-bars"></i></div>
+    <div id="mobile" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-phone"></i></div>
+    <div id="email1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div id="user2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="email2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div id="user3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="email3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div id="user4" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="email4" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div class="row">-->
+	{% endblock %}

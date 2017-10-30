@@ -21,16 +21,10 @@ body {
 }
 
 .pulse {
-    margin-left: 50%;
-    display: block;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
     background: #00bebe;
     cursor: pointer;
     box-shadow: 0 0 0 rgba(0, 190, 190, 0.4);
     animation: pulse 1s infinite;
-    display: none;
 }
 
 @-webkit-keyframes pulse {
@@ -61,8 +55,8 @@ body {
 }
 
 #main {
-    display: none;
     background-color:black;
+    display: none;
 }
 
 

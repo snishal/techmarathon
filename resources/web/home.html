@@ -17,6 +17,9 @@
 </head>
 
 <body>
+    <audio autoplay>
+      <source src="/song.mp3" type="audio/mp3">
+    </audio>
     <div class="js-odoo" id='headline'></div>
     <div id='main'>
         <div id="canvas-wrap">
@@ -31,17 +34,18 @@
                     </div>
                     <div class="col-7">
                         <div class="navigation-bar">
-                            <span class="square"><a class="nav-link tenth before after a_nav" href="#">Home</a></span>
+                            <span class="square"><a class="nav-link tenth before after a_nav" href="/">Home</a></span>
                             <span class="square"><a class="nav-link tenth before after a_nav" href="#">Events</a></span>
                             <span class="square"><a class="nav-link tenth before after a_nav" href="#">Schedule</a></span>
-                            <span class="square"><a class="nav-link tenth before after a_nav" href="#">About us</a></span>
-                            <span class="square"><a class="nav-link tenth before after a_nav" href="#">Register</a></span>
-                            <span class="square"><a class="nav-link tenth before after a_nav" href="#">Contact us</a></span>
+                            <span class="square"><a class="nav-link tenth before after a_nav" href="#aboutUS">About us</a></span>
+                            <span class="square"><a class="nav-link tenth before after a_nav" href="/registration">Register</a></span>
+                            <span class="square"><a class="nav-link tenth before after a_nav" href="#footer">Contact</a></span>
                         </div>
                     </div>
                 </header>
             {% endblock %}
             <!-- Sponsors and registration -->
+            {% block main %}
             {% block banner %}
                 <div class="row">
                     <div class='col l3'>
@@ -91,7 +95,7 @@
             {% endblock %}
             
             {% block aboutus %}
-                <div class="container">
+                <div class="container"  id="aboutUS">
                     <a class="aboutus_heading">ABOUT US</a>
                     <br>
                     <div class="desc">
@@ -139,13 +143,13 @@
                 </div>
                 <br>
             {% endblock %}
-                
+            {% endblock %}    
             {% block footer%}
-                <footer class="row footer">
+                <footer class="row footer" id="footer">
                     <div class="col-4 footer-left">
                         <img src="../images/Ad Mad.jpg" class='footer-logo'></img>
                         <div class="footer-links">
-                            <a class="foot-link" href="#">Home |</a>
+                            <a class="foot-link" href="/">Home |</a>
                             <a class="foot-link" href="#">Events |</a>
                             <a class="foot-link" href="#">Schedule |</a>
                             <a class="foot-link" href="#">About |</a>
@@ -190,9 +194,11 @@
         </div>
     </div>
 </body>
+{% block scripts %}
 <script type="text/javascript" src="/js/particles.js"></script>
 <script src="https://cdn.rawgit.com/coderitual/odoo/feature/codevember16/lib/odoo.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/animation.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
+{% endblock %}
 </html>

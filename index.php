@@ -34,30 +34,29 @@ if (empty($uri[1])) {
 	$event = new Event;
 	$events = $event->getEvents();
 	echo $twig->render('web/home.html', array('title' => 'TechMarathon | 2017', 'events' => $events));
-}else if ($uri[1] == 'registration') {
-	if(empty($uri[2])){
+} else if ($uri[1] == 'registration') {
+	if (empty($uri[2])) {
 		$pageFound = true;
 		$form = new Form;
-				$form->startForm('/utils/request.php', 'post', array('header' => '<h2>Registration Form</h2>', 'class' => 'form', 'enctype' => 'multipart/form-data'));
-				$form->addItem('text', 'leaderName', array('placeholder' => 'Leader Name'));
-				$form-> addItem('text', 'leaderCollege', array('placeholder' => 'Leaders College'));
-				$form->addItem('number', 'leaderMobile', array('placeholder' => 'Leader Mobile'));
-				$form->addItem('email', 'leaderEmail', array('placeholder' => 'Leader Email'));
-				$form->addItem('text', 'member1Name', array('placeholder' => 'Member 1 Name'));
-				$form->addItem('email', 'member1Email', array('placeholder' => 'Member 1 Email'));
-				$form->addItem('text', 'member2Name', array('placeholder' => 'Member 2 Name'));
-				$form->addItem('email', 'member2Email', array('placeholder' => 'Member 2 Email'));
-				$form->addItem('text', 'member3Name', array('placeholder' => 'Member 3 Name'));
-				$form->addItem('email', 'member3Email', array('placeholder' => 'Member 3 Email'));
-				$event = new Event;
-				$events = $event->getEvents();
-				foreach($events as $event){
-					$form->addItem('checkbox', 'event', array('value' => $event["eventName"]));
-				}
-				$form->addItem('submit', 'Register', array('value' => 'Register'));
-				$form->endForm();
-				echo $twig->render('web/registration.html', array('title' => 'Registration Form', 'form' => $form));
-
+		$form->startForm('/utils/request.php', 'post', array('legend' => '<h2>Registration Form</h2>', 'class' => 'form', 'fieldset' => 'true'));
+		$form->addItem('text', 'leaderName', array('id' => 'leaderName', 'label' => 'Leader Name', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">account_circle</i>'));
+		$form->addItem('text', 'leaderCollege', array('id' => 'leaderCollege', 'label' => 'Leaders College', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">location_city</i>'));
+		$form->addItem('number', 'leaderMobile', array('id' => 'leaderMobile', 'label' => 'Leader Mobile', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">phone_iphone</i>'));
+		$form->addItem('email', 'leaderEmail', array('id' => 'leaderEmail', 'label' => 'Leader Email', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">mail</i>'));
+		$form->addItem('text', 'member1Name', array('id' => 'member1Name', 'label' => 'Member 1 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
+		$form->addItem('email', 'member1Email', array('id' => 'member1Email', 'label' => 'Member 1 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
+		$form->addItem('text', 'member2Name', array('id' => 'member2Name', 'label' => 'Member 2 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
+		$form->addItem('email', 'member2Email', array('id' => 'member2Email', 'label' => 'Member 2 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
+		$form->addItem('text', 'member3Name', array('id' => 'member3Name', 'label' => 'Member 3 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
+		$form->addItem('email', 'member3Email', array('id' => 'member3Email', 'label' => 'Member 3 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
+		$event = new Event;
+		$events = $event->getEvents();
+		foreach ($events as $event) {
+			$form->addItem('checkbox', 'event', array('id' => $event["eventName"], 'label' => $event["eventName"]));
+		}
+		$form->addItem('submit', 'Register', array('value' => 'Register', 'class' => "btn waves-effect waves-light col s3 offset-s5"));
+		$form->endForm(array('fieldset' => 'true'));
+		echo $twig->render('web/registration.html', array('title' => 'Registration Form', 'form' => $form));
 
 	}
 } else if ($uri[1] == 'adminPanel') {
@@ -129,5 +128,5 @@ if (empty($uri[1])) {
 }
 notFound:if (!$pageFound) {
 	echo $twig->render('404.html');
-} 
+}
 ?>
