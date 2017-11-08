@@ -10,6 +10,8 @@ if (!isset($_SESSION['id'])) {
 	$_SESSION['id'] = 1;
 }
 
+$script = '';
+
 if ($_SESSION['id'] == 1) {
 	updateCount();
 	$_SESSION['id'] = 2;
