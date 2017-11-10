@@ -6,11 +6,11 @@ class Form {
 
 	function startForm($action, $method, $extraParams = '') {
 
-		if (array_key_exists('fieldset', $extraParams) && $extraParams['fieldset'] == "true") {
+		if (is_array($extraParams) && array_key_exists('fieldset', $extraParams) && $extraParams['fieldset'] == "true") {
 			$this->form = $this->form . "<fieldset>";
 		}
 
-		if (array_key_exists('legend', $extraParams)) {
+		if (is_array($extraParams) && array_key_exists('legend', $extraParams)) {
 			$this->form = $this->form . "<legend>" . $extraParams['legend'] . "</legend>";
 		}
 
@@ -38,7 +38,7 @@ class Form {
 
 	function addItem($type = '', $name = '', $extraParams = '') {
 
-		if (array_key_exists('div', $extraParams)) {
+		if (is_array($extraParams) && array_key_exists('div', $extraParams)) {
 			$this->form = $this->form . $extraParams['div'];
 		}
 
@@ -57,7 +57,7 @@ class Form {
 
 			$this->form = $this->form . ">";
 
-			if (isset($extraParams['value'])) {
+			if (is_array($extraParams) && isset($extraParams['value'])) {
 				$this->form = $this->form . $extraParams['value'];
 			}
 
@@ -78,19 +78,19 @@ class Form {
 			}
 
 			$this->form = $this->form . "/>";
-			if (array_key_exists('label', $extraParams) && array_key_exists('id', $extraParams)) {
+			if (is_array($extraParams) && array_key_exists('label', $extraParams) && array_key_exists('id', $extraParams)) {
 				$this->form = $this->form . '<label for="' . $extraParams['id'] . '">' . $extraParams['label'] . '</label>';
 			}
 			$this->form = $this->form . "<br/>";
 		}
-		if (array_key_exists('div', $extraParams)) {
+		if (is_array($extraParams) && array_key_exists('div', $extraParams)) {
 			$this->form = $this->form . "</div>";
 		}
 
 	}
 
 	function endForm($extraParams = '') {
-		if (array_key_exists('fieldset', $extraParams) && $extraParams['fieldset'] == "true") {
+		if (is_array($extraParams) && array_key_exists('fieldset', $extraParams) && $extraParams['fieldset'] == "true") {
 			$this->form = $this->form . "</fieldset>";
 		}
 		$this->form = $this->form . "</form>";

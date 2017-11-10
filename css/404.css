@@ -29,9 +29,6 @@ body
 #button {
 	text-align: center;
 	font-size: 16px;
-
-
-
 }
 #footer{
 	clear: both;
@@ -57,8 +54,6 @@ button
     display: inline-block;
     font-size: 24px;
     background:#00bebe;
-border-radius: 50%;
-
 	
 }
 

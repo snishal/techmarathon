@@ -61,6 +61,10 @@ if (empty($uri[1])) {
 		echo $twig->render('web/registration.html', array('title' => 'Registration Form', 'form' => $form));
 
 	}
+} else if ($uri[1] == 'sponsors') {
+	$pageFound = true;
+	echo $twig->render('web/sponsors.html', array('title' => 'Sponsors'));
+
 } else if ($uri[1] == 'adminPanel') {
 	if (!auth_user()) {
 		goto notFound;
@@ -84,6 +88,7 @@ if (empty($uri[1])) {
 		$form->addItem('text', 'eventTagline', array('placeholder' => 'eventTagline'));
 		$form->addItem('textarea', 'eventDescription', array('placeholder' => 'eventDescription'));
 		$form->addItem('file', 'eventImage');
+		$form->addItem('text', 'eventType', array('placeholder' => 'eventType'));
 		$form->addItem('submit', 'addEvent', array('value' => 'Submit'));
 		$form->endForm();
 		echo $twig->render('forms/form.html', array('title' => 'Add Event', 'form' => $form, 'script' => 'var editor = CKEDITOR.replace( "eventDescription" );'));
@@ -95,33 +100,35 @@ if (empty($uri[1])) {
 			echo $twig->render('dashboard/event.html', array('title' => 'Events', 'events' => $events));
 		} elseif (strstr($uri[3], 'deleteEvent')) {
 			$pageFound = true;
-			$eventId = $_GET['id'];
+			$eventName = $_GET['name'];
 
 			$event = new Event;
 
-			$eventDescription = $event->getEventDescription($eventId);
-			$eventImage = $event->getEventImage($eventId);
+			$eventDescription = $event->getEventDescription($eventName);
+			$eventImage = $event->getEventImage($eventName);
 
-			if ($event->deleteEvent($eventId)) {
+			if ($event->deleteEvent($eventName)) {
 
 				unlink($eventDescription);
 				unlink($eventImage);
 				header("Location: /adminPanel/events");
 				$event = null;
 				exit;
+
 			}
 
 		} elseif (strstr($uri[3], 'updateEvent')) {
 			$pageFound = true;
-			$id = $_GET['id'];
+			$eventName = $_GET['name'];
 			$event = new Event;
 			$form = new Form;
 			$form->startForm('/utils/request.php', 'post', array('header' => '<h2>Update Event</h2>', 'class' => 'form', 'enctype' => 'multipart/form-data'));
-			$form->addItem('hidden', 'eventId', array('value' => $id));
-			$form->addItem('text', 'eventName', array('placeholder' => 'eventName', 'value' => $event->getEventName($id)));
-			$form->addItem('text', 'eventTagline', array('placeholder' => 'eventTagline', 'value' => $event->getEventTagline($id)));
-			$form->addItem('textarea', 'eventDescription', array('placeholder' => 'eventDescription', 'value' => file_get_contents($event->getEventDescription($id))));
+			$form->addItem('hidden', 'oldEventName', array('value' => $eventName));
+			$form->addItem('text', 'eventName', array('placeholder' => 'eventName', 'value' => $eventName));
+			$form->addItem('text', 'eventTagline', array('placeholder' => 'eventTagline', 'value' => $event->getEventTagline($eventName)));
+			$form->addItem('textarea', 'eventDescription', array('placeholder' => 'eventDescription', 'value' => file_get_contents($event->getEventDescription($eventName))));
 			$form->addItem('file', 'eventImage');
+			$form->addItem('text', 'eventType', array('placeholder' => 'eventType', 'value' => $event->getEventType($eventName)));
 			$form->addItem('submit', 'updateEvent', array('value' => 'Submit'));
 			$form->endForm();
 			echo $twig->render('forms/form.html', array('title' => 'Update Event', 'form' => $form, 'script' => 'var editor = CKEDITOR.replace( "eventDescription" );'));

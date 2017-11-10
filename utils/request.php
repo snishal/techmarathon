@@ -2,7 +2,6 @@
 require_once 'Event.php';
 require_once 'utilFunc.php';
 
-
 if (isset($_POST['addEvent'])) {
 
 	if (!empty($_POST['eventName'])) {
@@ -30,10 +29,14 @@ if (isset($_POST['addEvent'])) {
 		$eventImage = file_upload('images/', $eventName);
 
 	}
+	if (!empty($_POST['eventType'])) {
 
+		$eventType = $_POST['eventType'];
+
+	}
 	$event = new Event;
 
-	if ($event->addEvent($eventName, $eventTagline, $eventDescription, $eventImage)) {
+	if ($event->addEvent($eventName, $eventTagline, $eventDescription, $eventImage, $eventType)) {
 
 		$event = null;
 		header("Location: /adminPanel/events");
@@ -45,10 +48,11 @@ if (isset($_POST['addEvent'])) {
 
 	$event = new Event;
 
-	$eventId = $_POST['eventId'];
+	$oldEventName = $_POST['oldEventName'];
 
 	$eventName = $_POST['eventName'];
 	$eventTagline = $_POST['eventTagline'];
+	$eventType = $_POST['eventType'];
 
 	$olddesc = $event->getEventDescription($eventId);
 	unlink("../" . $olddesc);
@@ -61,15 +65,15 @@ if (isset($_POST['addEvent'])) {
 
 	if (!empty($_FILES['eventImage']['name'])) {
 
-		$oldimg = $event->getEventImage($eventId);
+		$oldimg = $event->getEventImage($eventName);
 		unlink("../" . $oldimg);
 		$eventImage = file_upload('images/', $eventName);
 
 	} else {
-		$eventImage = $event->getEventImage($eventId);
+		$eventImage = $event->getEventImage($eventName);
 	}
 
-	if ($event->updateEvent($eventId, $eventName, $eventTagline, $eventDescription, $eventImage)) {
+	if ($event->updateEvent($oldEventName, $eventName, $eventTagline, $eventDescription, $eventImage, $eventType)) {
 
 		$event = null;
 		header("Location: /adminPanel/events");

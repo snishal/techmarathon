@@ -279,11 +279,16 @@ body {
     width: 100%;
 }
 
+#eventsBtn a{
+    font-family: 'Roboto', sans-serif;
+}
+
 .container {
     /*margin-top: 10%;*/
 }
 
 .pallete {
+    max-width: 25%;
     position: relative;
     margin: 5%;
 }
