@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TEST</title>
-  <link rel="stylesheet" href="/css/test.css"></link>
+    <title></title>
 </head>
-<body>
-	<span class="pulse"></span>
+<body bgcolor="black">
+<div id="particles-js"></div>
+
 </body>
+<script src="/js/particles.js"></script>
 <script type="text/javascript">
-  
-  
+    particlesJS.load('particles-js', '/js/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+    });
 </script>
 </html>

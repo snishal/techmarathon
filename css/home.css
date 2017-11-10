@@ -5,7 +5,6 @@ body {
     -o-transition: background-color 0.5s ease-in-out;
     transition: background-color 0.5s ease-in-out;
 }
-
 #headline {
     margin-top: 15%;
     background: black;
@@ -21,16 +20,10 @@ body {
 }
 
 .pulse {
-    margin-left: 50%;
-    display: block;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
     background: #00bebe;
     cursor: pointer;
     box-shadow: 0 0 0 rgba(0, 190, 190, 0.4);
     animation: pulse 1s infinite;
-    display: none;
 }
 
 @-webkit-keyframes pulse {
@@ -61,7 +54,7 @@ body {
 }
 
 #main {
-    display: none;
+    background-color:black;
 }
 
 
@@ -74,28 +67,29 @@ body {
 }
 
 .logo {
-    display: flex;
     color: white;
 }
 
-.logo_text {
+/*.logo_text {
     color: #00bebe;
     font-size: 25px;
     margin-left: 10%;
     margin-top: 11%;
     font-family: 'Orbitron';
     font-weight: bold;
-}
+}*/
 
 .nav-logo {
     /*for navigation logo changes, here*/
     width: 50%;
-    height: 60%;
+}
+.nav-logo-circle{
     border-radius: 50%;
 }
-
+.nav-text{
+    padding: 45px !important;
+}
 .header {
-    padding: 1.5%;
     text-align: center;
     letter-spacing: 1.8px;
 }
@@ -103,18 +97,12 @@ body {
 .navigation-bar {
     margin-top: 30px;
     padding-bottom: 30px;
-    border-bottom: solid thin #00bebe;
-    text-align: right;
+    /*border-bottom: solid thin #00bebe; */
 }
 
 .nav-link {
     /*link text color*/
     font-size: 20px;
-}
-
-.nav-link:hover {
-    /*link text color*/
-    color: white;
 }
 
 .a_nav.before:before,
@@ -156,9 +144,9 @@ body {
     box-sizing: border-box;
     transition: 0.5s all ease;
     position: absolute;
-    width: 3px;
+    width: 5px;
     height: 0;
-    background: white;
+    background: grey;
     /*left and right line colors*/
 }
 
@@ -194,12 +182,34 @@ body {
     width: 100%;
     /*top and bottom line*/
 }
-
+.square:hover .nav-link {
+    /*link text color*/
+    color: white;
+}
 
 
 
 /*header ends here*/
 
+
+/*banner*/
+.banner{
+    margin-bottom: 7%;
+    padding: 50px;
+    background:rgba(128,128,128,0.15);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.50);
+}
+.banner-text{
+    font-size: 30px;
+    color:grey;
+}
+#tagline{
+    font-weight: normal;
+    color: grey;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+/*banner*/
 
 /* Sponsors */
 
@@ -269,11 +279,16 @@ body {
     width: 100%;
 }
 
+#eventsBtn a{
+    font-family: 'Roboto', sans-serif;
+}
+
 .container {
     /*margin-top: 10%;*/
 }
 
 .pallete {
+    max-width: 25%;
     position: relative;
     margin: 5%;
 }
@@ -356,9 +371,15 @@ body {
 
 /*about us starts here */
 
+#aboutUs{
+    background:rgba(128,128,128,0.15);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.50);
+}
+
 .aboutus_heading {
+    padding-top: 30px;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 50px;
     color: #00bebe;
     display: block;
     display: box;
@@ -368,7 +389,8 @@ body {
 }
 
 .desc {
-    color: white;
+    color: grey;
+    font-size: 18px;
 }
 
 .desc h3, .desc2 h3 {
@@ -380,14 +402,9 @@ body {
     margin-left: 100px;
     text-align: center;
 }
-
-.desc2 td {
-  text-align: center;
-  width: 50%
-}
-
 .desc2 p {
-  color: white;
+  color: grey;
+  font-size: 18px;
 }
 
 /* about us ends here */
@@ -395,6 +412,9 @@ body {
 
 /* ourteam starts here */
 
+#ourTeam{
+    padding: 25px;
+}
 .ourTeam {
     position: relative;
     width: 250px;
@@ -413,11 +433,21 @@ body {
 }
 
 .teamTagsEdit {
-  color: white;
-  font-weight: bold;
-  font-size: 30px;
+  color: lightgrey;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  font-family: 'Roboto', sans-serif;
 }
 
+#teamText{
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    color: lightgrey;
+    text-align: center;
+    padding: 25px;
+    background:rgba(128,128,128,0.15);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.75);   
+}
 
 /* ourteam ends here */
 
@@ -425,7 +455,8 @@ body {
 /*footer starts here*/
 
 .footer {
-
+    padding:20px;
+    background:rgba(128,128,128,0.20);
     color: #00bebe;
     margin: 0px;
 }
@@ -440,7 +471,9 @@ body {
     color: red;
 }
 
-.footer-center {}
+.footer-center {
+    font-size: 20px;
+}
 
 .footer-right {}
 
@@ -451,7 +484,12 @@ body {
     height: 35%;
     border-radius: 50%;
 }
-
+.copyrights{
+    font-family: 'Roboto', sans-serif ;
+    padding:25px;
+    background:rgba(128,128,128,0.10); 
+    color: lightgrey;
+}
 
 
 /*footer ends here*/
