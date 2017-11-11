@@ -35,7 +35,16 @@ if (empty($uri[1])) {
 	$pageFound = true;
 	$event = new Event;
 	$events = $event->getEvents();
-	echo $twig->render('web/home.html', array('title' => 'TechMarathon | 2017', 'events' => $events));
+
+	$form = new Form;
+	$form->startForm('/utils/request.php', 'post', array('class' => 'form'));
+	$form->addItem('text', 'name', 'name', array('id' => 'name', 'label' => 'Name'));
+	$form->addItem('text', 'email', 'email', array('id' => 'email', 'label' => 'Email'));
+	$form->addItem('textarea', 'query', 'query', array('id' => 'query', 'placeholder' => 'Write Your Query here'));
+	$form->addItem('submit', 'submitQuery', 'submitQuery', array('value' => 'Submit', 'class' => "btn waves-effect waves-light col s3 offset-s5"));
+	$form->endForm();
+
+	echo $twig->render('web/home.html', array('title' => 'TechMarathon | 2017', 'events' => $events, 'contactUsForm' => $form));
 } else if ($uri[1] == 'registration') {
 	if (empty($uri[2])) {
 		$pageFound = true;
@@ -115,12 +124,12 @@ if (empty($uri[1])) {
 		$pageFound = true;
 		$form = new Form;
 		$form->startForm('/utils/request.php', 'post', array('header' => '<h2>Add Event</h2>', 'class' => 'form', 'enctype' => 'multipart/form-data'));
-		$form->addItem('text', 'eventName', array('placeholder' => 'eventName'));
-		$form->addItem('text', 'eventTagline', array('placeholder' => 'eventTagline'));
-		$form->addItem('textarea', 'eventDescription', array('placeholder' => 'eventDescription'));
-		$form->addItem('file', 'eventImage');
-		$form->addItem('text', 'eventType', array('placeholder' => 'eventType'));
-		$form->addItem('submit', 'addEvent', array('value' => 'Submit'));
+		$form->addItem('text', 'eventName', 'eventName', array('placeholder' => 'eventName'));
+		$form->addItem('text', 'eventTagline', 'eventTagline', array('placeholder' => 'eventTagline'));
+		$form->addItem('textarea', 'eventDescription', 'eventDescription', array('placeholder' => 'eventDescription'));
+		$form->addItem('file', 'eventImage', 'eventImage');
+		$form->addItem('text', 'eventType', 'eventType', array('placeholder' => 'eventType'));
+		$form->addItem('submit', 'addEvent', 'addEvent', array('value' => 'Submit'));
 		$form->endForm();
 		echo $twig->render('forms/form.html', array('title' => 'Add Event', 'form' => $form, 'script' => 'var editor = CKEDITOR.replace( "eventDescription" );'));
 	} elseif ($uri[2] == 'events') {
@@ -154,13 +163,13 @@ if (empty($uri[1])) {
 			$event = new Event;
 			$form = new Form;
 			$form->startForm('/utils/request.php', 'post', array('header' => '<h2>Update Event</h2>', 'class' => 'form', 'enctype' => 'multipart/form-data'));
-			$form->addItem('hidden', 'oldEventName', array('value' => $eventName));
-			$form->addItem('text', 'eventName', array('placeholder' => 'eventName', 'value' => $eventName));
-			$form->addItem('text', 'eventTagline', array('placeholder' => 'eventTagline', 'value' => $event->getEventTagline($eventName)));
-			$form->addItem('textarea', 'eventDescription', array('placeholder' => 'eventDescription', 'value' => file_get_contents($event->getEventDescription($eventName))));
-			$form->addItem('file', 'eventImage');
-			$form->addItem('text', 'eventType', array('placeholder' => 'eventType', 'value' => $event->getEventType($eventName)));
-			$form->addItem('submit', 'updateEvent', array('value' => 'Submit'));
+			$form->addItem('hidden', 'oldEventName', 'oldEventName', array('value' => $eventName));
+			$form->addItem('text', 'eventName', 'eventName', array('placeholder' => 'eventName', 'value' => $eventName));
+			$form->addItem('text', 'eventTagline', 'eventTagline', array('placeholder' => 'eventTagline', 'value' => $event->getEventTagline($eventName)));
+			$form->addItem('textarea', 'eventDescription', 'eventDescription', array('placeholder' => 'eventDescription', 'value' => file_get_contents($event->getEventDescription($eventName))));
+			$form->addItem('file', 'eventImage', 'eventImage');
+			$form->addItem('text', 'eventType', 'eventType', array('placeholder' => 'eventType', 'value' => $event->getEventType($eventName)));
+			$form->addItem('submit', 'updateEvent', 'updateEvent', array('value' => 'Submit'));
 			$form->endForm();
 			echo $twig->render('forms/form.html', array('title' => 'Update Event', 'form' => $form, 'script' => 'var editor = CKEDITOR.replace( "eventDescription" );'));
 		}
