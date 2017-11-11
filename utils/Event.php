@@ -9,6 +9,22 @@ class Event {
 	private $pass = "iPTnnG1EolksQRrA";
 	private $dbName = "techmarathon";
 
+	public function eventExists($eventName) {
+
+		$db = new DB;
+		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$sql = "SELECT * from events where eventName = '$eventName'";
+		$result = $db->query($sql);
+		$db->close();
+
+		if ($result->num_rows == 1) {
+			return $result->num_rows;
+		} else {
+			return false;
+		}
+
+	}
+
 	public function getEvents() {
 
 		$db = new DB;

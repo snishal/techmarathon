@@ -426,6 +426,83 @@ body {
     height: 350px;
 }
 
+/* This will be displayed on hover */
+.ourTeam_description {  
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 14px;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding: 25px;
+    height: 350px;  
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+   z-index: 5;
+ 
+
+      transform-origin: 50% 0 0;
+    -webkit-transform-origin: 50% 0 0;
+    -moz-transform-origin: 50% 0 0;
+    -ms-transform-origin: 50% 0 0;
+    -o-transform-origin: 50% 0 0;
+    transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    -ms-transform: rotateX(-90deg);
+    -o-transform: rotateX(-90deg);
+    transition: opacity .4s, transform .4s, visibility .4s;
+    -webkit-transition: opacity .4s, -webkit-transform .4s, visibility .4s;
+    -moz-transition: opacity .4s, -moz-transform .4s, visibility .4s;
+    transition-delay: .2s .2s .4s;
+    -webkit-transition-delay: .2s .2s .4s;
+    -moz-transition-delay: .2s .2s .4s;
+
+}
+
+.mem_first{
+    background: rgba(133,201,79, 0.8);
+}
+.mem_second{
+    background:rgba(243,199,47,.8);
+}
+.mem_third{
+    background: rgba(235,88,72,0.8);
+}
+.mem_forth{
+    background: rgba(235,88,72,0.8);
+}
+/* On hovering the image of Our Team */
+.ourTeam:hover .ourTeam_description{
+    visibility: visible;
+    opacity: 0.9;
+    
+     transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+    -moz-transform: rotateX(0);
+    -ms-transform: rotateX(0);
+    -o-transform: rotateX(0);
+}
+
+.social-media i{
+    font-size: 30px;
+    color: white;
+    display: block;
+    left: 50;
+        -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: rgba(133,201,79, 1);
+    background: rgba(133,201,79, 0.8);
+    background: transparent;
+}
+
+.social-media a:hover{
+    border-color: #fff;
+}
 .teamTags {
   width: 250px;
   height: 100px;
@@ -494,6 +571,14 @@ body {
 
 /*footer ends here*/
 
+#toast-container 
+                 {
+				top: auto !important;
+				right: auto !important;
+				bottom: 50%;
+				left: 46%;
+	         }
+			
 /* Mobile Phone Media Query */
 @media only screen and (max-width: 768px) {
     

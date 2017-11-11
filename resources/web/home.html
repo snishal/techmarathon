@@ -158,10 +158,55 @@
                 <div>
                     <table>
                         <tr>
-                            <td class="ourTeam"><img src="/images/jatin.jpg" id="president"></td>
-                            <td class="ourTeam"><img src="/images/harshul.jpg" id="vicepresident"></td>
-                            <td class="ourTeam"><img src="/images/rohit.jpg" id="secretary"></td>
-                            <td class="ourTeam"><img src="/images/ashna.jpeg" id="vicepresident"></td>
+                            <td class="ourTeam">
+                                <img src="/images/jatin.jpg" id="president"/>
+                                <!-- Contents that appear when hover on image -->
+                                <div class="ourTeam_description mem_first"> <h4>Jatin Rohilla</h4> <h5>President</h5> 
+                                 <div class="divider"></div>
+                                        <br><br>
+                                        <div class="container">
+                                            
+                                         <div class="row">
+                                            <ul class="social-media">
+                                                <div class=" col m3 offset-m2">     
+                                                     <div class="icon-facebook">
+                                                        <a href="https://www.facebook.com/xyz">
+                                                            <i class="fa fa-facebook"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col m3 offset-m3">
+                                                    <div class="icon-instagram"> 
+                                                    <a href="https://www.instagram.com/xyz/">
+                                                    <i class="fa fa-instagram"></i></a>
+                                                    </div>
+                                                </div>
+                                             </ul>
+                                         </div>
+
+                                    </div>
+                                </div>
+                                <!-- ....................Ends here....................... -->
+                            </td>
+
+                            <td class="ourTeam">
+
+                                <img src="/images/harshul.jpg" id="vicepresident">
+                                <div class="ourTeam_description mem_second"> <h4>Harshul Kumar</h4> <h5>Vice-President</h5> </div>
+
+
+                            </td>
+
+
+                            <td class="ourTeam">
+                                <img src="/images/rohit.jpg" id="secretary">
+                                <div class="ourTeam_description mem_third"> <h4>Rohit Singh</h4> <h5>Secretary</h5> </div>
+                            </td>
+
+                            <td class="ourTeam">
+                                <img src="/images/ashna.jpeg" id="vicepresident">
+                                <div class="ourTeam_description mem_forth"> <h4>Ashna Wadhawan</h4> <h5>Joint Secretary</h5> </div>
+                            </td>
+
                         </tr>
                     </table>
                     <table>
@@ -235,6 +280,12 @@
 <script type="text/javascript" src="/js/script.js"></script>
 <script type="text/javascript">
     function displayEvents(id){
+        $('#All').css('color', 'white');
+        $('#Technical').css('color', 'white');
+        $('#Non-Technical').css('color', 'white');
+        
+        if(id != '')    $('#'+id).css('color', '#00bebe');
+        
         var type = id;
         var counter = 0;
         if(id == 'All') type = '';
@@ -260,6 +311,7 @@
         $('#events').html(events);
     }
     displayEvents('');
+    $('#All').css('color', '#00bebe');
 </script>
 {% endblock %}
 </html>
