@@ -83,6 +83,19 @@ if (empty($uri[1])) {
 	$pageFound = true;
 	echo $twig->render('web/sponsors.html', array('title' => 'Sponsors'));
 
+} else if ($uri[1] == 'events') {
+
+	$eventName = urldecode($uri[2]);
+
+	$event = new Event;
+
+	$title = $event->eventExists($eventName);
+
+	if ($title) {
+		$pageFound = true;
+		echo $twig->render('web/event.html', array('title' => $eventName, 'tagline' => $event->getEventTagline($eventName), 'description' => file_get_contents($event->getEventDescription($eventName)), 'image' => $event->getEventImage($eventName)));
+	}
+
 } else if ($uri[1] == 'adminPanel') {
 	if (!auth_user()) {
 		goto notFound;

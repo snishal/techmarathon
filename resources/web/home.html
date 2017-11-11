@@ -280,6 +280,12 @@
 <script type="text/javascript" src="/js/script.js"></script>
 <script type="text/javascript">
     function displayEvents(id){
+        $('#All').css('color', 'white');
+        $('#Technical').css('color', 'white');
+        $('#Non-Technical').css('color', 'white');
+        
+        if(id != '')    $('#'+id).css('color', '#00bebe');
+        
         var type = id;
         var counter = 0;
         if(id == 'All') type = '';
@@ -305,6 +311,7 @@
         $('#events').html(events);
     }
     displayEvents('');
+    $('#All').css('color', '#00bebe');
 </script>
 {% endblock %}
 </html>
