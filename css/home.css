@@ -489,6 +489,14 @@ body {
 
 /*footer ends here*/
 
+#toast-container 
+                 {
+				top: auto !important;
+				right: auto !important;
+				bottom: 50%;
+				left: 46%;
+	         }
+			
 /* Mobile Phone Media Query */
 @media only screen and (max-width: 768px) {
     

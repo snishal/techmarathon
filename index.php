@@ -40,22 +40,57 @@ if (empty($uri[1])) {
 	if (empty($uri[2])) {
 		$pageFound = true;
 		$form = new Form;
-		$form->startForm('/utils/request.php', 'post', array('legend' => '<h2>Registration Form</h2>', 'class' => 'form', 'fieldset' => 'true'));
-		$form->addItem('text', 'leaderName', array('id' => 'leaderName', 'label' => 'Leader Name', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">account_circle</i>'));
-		$form->addItem('text', 'leaderCollege', array('id' => 'leaderCollege', 'label' => 'Leaders College', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">location_city</i>'));
-		$form->addItem('number', 'leaderMobile', array('id' => 'leaderMobile', 'label' => 'Leader Mobile', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">phone_iphone</i>'));
-		$form->addItem('email', 'leaderEmail', array('id' => 'leaderEmail', 'label' => 'Leader Email', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">mail</i>'));
-		$form->addItem('text', 'member1Name', array('id' => 'member1Name', 'label' => 'Member 1 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
-		$form->addItem('email', 'member1Email', array('id' => 'member1Email', 'label' => 'Member 1 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
-		$form->addItem('text', 'member2Name', array('id' => 'member2Name', 'label' => 'Member 2 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
-		$form->addItem('email', 'member2Email', array('id' => 'member2Email', 'label' => 'Member 2 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
-		$form->addItem('text', 'member3Name', array('id' => 'member3Name', 'label' => 'Member 3 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
-		$form->addItem('email', 'member3Email', array('id' => 'member3Email', 'label' => 'Member 3 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
+		$form->startForm('/utils/request.php', 'post', array('onsubmit' => 'return validateForm(this.form)', 'legend' => '<h2>Registration Form</h2>', 'class' => 'form', 'fieldset' => 'true'));
+
+		$form->addItem('text', 'leaderName', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'leaderName', 'label' => 'Leader Name', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">account_circle</i>'));
+
+		$form->addItem('text', 'leaderCollege', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'leaderCollege', 'label' => 'Leaders College', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">location_city</i>'));
+
+		$form->addItem('number', 'leaderMobile', array('onkeyup' => 'validateNumber(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => '10 digit mobile number', 'id' => 'leaderMobile', 'label' => 'Leader Mobile', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">phone_iphone</i>'));
+
+		$form->addItem('email', 'leaderEmail', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'leaderEmail', 'label' => 'Leader Email', 'div' => '<div class="input-field col s12"> <i class="material-icons md-light prefix">mail</i>'));
+
+		$form->addItem('text', 'member1Name', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'member1Name', 'label' => 'Member 1 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
+
+		$form->addItem('email', 'member1Email', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'member1Email', 'label' => 'Member 1 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
+
+		$form->addItem('text', 'member2Name', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'member2Name', 'label' => 'Member 2 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
+
+		$form->addItem('email', 'member2Email', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'member2Email', 'label' => 'Member 2 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
+
+		$form->addItem('text', 'member3Name', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'member3Name', 'label' => 'Member 3 Name', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>'));
+
+		$form->addItem('email', 'member3Email', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'member3Email', 'label' => 'Member 3 Email', 'div' => '<div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>'));
+
 		$event = new Event;
 		$events = $event->getEvents();
+
+		$x = 0;
+		$y = 0;
 		foreach ($events as $event) {
-			$form->addItem('checkbox', 'event', array('id' => $event["eventName"], 'label' => $event["eventName"]));
+
+			if ($event["eventType"] == "Technical") {
+				$technical[$x++] = $event["eventName"];
+			} else {
+				$nontechnical[$y++] = $event["eventName"];
+			}
 		}
+
+		$form->addItem('text', 'trialText', array('placeholder' => 'Non-Technical'));
+		foreach ($nontechnical as $nontech) {
+			$form->addItem('checkbox', 'event', array('id' => $nontech, 'label' => $nontech));
+		}
+
+		$form->addItem('text', 'trialText', array('placeholder' => 'Technical'));
+		foreach ($technical as $tech) {
+			$form->addItem('checkbox', 'event', array('id' => $tech, 'label' => $tech));
+		}
+
+		/*
+			foreach ($events as $event) {
+				$form->addItem('checkbox', 'event', array('id' => $event["eventName"], 'label' => $event["eventName"]));
+			}
+		*/
 		$form->addItem('submit', 'Register', array('value' => 'Register', 'class' => "btn waves-effect waves-light col s3 offset-s5"));
 		$form->endForm(array('fieldset' => 'true'));
 		echo $twig->render('web/registration.html', array('title' => 'Registration Form', 'form' => $form));
