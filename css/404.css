@@ -29,9 +29,6 @@ body
 #button {
 	text-align: center;
 	font-size: 16px;
-
-
-
 }
 #footer{
 	clear: both;
@@ -41,14 +38,14 @@ body
 	line-height: 80px;
 	font-size: 24px;
 	color:black;
-	background:red;
+	background:#00bebe;
 	text-align: center;
 	margin-top: 180px;
 }
 
 button
 {
-    background-color:green;
+  
     border: none;
     color: black;
     padding: 15px 32px;
@@ -56,12 +53,10 @@ button
     text-decoration: none;
     display: inline-block;
     font-size: 24px;
-    background:red;
+    background:#00bebe;
 	
 }
-#hedder #button a:hover{
-			background:blue;
-		}
+
 
 #hedder{
 	background :black;

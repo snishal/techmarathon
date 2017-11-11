@@ -9,6 +9,22 @@ class Event {
 	private $pass = "iPTnnG1EolksQRrA";
 	private $dbName = "techmarathon";
 
+	public function eventExists($eventName) {
+
+		$db = new DB;
+		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$sql = "SELECT * from events where eventName = '$eventName'";
+		$result = $db->query($sql);
+		$db->close();
+
+		if ($result->num_rows == 1) {
+			return $result->num_rows;
+		} else {
+			return false;
+		}
+
+	}
+
 	public function getEvents() {
 
 		$db = new DB;
@@ -29,25 +45,11 @@ class Event {
 
 	}
 
-	public function getEventName($eventId) {
+	public function getEventTagline($eventName) {
 
 		$db = new DB;
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$sql = "SELECT eventName from events where eventId = '$eventId'";
-		$result = $db->query($sql);
-		$db->close();
-
-		$row = $result->fetch_assoc();
-
-		return $row['eventName'];
-
-	}
-
-	public function getEventTagline($eventId) {
-
-		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$sql = "SELECT eventTagline from events where eventId = '$eventId'";
+		$sql = "SELECT eventTagline from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
 
@@ -57,11 +59,11 @@ class Event {
 
 	}
 
-	public function getEventDescription($eventId) {
+	public function getEventDescription($eventName) {
 
 		$db = new DB;
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$sql = "SELECT eventDescription from events where eventId = '$eventId'";
+		$sql = "SELECT eventDescription from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
 
@@ -71,11 +73,11 @@ class Event {
 
 	}
 
-	public function getEventImage($eventId) {
+	public function getEventImage($eventName) {
 
 		$db = new DB;
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$sql = "SELECT eventImage from events where eventId = '$eventId'";
+		$sql = "SELECT eventImage from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
 
@@ -85,12 +87,25 @@ class Event {
 
 	}
 
-	public function addEvent($eventName, $eventTagline, $eventDescription, $eventImage) {
+	public function getEventType($eventName) {
 
 		$db = new DB;
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$eventId = substr($eventName, 0, 3);
-		$sql = "INSERT into events values('$eventId', '$eventName', '$eventTagline', '$eventDescription', '$eventImage')";
+		$sql = "SELECT eventType from events where eventName = '$eventName'";
+		$result = $db->query($sql);
+		$db->close();
+
+		$row = $result->fetch_assoc();
+
+		return $row['eventType'];
+
+	}
+
+	public function addEvent($eventName, $eventTagline, $eventDescription, $eventImage, $eventType) {
+
+		$db = new DB;
+		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$sql = "INSERT into events values('$eventName', '$eventTagline', '$eventDescription', '$eventImage', '$eventType')";
 		$result = $db->query($sql);
 		$db->close();
 
@@ -100,11 +115,11 @@ class Event {
 
 	}
 
-	public function deleteEvent($eventId) {
+	public function deleteEvent($eventName) {
 
 		$db = new DB;
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$sql = "DELETE from events where eventId = '$eventId'";
+		$sql = "DELETE from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
 
@@ -114,12 +129,11 @@ class Event {
 
 	}
 
-	public function updateEvent($eventId, $eventName, $eventTagline, $eventDescription, $eventImage) {
+	public function updateEvent($oldEventName, $eventName, $eventTagline, $eventDescription, $eventImage, $eventType) {
 
 		$db = new DB;
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
-		$neweventId = substr($eventName, 0, 3);
-		$sql = "update events set eventId = '$neweventId', eventName = '$eventName', eventTagline = '$eventTagline', eventDescription = '$eventDescription', eventImage = '$eventImage' where eventId = '$eventId'";
+		$sql = "update events set eventName = '$eventName', eventTagline = '$eventTagline', eventDescription = '$eventDescription', eventImage = '$eventImage', eventType='$eventType' where eventName = '$oldEventName'";
 		$result = $db->query($sql);
 		$db->close();
 
@@ -128,7 +142,6 @@ class Event {
 		}
 
 	}
-
 
 }
 

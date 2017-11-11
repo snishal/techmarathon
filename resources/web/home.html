@@ -3,104 +3,315 @@
 
 <head>
     <title>{{ title }}</title>
+    <!--
+    Concerting Events into Json using twig function 
+    raw removes symbols like &quot
+    -->
+    <script type="text/javascript">
+        var jsonEvents = {{(events|json_encode|raw)}};
+    </script>
+    <link rel="shortcut icon" href="/images/icon.ico" />
     {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="/css/materialize.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/home.css" /> {% endblock %}
+        <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+        <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="/css/materialize.min.css" />
+        <link rel="stylesheet" href="/css/animate.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/home.css" />
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div id="canvas-wrap">
-	    <div id="particles-js"></div> 
-    {% block header%}
-    <header class="row header">
-        <div class="col-2">
-            <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
-        </div>
-        <div class="col-8">
-            <div class="navigation-bar">
-                <span class="square"><a class="nav-link tenth before after" href="#">Home</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Events</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Schedule</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">About us</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Register</a></span>
-                <span class="square"><a class="nav-link tenth before after" href="#">Contact us</a></span>
-            </div>
-        </div>
-        <div class="col-2">
-            <img src="../images/Ad Mad.jpg" class='nav-logo'></img>
-        </div>
-    </header>
-    {% endblock %} {% block events %}
-    
-        <div class="container">
-            {% for eventBatch in events|batch(3) %}
-            <div class="row">
-                {% for event in eventBatch %}
-                <div class="pallete">
-                    <img src="/{{ event.eventImage|e }}" class="responsive-img imgTile" />
-                    <div class="overlayBackground"></div>
-                    <div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>
-                    <div class="overlayText">
-                        <div class="text"><b>{{ event.eventName }}</b>
-                            <br/>{{ event.eventTagline }}</div>
+    <!--<audio autoplay>
+      <source src="/song.mp3" type="audio/mp3">
+    </audio>-->
+    <div class="js-odoo" id='headline'></div>
+    <div id='main'>
+        <div id="canvas-wrap">
+            <div id="particles-js"></div>
+            {% block header%}
+                <header class="header">
+                        <div class="row navigation-bar">
+                            <div class="col s5 nav-text">
+                                <span class="square"><a class="nav-link before after a_nav" href="/#">Home</a></span>
+                                <span class="square"><a class="nav-link before after a_nav" href="/#eventsBtn">Events</a></span>
+                                <span class="square"><a class="nav-link before after a_nav" href="/#aboutUs">About us</a></span>
+                                <span class="square"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></span>
+                            </div>
+                            <div class="logo col s2">
+                                <img src="/images/tm2.png" class='nav-logo nav-logo-circle'></img>
+                            </div>
+                            <div class="col s5 nav-text">
+                                <span class="square"><a class="nav-link before after a_nav" href="/#footer">Contact</a></span>
+                                <span class="square"><a class="nav-link before after a_nav" href="/registration">Register</a></span>
+                                <span class="square"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></span>
+                                <span class="square"><a class="nav-link before after a_nav" href="/documents/schedule.pdf" target="blank">Schedule</a></span>
+                            </div>
+                        </div>
+                </header>
+            {% endblock %}
+            <!-- Sponsors and registration -->
+            {% block main %}
+
+            {% block banner %}
+            <div class="banner">
+                <div class="row banner-text">
+                    <div class="col s4"></div>
+                    <div class="col s4 center">
+                        <h2 class="animated zoomIn"> Tech Marathon </h2>
+                        <h2 class="animated zoomIn" id="sm"><small>2018</small> </h2>
+                    </div>
+                    <div class="col s4"></div>
+                </div>
+                <div class="row">
+                    <div class="col s8 offset-s2 center animated zoomIn" id="tagline">
+                        Everyone can run a few miles, only winners can run a marathon.
                     </div>
                 </div>
-                {% endfor %}
+                <div class="row discussion">
+                    <div class="row col s6 offset-s3 animated jello">
+                    <a href="/registration" class="col s4 waves-effect waves-light btn"><i class="material-icons left">apps</i>Register</a>
+                    <a class="col s8 offset-s1 waves-effect waves-light btn"><i class="material-icons left">chat</i>Get Into Discussion</a>
+                    </div>
+                </div>
             </div>
-            {% endfor %}
+                <!--<div class="row" id="first">
+                    <div class='col l3'>
+                        <img src="/images/4.jpg" class="col s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: .8s;">
+                        <img src="/images/2.jpg" class="col s6 offset-s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.2s;">
+                        <img src="/images/5.jpg" class="col s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.6s;">
+                    </div>
+                    <div class='col l6 header1'>
+                        <h2 class="animated zoomIn"> Tech Marathon </h2>
+                        <h2 class="animated fadeInDown" id="sm"><small>2K18</small> </h2>
+                        <h3>
+                                <a class="waves-effect waves-light btn animated zoomIn" href="/registration">Register</a>
+                                <a class="waves-effect waves-light btn animated zoomIn" href="#">Discussion</a>
+                                
+                                </h3>
+                    </div>
+                    <div class='col l3'>
+                        <img src="/images/4.jpg" class="col s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: .8s;">
+                        <img src="/images/2.jpg" class="col s6 offset-s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.2s;">
+                        <img src="/images/5.jpg" class="col s6   animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.6s;">
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />-->
+            {% endblock %} 
+            <!-- Sponsors block ends here -->
+
+            {% block events %}
+                <div class="container center" id="eventsBtn">
+                    <a id="All" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">All</a>
+                    <a id="Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Technical</a>
+                    <a id="Non-Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Non-Technical</a>
+                </div>
+                    
+                <div class="container" id="events">
+                    
+                </div>
+            {% endblock %}
+            
+            {% block aboutus %}
+                <div id="aboutUs">
+                    <a class="aboutus_heading">ABOUT US</a>
+                    <br>
+                        <div class="row">
+                            <div class="col s10 offset-s1 desc">
+                                <h3>DDUC</h3>
+                                <p>What started off in a school building in Karampura in 1990 has today grown into an institution that has 2,500 students on its rolls with 700 students getting a degree every year. After over two decades of functioning in a place that did not have the expected standards of a college, Deen Dayal Upadhyaya College finally moved into a new state-of-the-art campus building in Dwarka. The new campus brags a green building with water harvesting, water recycling, solid-waste management, hostel, an auditorium, amphitheatre, indoor sports facilities, gymnasium, laboratories and lecture halls, library, and a computer centre. The college emphasizes on the need for quality education and urges the teaching faculty to inculcate human values among the students.</p>
+                            </div>
+                        </div>
+                        <div class="row desc2">
+                            <div class="col s5">
+                                <h3>SANGANIKA</h3>
+                                <p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence.
+                                Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College.
+                                This year Tech Marathon arrives on 17-18th February, 2017.</p>
+                            </div>
+                            <div class="col s6 offset-s1">
+                                <h3>TECH MARATHON</h3>
+                                <p>Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year.
+                                This year, Tech Marathon comes on 17-18th Feb, 2017.
+                                Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more, we present to you new events such as SQLized, Appcombat and TV Fandom.
+                                So come forth, fire up your sabers and fight !!
+                                At this technical extravaganza we guarantee you an experience felt never before.
+                                </p>
+                            </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            {% endblock %}
+
+            {% block ourteam %}
+                <a class="aboutus_heading" id="ourTeam">OUR TEAM</a><br><hr>
+                <div id="teamText">These are our Team Bearers who have been working day and night to make this event successful one.</div>
+                <hr>
+                <br><br>
+                <div>
+                    <table>
+                        <tr>
+                            <td class="ourTeam">
+                                <img src="/images/jatin.jpg" id="president"/>
+                                <!-- Contents that appear when hover on image -->
+                                <div class="ourTeam_description mem_first"> <h4>Jatin Rohilla</h4> <h5>President</h5> 
+                                 <div class="divider"></div>
+                                        <br><br>
+                                        <div class="container">
+                                            
+                                         <div class="row">
+                                            <ul class="social-media">
+                                                <div class=" col m3 offset-m2">     
+                                                     <div class="icon-facebook">
+                                                        <a href="https://www.facebook.com/xyz">
+                                                            <i class="fa fa-facebook"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col m3 offset-m3">
+                                                    <div class="icon-instagram"> 
+                                                    <a href="https://www.instagram.com/xyz/">
+                                                    <i class="fa fa-instagram"></i></a>
+                                                    </div>
+                                                </div>
+                                             </ul>
+                                         </div>
+
+                                    </div>
+                                </div>
+                                <!-- ....................Ends here....................... -->
+                            </td>
+
+                            <td class="ourTeam">
+
+                                <img src="/images/harshul.jpg" id="vicepresident">
+                                <div class="ourTeam_description mem_second"> <h4>Harshul Kumar</h4> <h5>Vice-President</h5> </div>
+
+
+                            </td>
+
+
+                            <td class="ourTeam">
+                                <img src="/images/rohit.jpg" id="secretary">
+                                <div class="ourTeam_description mem_third"> <h4>Rohit Singh</h4> <h5>Secretary</h5> </div>
+                            </td>
+
+                            <td class="ourTeam">
+                                <img src="/images/ashna.jpeg" id="vicepresident">
+                                <div class="ourTeam_description mem_forth"> <h4>Ashna Wadhawan</h4> <h5>Joint Secretary</h5> </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="teamTags"><label class="teamTagsEdit">PRESIDENT</label></td>
+                            <td class="teamTags"><label class="teamTagsEdit">VICE PRESIDENT</label></td>
+                            <td class="teamTags"><label class="teamTagsEdit">SECRETARY</label></td>
+                            <td class="teamTags"><label class="teamTagsEdit">JOINT SECRETARY</label></td>
+                        </tr>
+                    </table>
+                </div>
+                <br><br>
+            {% endblock %}
+            {% endblock %}    
+            {% block footer%}
+                <footer class="row footer" id="footer">
+                    <div class="col-4 footer-left">
+                        <img src="../images/tm2.png" class='footer-logo'></img>
+                        <div class="footer-links">
+                            <a class="foot-link" href="/">Home |</a>
+                            <a class="foot-link" href="#">Events |</a>
+                            <a class="foot-link" href="#">Schedule |</a>
+                            <a class="foot-link" href="#">About |</a>
+                            <a class="foot-link" href="#">FAQ |</a>
+                            <a class="foot-link" href="#">Contact</a>
+                        </div>
+                        <div class="footer-college-name">Deen Dayal Upadhyaya College</div>
+                    </div>
+                    <div class="col-4 footer-center">
+                        <br/>
+                        <!--padding ki bharpai kar dega ye-->
+                        <div>
+                            <i class="fa fa-map-marker left"></i>Sector 3, Dwarka, Delhi
+                        </div>
+                        <div>
+                            <i class="fa fa-phone left"></i>9871169186
+                        </div>
+                        <div>
+                            <i class="fa fa-envelope left"></i><a class="foot-link" href="#">DDUC_TM-mail@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="col-4 footer-right">
+                        <div class="footer-about">
+                            <h4>About this Event</h4>
+                            <!--<strike>   ye meri styling me kaam aega  -->
+                            Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                        </div>
+                        <div class="footer-icons">
+                            <a class="foot-link" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="foot-link" href="#"><i class="fa fa-instagram"></i></a>
+                            <a class="foot-link" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="foot-link" href="#"><i class="fa fa-linkedin"></i></a>
+                            <a class="foot-link" href="#"><i class="fa fa-github"></i></a>
+                            <a class="foot-link" href="#"><i class="fa fa-quora"></i></a>
+                        </div>
+                    </div>
+                </footer>
+                <div class="col-12 copyrights center">
+                    © Copyright 2018. All Rights Reserved | Tech Marathon | Annual Tech-Fest | Deen Dayal Upadhyaya College
+                </div>
+            {% endblock %}
         </div>
-    {% endblock %} {% block footer%}
-    <footer class="row footer">
-        <div class="col-4 footer-left">
-            <img src="../images/Ad Mad.jpg" class='footer-logo'></img>
-            <div class="footer-links">
-                <a class="foot-link" href="#">Home |</a>
-                <a class="foot-link" href="#">Events |</a>
-                <a class="foot-link" href="#">Schedule |</a>
-                <a class="foot-link" href="#">About |</a>
-                <a class="foot-link" href="#">FAQ |</a>
-                <a class="foot-link" href="#">Contact</a>
-            </div>
-            <div class="footer-college-name">Deen Dayal Upadhyaya College</div>
-        </div>
-        <div class="col-4 footer-center">
-        	<br/><!--padding ki bharpai kar dega ye-->
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <div>Sector 3, Dwarka, Delhi</div>
-            </div>
-            <div>
-                <i class="fa fa-phone"></i>
-                <div>9871169186</div>
-            </div>
-            <div>
-                <i class="fa fa-envelope"></i>
-                <div><a class="foot-link" href="#">DDUC_TM-mail@gmail.com</a></div>
-            </div>
-        </div>
-        <div class="col-4 footer-right">
-            <div class="footer-about">
-                <h4>About this Event</h4>
-                <!--<strike>   ye meri styling me kaam aega  -->
-                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-            </div>
-            <div class="footer-icons">
-                <a class="foot-link" href="#"><i class="fa fa-facebook"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-instagram"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-twitter"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-linkedin"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-github"></i></a>
-                <a class="foot-link" href="#"><i class="fa fa-quora"></i></a>
-            </div>
-        </div>
-    </footer>
-    {% endblock %}
     </div>
 </body>
+{% block scripts %}
 <script type="text/javascript" src="/js/particles.js"></script>
+<script src="https://cdn.rawgit.com/coderitual/odoo/feature/codevember16/lib/odoo.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+<!--<script type="text/javascript" src="/js/animation.js"></script>-->
 <script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript">
+    function displayEvents(id){
+        $('#All').css('color', 'white');
+        $('#Technical').css('color', 'white');
+        $('#Non-Technical').css('color', 'white');
+        
+        if(id != '')    $('#'+id).css('color', '#00bebe');
+        
+        var type = id;
+        var counter = 0;
+        if(id == 'All') type = '';
+
+        var events = '';
+        $.each(jsonEvents, function(key,value) {
+            if(type == '' || value.eventType == type){
+                if(counter == 0)events = events + '<div class="row">';
+                events = events + '<div class="pallete">';
+                events = events + '<img src="/' +  value.eventImage + '" class="responsive-img imgTile" />';
+                events = events + '<div class="overlayBackground"></div>';
+                events = events + '<div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>';
+                events = events + '<div class="overlayText">';
+                events = events + '<div class="text"><b>' + value.eventName + '</b>';
+                events = events + '<br/>' + value.eventTagline + '</div>';
+                events = events + '</div>';
+                events = events + '</div>';
+                if(counter == 2)events = events + '</div>';
+                counter++;
+                counter = counter % 3;
+            }
+        }); 
+        $('#events').html(events);
+    }
+    displayEvents('');
+    $('#All').css('color', '#00bebe');
+</script>
+{% endblock %}
 </html>
