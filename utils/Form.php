@@ -2,102 +2,118 @@
 
 class Form {
 
-	private $form = '';
+	private $startForm = '';
+	private $elementForm = array();
+	private $endForm = '';
 
 	function startForm($action, $method, $extraParams = '') {
 
-		if (is_array($extraParams) && array_key_exists('fieldset', $extraParams) && $extraParams['fieldset'] == "true") {
-			$this->form = $this->form . "<fieldset>";
-		}
-
-		if (is_array($extraParams) && array_key_exists('legend', $extraParams)) {
-			$this->form = $this->form . "<legend>" . $extraParams['legend'] . "</legend>";
-		}
-
-		$this->form = $this->form . "<form action='$action' method='$method' ";
+		$this->startForm = $this->startForm . "<form action='$action' method='$method' ";
 
 		if (is_array($extraParams)) {
 
 			foreach ($extraParams as $key => $value) {
-				if ($key != 'header' && $key != 'fieldset') {
-					$this->form = $this->form . " $key = '$value' ";
+				if ($key != 'header') {
+					$this->startForm = $this->startForm . " $key = '$value' ";
 				}
 
 			}
 		}
 
-		$this->form = $this->form . ">";
+		$this->startForm = $this->startForm . ">";
 
-		if (isset($extraParams['header'])) {
-
-			$this->form = $this->form . "<br/>" . $extraParams['header'] . "<br/>";
-
+		if (is_array($extraParams) && array_key_exists('header', $extraParams)) {
+			$this->startForm = $this->startForm . $extraParams['header'] . "<br/>";
 		}
 
 	}
 
-	function addItem($type = '', $name = '', $extraParams = '') {
+	function addItem($type, $name, $accessName, $extraParams = '') {
 
-		if (is_array($extraParams) && array_key_exists('div', $extraParams)) {
-			$this->form = $this->form . $extraParams['div'];
+		if (!array_key_exists($accessName, $this->elementForm)) {
+			$this->elementForm[$accessName] = '';
 		}
 
 		if ($type == "textarea") {
-			$this->form = $this->form . "<textarea name='$name'";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<textarea name='$name'";
 
 			if (is_array($extraParams)) {
 				foreach ($extraParams as $key => $value) {
 					if ($key != 'value' && $key != 'div' && $key != 'label') {
 
-						$this->form = $this->form . " $key = '$value' ";
+						$this->elementForm[$accessName] = $this->elementForm[$accessName] . " $key = '$value' ";
 
 					}
 				}
 			}
 
-			$this->form = $this->form . ">";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . ">";
 
 			if (is_array($extraParams) && isset($extraParams['value'])) {
-				$this->form = $this->form . $extraParams['value'];
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . $extraParams['value'];
 			}
 
-			$this->form = $this->form . "</textarea><br/>";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "</textarea><br/>";
 
 		} else {
-			$this->form = $this->form . "<input type='$type' name='$name' ";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<input type='$type' name='$name' ";
 
 			if (is_array($extraParams)) {
 				foreach ($extraParams as $key => $value) {
 
 					if ($key != 'div' && $key != 'label') {
 
-						$this->form = $this->form . " $key = '$value' ";
+						$this->elementForm[$accessName] = $this->elementForm[$accessName] . " $key = '$value' ";
 
 					}
 				}
 			}
 
-			$this->form = $this->form . "/>";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "/>";
 			if (is_array($extraParams) && array_key_exists('label', $extraParams) && array_key_exists('id', $extraParams)) {
-				$this->form = $this->form . '<label for="' . $extraParams['id'] . '">' . $extraParams['label'] . '</label>';
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . '<label for="' . $extraParams['id'] . '">' . $extraParams['label'] . '</label>';
 			}
-			$this->form = $this->form . "<br/>";
-		}
-		if (is_array($extraParams) && array_key_exists('div', $extraParams)) {
-			$this->form = $this->form . "</div>";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<br/>";
 		}
 
 	}
 
 	function endForm($extraParams = '') {
-		if (is_array($extraParams) && array_key_exists('fieldset', $extraParams) && $extraParams['fieldset'] == "true") {
-			$this->form = $this->form . "</fieldset>";
-		}
-		$this->form = $this->form . "</form>";
+		$this->endForm = $this->endForm . "</form>";
 	}
 
 	function displayForm() {
-		echo $this->form;
+		echo $this->startForm;
+		foreach ($this->elementForm as $key => $value) {
+			# code...
+			echo $value;
+		}
+		echo $this->endForm;
+	}
+
+	function getStart() {
+		echo $this->startForm;
+	}
+
+	function getAllElements() {
+
+		foreach ($this->elementForm as $key => $value) {
+			# code...
+			echo $value;
+		}
+
+	}
+
+	function getElementByName($accessName) {
+
+		echo $this->elementForm[$accessName];
+
+	}
+
+	function getEnd() {
+
+		echo $this->endForm;
+
 	}
 
 }

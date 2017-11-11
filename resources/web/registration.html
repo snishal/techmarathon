@@ -12,15 +12,42 @@
     {%endblock%}
     
     {%block main%}
+    {% set elementsName = ['leaderName', 'leaderCollege', 'leaderMobile', 'leaderEmail', 'member1Name', 'member1Email', 'member2Name', 'member2Email', 'member3Name', 'member3Email'] %}
     <div class='row container'>
-        {{ form.displayForm() }}
+        <fieldset>
+            <legend><h2>Registration Form</h2></legend>
+            {{ form.getStart() }}
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">account_circle</i>{{ form.getElementByName('leaderName') }}</div>
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">location_city</i>{{ form.getElementByName('leaderCollege') }}</div>
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">phone_iphone</i>{{ form.getElementByName('leaderMobile') }}</div>
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">mail</i>{{ form.getElementByName('leaderEmail') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>{{ form.getElementByName('member1Name') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>{{ form.getElementByName('member1Email') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>{{ form.getElementByName('member2Name') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>{{ form.getElementByName('member2Email') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>{{ form.getElementByName('member3Name') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>{{ form.getElementByName('member3Email') }}</div>
+                <div>
+                    <div class="col s6">
+                        <div style="border-bottom: solid thin #00bebe; font-family: 'Roboto', sans-serif; font-size: 20px;">Technical</div>
+                        <br/>
+                        {{ form.getElementByName('Technical') }}
+                    </div>
+                    <div class="col s6">
+                        <div style="border-bottom: solid thin #00bebe; font-family: 'Roboto', sans-serif; font-size: 20px;">Non-Technical</div>
+                        <br/>
+                        {{ form.getElementByName('Non-Technical') }}
+                    </div>
+                </div>
+                {{ form.getElementByName('Register') }}
+            {{ form.getEnd() }}
+        </fieldset>
     </div>
     {%endblock%}
     
     {% block scripts %}
 		<script type="text/javascript" src="/js/particles.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/animation.js"></script>
 		<script type="text/javascript" src="/js/materialize.min.js"></script>	
 		<script type="text/javascript">
 			$('#headline').css('display', "none");
