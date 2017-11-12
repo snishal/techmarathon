@@ -1,6 +1,6 @@
 <?php
-require_once 'Event.php';
 require_once 'utilFunc.php';
+require_once 'RegisterMember.php';
 
 if (isset($_POST['addEvent'])) {
 
@@ -82,6 +82,16 @@ if (isset($_POST['addEvent'])) {
 	}
 
 } elseif (isset($_POST['Register'])) {
+
+	$member = new RegisterMember;
+
+	foreach ($_POST['event'] as $key => $event) {
+		$member->register($event, $_POST['leaderName'], $_POST['leaderCollege'], $_POST['leaderMobile'], $_POST['leaderEmail'], $_POST['member1Name'], $_POST['member1Number'], $_POST['member2Name'], $_POST['member2Number'], $_POST['member2Name'], $_POST['member3Number']);
+	}
+
+	$event = null;
+	header("Location: /");
+	exit;
 
 }
 

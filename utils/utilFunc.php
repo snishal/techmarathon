@@ -1,5 +1,7 @@
 <?php
 
+require_once 'RegisterMember.php';
+
 function updateCount() {
 
 	$server = "techmarathon.co.in";
@@ -35,25 +37,12 @@ function getCount() {
 }
 
 function getRegistrations() {
-	$server = "techmarathon.co.in";
-	$user = "webmaster";
-	$pass = "iPTnnG1EolksQRrA";
-	$dbName = "techmarathon";
-	$db = new DB;
-	$db->mk_conn($server, $user, $pass, $dbName);
-	$sql = "SELECT * from registration ";
-	$result = $db->query($sql);
-	$db->close();
 
-	$events = array();
+	$register = new RegisterMember;
 
-	$row = $result->fetch_assoc();
-	while ($row) {
-		array_push($events, $row);
-		$row = $result->fetch_assoc();
-	}
+	$registrations = $register->getRegistrations();
 
-	return $events;
+	return $registrations;
 
 }
 

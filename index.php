@@ -3,7 +3,6 @@ session_start();
 
 require_once 'vendor/autoload.php';
 require_once 'utils/form.php';
-require_once 'utils/Event.php';
 require_once 'utils/utilFunc.php';
 
 if (!isset($_SESSION['id'])) {
@@ -45,7 +44,7 @@ if (empty($uri[1])) {
 	$form->endForm();
 
 	echo $twig->render('web/home.html', array('title' => 'TechMarathon | 2017', 'events' => $events, 'contactUsForm' => $form));
-} else if ($uri[1] == 'registration') {
+} else if ($uri[1] == 'register') {
 	if (empty($uri[2])) {
 		$pageFound = true;
 		$form = new Form;
@@ -57,19 +56,19 @@ if (empty($uri[1])) {
 
 		$form->addItem('number', 'leaderMobile', 'leaderMobile', array('onkeyup' => 'validateNumber(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => '10 digit mobile number', 'id' => 'leaderMobile', 'label' => 'Leader Mobile'));
 
-		$form->addItem('email', 'leaderEmail', 'leaderEmail', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'leaderEmail', 'label' => 'Leader Email'));
+		$form->addItem('text', 'leaderEmail', 'leaderEmail', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'leaderEmail', 'label' => 'Leader Email'));
 
 		$form->addItem('text', 'member1Name', 'member1Name', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'member1Name', 'label' => 'Member 1 Name'));
 
-		$form->addItem('email', 'member1Email', 'member1Email', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'member1Email', 'label' => 'Member 1 Email'));
+		$form->addItem('number', 'member1Number', 'member1Number', array('onkeyup' => 'validateNumber(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => '10 digits Mobile Number', 'id' => 'member1Number', 'label' => 'Member 1 Number'));
 
 		$form->addItem('text', 'member2Name', 'member2Name', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'member2Name', 'label' => 'Member 2 Name'));
 
-		$form->addItem('email', 'member2Email', 'member2Email', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'member2Email', 'label' => 'Member 2 Email'));
+		$form->addItem('number', 'member2Number', 'member2Number', array('onkeyup' => 'validateNumber(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => '10 digits Mobile Number', 'id' => 'member2Number', 'label' => 'Member 2 Number'));
 
 		$form->addItem('text', 'member3Name', 'member3Name', array('onkeyup' => 'validateText(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'Only alphabets', 'id' => 'member3Name', 'label' => 'Member 3 Name'));
 
-		$form->addItem('email', 'member3Email', 'member3Email', array('onkeyup' => 'validateEmail(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => 'A valid e-mail id', 'id' => 'member3Email', 'label' => 'Member 3 Email'));
+		$form->addItem('number', 'member3Number', 'member3Number', array('onkeyup' => 'validateNumber(this)', 'class' => 'tooltipped', 'data-position' => 'top', 'data-delay' => '50', 'data-tooltip' => '10 digits Number', 'id' => 'member3Number', 'label' => 'Member 3 Number'));
 
 		$event = new Event;
 		$events = $event->getEvents();
@@ -77,9 +76,9 @@ if (empty($uri[1])) {
 		foreach ($events as $event) {
 
 			if ($event["eventType"] == "Technical") {
-				$form->addItem('checkbox', 'event', 'Technical', array('id' => $event["eventName"], 'label' => $event["eventName"], 'value' => $event["eventName"]));
+				$form->addItem('checkbox', 'event[]', 'Technical', array('id' => $event["eventName"], 'label' => $event["eventName"], 'value' => $event["eventName"]));
 			} else {
-				$form->addItem('checkbox', 'event', 'Non-Technical', array('id' => $event["eventName"], 'label' => $event["eventName"], 'value' => $event["eventName"]));
+				$form->addItem('checkbox', 'event[]', 'Non-Technical', array('id' => $event["eventName"], 'label' => $event["eventName"], 'value' => $event["eventName"]));
 			}
 		}
 
@@ -118,7 +117,7 @@ if (empty($uri[1])) {
 		$counts = new Event;
 		$registrations = getRegistrations();
 
-		echo $twig->render('dashboard/dash.html', array('title' => 'Admin Panel', 'counter' => $count, 'totlcount' => $registrations));
+		echo $twig->render('dashboard/dash.html', array('title' => 'Admin Panel', 'counter' => $count, 'registrations' => $registrations));
 
 	} else if ($uri[2] == 'addEvent') {
 		$pageFound = true;
