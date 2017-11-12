@@ -81,6 +81,8 @@ if (isset($_POST['addEvent'])) {
 
 	}
 
+} elseif (isset($_POST['Register'])) {
+
 }
 
 ?>

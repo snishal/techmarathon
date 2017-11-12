@@ -21,9 +21,11 @@ $( document ).ready(function() {
             */document.body.style.background = 'black'
             $('#headline').css('display', "none");
             $('#main').css('display', "block");
-            particlesJS.load('particles-js', '/js/particles.json', function() {
-                console.log('callback - particles.js config loaded');
-            });
+            if ($(window).width() > 500){
+                particlesJS.load('particles-js', '/js/particles.json', function() {
+                    console.log('callback - particles.js config loaded');
+                });
+            }
         //}, 9100);
     
 //});

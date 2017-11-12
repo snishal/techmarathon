@@ -83,7 +83,7 @@ if (empty($uri[1])) {
 			}
 		}
 
-		$form->addItem('submit', 'Register', 'Register', array('value' => 'Register', 'class' => "btn waves-effect waves-light col s3 offset-s5"));
+		//$form->addItem('submit', 'Register', 'Register', array('value' => 'Register', 'class' => "btn waves-effect waves-light col s3 offset-s5", 'onclick' => 'console.log("clicked");'));
 		$form->endForm();
 		echo $twig->render('web/registration.html', array('title' => 'Registration Form', 'form' => $form));
 

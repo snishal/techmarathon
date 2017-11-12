@@ -38,11 +38,17 @@
                         {{ form.getElementByName('Non-Technical') }}
                     </div>
                 </div>
-                {{ form.getElementByName('Register') }}
+                <div class="col s12 center">
+	                <button class="btn waves-effect waves-light center" type="submit" name="Register">
+	                	Register
+				  	</button>
+			  	</div>
             {{ form.getEnd() }}
         </fieldset>
     </div>
     {%endblock%}
+
+    {%block contactUS%}{%endblock%}
     
     {% block scripts %}
 		<script type="text/javascript" src="/js/particles.js"></script>
@@ -115,8 +121,8 @@
 	function validateForm(form)
 	{
 		
-		if(document.getElementById('leaderName').valid && document.getElementById('leaderCollege').valid && document.getElementById('leaderMobile').valid && document.getElementById('leaderEmail').valid && document.getElementById('member1Name').valid &&
-		 document.getElementById('member1Email').valid && document.getElementById('member2Name').valid &&document.getElementById('member2Email').valid && document.getElementById('member3Name').valid &&document.getElementById('member3Email').valid){
+		if(document.getElementById('leaderName').valid && document.getElementById('leaderCollege').valid && document.getElementById('leaderMobile').valid && document.getElementById('leaderEmail').valid && document.getElementById('member1Name').valid && document.getElementById('member1Email').valid && document.getElementById('member2Name').valid &&document.getElementById('member2Email').valid && document.getElementById('member3Name').valid &&document.getElementById('member3Email').valid){
+			console.log('Valid');
 			return true;
 		}else{
 			Materialize.toast('Invalid Submission', 3000)
