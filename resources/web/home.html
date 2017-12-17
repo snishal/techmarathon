@@ -72,30 +72,6 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="row" id="first">
-                    <div class='col l3'>
-                        <img src="/images/4.jpg" class="col s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: .8s;">
-                        <img src="/images/2.jpg" class="col s6 offset-s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.2s;">
-                        <img src="/images/5.jpg" class="col s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.6s;">
-                    </div>
-                    <div class='col l6 header1'>
-                        <h2 class="animated zoomIn"> Tech Marathon </h2>
-                        <h2 class="animated fadeInDown" id="sm"><small>2K18</small> </h2>
-                        <h3>
-                                <a class="waves-effect waves-light btn animated zoomIn" href="/registration">Register</a>
-                                <a class="waves-effect waves-light btn animated zoomIn" href="#">Discussion</a>
-                                
-                                </h3>
-                    </div>
-                    <div class='col l3'>
-                        <img src="/images/4.jpg" class="col s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: .8s;">
-                        <img src="/images/2.jpg" class="col s6 offset-s6  animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.2s;">
-                        <img src="/images/5.jpg" class="col s6   animated rollIn imges circle responsive-img" style="-webkit-animation-delay: 1.6s;">
-                    </div>
-                </div>
-                <br />
-                <br />
-                <br />-->
             {% endblock %}
             <!-- Sponsors block ends here -->
             {% block events %}
@@ -296,7 +272,7 @@ function displayEvents(id) {
             events = events + '<div class="pallete">';
             events = events + '<img src="/' + value.eventImage + '" class="responsive-img imgTile" />';
             events = events + '<div class="overlayBackground"></div>';
-            events = events + '<div class="overlayIcon"><i class="medium circle-arrow material-icons">arrow_forward</i></div>';
+            events = events + '<div class="overlayIcon"><a href="/events/' + value.eventName + '"><i class="medium circle-arrow material-icons">arrow_forward</i></a></div>';
             events = events + '<div class="overlayText">';
             events = events + '<div class="text"><b>' + value.eventName + '</b>';
             events = events + '<br/>' + value.eventTagline + '</div>';

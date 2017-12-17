@@ -53,7 +53,13 @@ class Form {
 				$this->elementForm[$accessName] = $this->elementForm[$accessName] . $extraParams['value'];
 			}
 
-			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "</textarea><br/>";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "</textarea>";
+
+			if (is_array($extraParams) && array_key_exists('label', $extraParams) && array_key_exists('id', $extraParams)) {
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . '<label for="' . $extraParams['id'] . '">' . $extraParams['label'] . '</label>';
+			}
+
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<br/>";
 
 		} else {
 			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<input type='$type' name='$name' ";

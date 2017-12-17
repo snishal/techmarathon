@@ -39,7 +39,7 @@ if (empty($uri[1])) {
 	$form->startForm('/utils/request.php', 'post', array('class' => 'form'));
 	$form->addItem('text', 'name', 'name', array('id' => 'name', 'label' => 'Name'));
 	$form->addItem('text', 'email', 'email', array('id' => 'email', 'label' => 'Email'));
-	$form->addItem('textarea', 'query', 'query', array('id' => 'query', 'placeholder' => 'Write Your Query here'));
+	$form->addItem('textarea', 'query', 'query', array('id' => 'query', 'rows' => '5', 'cols' => '50', 'class' => 'materialize-textarea', 'label' => 'Query'));
 	$form->addItem('submit', 'submitQuery', 'submitQuery', array('value' => 'Submit', 'class' => "btn waves-effect waves-light col s3 offset-s5"));
 	$form->endForm();
 
