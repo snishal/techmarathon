@@ -1,0 +1,146 @@
+{%extends 'web/home.html'%}
+
+    {%block stylesheets%}
+	    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<link rel="stylesheet" href="/css/materialize.min.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/home.css" />
+        <link rel="stylesheet" href="/css/registrationt.css" />
+    {%endblock%}
+    
+    {%block main%}
+    <div class='row container'>
+        <fieldset>
+            <legend><h2>Registration Form</h2></legend>
+            {{ form.getStart() }}
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">account_circle</i>{{ form.getElementByName('leaderName') }}</div>
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">location_city</i>{{ form.getElementByName('leaderCollege') }}</div>
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">phone_iphone</i>{{ form.getElementByName('leaderMobile') }}</div>
+                <div class="input-field col s12"> <i class="material-icons md-light prefix">mail</i>{{ form.getElementByName('leaderEmail') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>{{ form.getElementByName('member1Name') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>{{ form.getElementByName('member1Number') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>{{ form.getElementByName('member2Name') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>{{ form.getElementByName('member2Number') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">person</i>{{ form.getElementByName('member3Name') }}</div>
+                <div class="input-field col s6"> <i class="material-icons md-light prefix">email</i>{{ form.getElementByName('member3Number') }}</div>
+                <div>
+                    <div class="col s6">
+                        <div style="border-bottom: solid thin #00bebe; font-family: 'Roboto', sans-serif; font-size: 20px;">Technical</div>
+                        <br/>
+                        {{ form.getElementByName('Technical') }}
+                    </div>
+                    <div class="col s6">
+                        <div style="border-bottom: solid thin #00bebe; font-family: 'Roboto', sans-serif; font-size: 20px;">Non-Technical</div>
+                        <br/>
+                        {{ form.getElementByName('Non-Technical') }}
+                    </div>
+                </div>
+                <div class="col s12 center">
+	                <button class="btn waves-effect waves-light center" type="submit" name="Register">
+	                	Register
+				  	</button>
+			  	</div>
+            {{ form.getEnd() }}
+        </fieldset>
+    </div>
+    {%endblock%}
+
+    {%block contactUS%}{%endblock%}
+    
+    {% block scripts %}
+		<script type="text/javascript" src="/js/particles.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/materialize.min.js"></script>	
+		<script type="text/javascript">
+			$('#headline').css('display', "none");
+			$('#main').css('display', "block");
+			particlesJS.load('particles-js', '/js/particles.json', function() {
+            	console.log('callback - particles.js config loaded');
+        	});
+		</script>
+  
+		<script>
+
+	function validateText(element)
+	{
+		var textPattern =  /^[A-Za-z ]{2,40}$/;
+		var flag = 0;
+		if(element.value == null || !textPattern.test(element.value)){
+			flag = 1;
+		}
+		if(flag==0){
+		  $(element).removeClass("invalid");
+		  $(element).addClass("valid");
+		  element.valid = true;
+		}else{
+			$(element).removeClass("valid");
+		 	$(element).addClass("invalid");
+			element.valid = false;
+		}
+	}
+
+	function validateNumber(element)
+	{
+		var Pattern =  /^[0-9]{10,10}$/;
+		var flag = 0;
+		if(element.value == null || !Pattern.test(element.value)){
+			flag = 1;
+		}
+		if(flag==0){
+		  $(element).removeClass("invalid");
+		  $(element).addClass("valid");
+		  element.valid = true;
+		}else{
+			$(element).removeClass("valid");
+		 	$(element).addClass("invalid");
+			element.valid = false;
+		}
+	}
+
+	function validateEmail(element)
+	{
+		var Pattern =  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		var flag = 0;
+		if(element.value == null || !Pattern.test(element.value)){
+			flag = 1;
+		}
+		if(flag==0){
+		  $(element).removeClass("invalid");
+		  $(element).addClass("valid");
+		  element.valid = true;
+		}else{
+			$(element).removeClass("valid");
+		 	$(element).addClass("invalid");
+			element.valid = false;
+		}
+	}
+
+	function validateForm(form)
+	{
+		
+		if(document.getElementById('leaderName').valid && document.getElementById('leaderCollege').valid && document.getElementById('leaderMobile').valid && document.getElementById('leaderEmail').valid && document.getElementById('member1Name').valid && document.getElementById('member1Email').valid && document.getElementById('member2Name').valid &&document.getElementById('member2Email').valid && document.getElementById('member3Name').valid &&document.getElementById('member3Email').valid){
+			console.log('Valid');
+			return true;
+		}else{
+			Materialize.toast('Invalid Submission', 3000)
+			return false;
+		}
+		
+	}
+	
+</script>
+	<!--<div id="user1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="college" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-bars"></i></div>
+    <div id="mobile" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-phone"></i></div>
+    <div id="email1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div id="user2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="email2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div id="user3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="email3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div id="user4" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div id="email4" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div class="row">-->
+	{% endblock %}

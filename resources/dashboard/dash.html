@@ -19,14 +19,15 @@
 						<a href="/adminPanel"><li class = "active" id="dash"><i class="fa fa-tv"></i>Dashboard</li></a>
 						<a href="/adminPanel/events"><li id="events"><i class="fa fa-tags"></i>Events</li></a>
 						<a href="/adminPanel/addEvent"><li id="addEvent"><i class="fa fa-plus-square-o"></i>Add Event</li></a>
-						<li><i class="fa fa-calendar"></i>Time Table</li>
-						<li><i class="fa fa-vcard-o"></i>Sponsors</li>
 					</ul>
 				</div>
 			</div>
 			<div id='body' class='col-10'>
 				<div class="row">
-					<div id='header' class='col-12'><header><i class="fa fa-user"></i>WebMaster</header></div>
+					<div id='header' class='col-12'>
+						<i id="logout" class="fa fa-sign-out fa-2x" data-toggle="tooltip" title="Logout" aria-hidden="true" onclick="logout()"></i>
+						<header><i class="fa fa-user fa-2x"></i>WebMaster</header>
+					</div>
 				</div>
 				<div class="row">
 					<div id='main' class='col-12'>
@@ -38,41 +39,57 @@
 								</div>
 								
 								<div id="reg">
-									Total Number of Registrations
-									
-									<button title="Click to show/hide content" type="button" onclick="showRegistration()">Show/hide</button>
+									View Registration
+									<button title="Click to show/hide content" type="button" onclick="showRegistration()" style="float:right">Show/hide</button>
 								</div>
 							</div>
 							<div id="spoiler" style="display:none">
-								
-								<table>
-									<tr>
-										
-										<th>Name</th>
-										<th>Email-Id</th>
-										<th>Contact-No</th>
-										<th>Event</th>
-										<th>Date</th>
-									</tr>
-									{% for totl in totlcount %}
+								{% for key,event in registrations if event|length>0 %}
+									<table>
 										<tr>
-											<td>{{ totl.Name|e }}</td>
-											<td>{{ totl.Email_id|e }}</td>
-											<td>{{ totl.Contact_No|e }}</td>
-											<td>{{ totl.Event|e }}</td>
-											<td>{{ totl.Date|e }}</td>
+											<td>{{ key }}</td>
+											<td>{{event|length}}</td>
 										</tr>
-									{% endfor %}
-								</table>
+										<tr>	
+											<th>Serial Number</th>
+											<th>Leader Name</th>
+											<th>Leader Email</th>
+											<th>Leader Number</th>
+											<th>College</th>
+											<th>Member1Name</th>
+											<th>Member1Number</th>
+											<th>Member2Name</th>
+											<th>Member2Number</th>
+											<th>Member3Name</th>
+											<th>Member3Number</th>
+										</tr>
+										{% for registration in event %}
+											<tr>
+												<td>{{registration.id}}</td>
+												<td>{{registration.leaderName}}</td>
+												<td>{{registration.leaderEmail}}</td>
+												<td>{{registration.leaderNumber}}</td>
+												<td>{{registration.college}}</td>
+												<td>{{registration.member1Name}}</td>
+												<td>{{registration.member1Number}}</td>
+												<td>{{registration.member2Name}}</td>
+												<td>{{registration.member2Number}}</td>
+												<td>{{registration.member3Name}}</td>
+												<td>{{registration.member3Number}}</td>
+											</tr>
+										{% endfor %}
+									</table>
+								{%endfor%}
 							</div>
 						{% endblock %}
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		<form action="/" method="post" id="logForm">
+			<input type="hidden" name="logout">
+		</form>
 	</body>
-
 	{% block script %}
 		<script type="text/javascript">
 			var path = window.location.pathname.split("/");
@@ -115,6 +132,10 @@
 						ele.style.display='none';
 				}
 			
+			}
+			function logout(){
+				var form = document.getElementById('logForm');
+				form.submit();
 			}
 		</script>
 	{% endblock %}

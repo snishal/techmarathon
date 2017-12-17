@@ -1,0 +1,46 @@
+{%extends 'web/home.html'%}
+
+    {%block stylesheets%}
+	    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<link rel="stylesheet" href="/css/materialize.min.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/home.css" />
+        <link rel="stylesheet" href="/css/registrationt.css" />
+        <style type="text/css">
+            .carousel{
+                margin-bottom: 7%;
+            }
+        </style>
+    {%endblock%}
+    {%block main%}
+        <div class="row">
+         <div class="col s5 offset-s3 carousel">
+            <a class="carousel-item" href="#two!"><img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" src="/images/rohit.jpg"></a>
+            <a class="carousel-item" href="#one!"><img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" src="/images/jatin.jpg"></a>
+            <a class="carousel-item" href="#three!"><img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" src="/images/harshul.jpg"></a>
+            <a class="carousel-item" href="#four!"><img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" src="/images/ashna.jpeg"></a>
+            <a class="carousel-item" href="#five!"><img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" src="/images/rohit.jpg"></a>
+          </div>
+        </div>
+    {%endblock%}
+    {%block contactUS%}{%endblock%}
+    {% block scripts %}
+		<script type="text/javascript" src="/js/particles.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/animation.js"></script>
+		<script type="text/javascript" src="/js/materialize.min.js"></script>	
+		<script type="text/javascript">
+			$('#headline').css('display', "none");
+			$('#main').css('display', "block");
+			    particlesJS.load('particles-js', '/js/particles.json', function() {
+            	console.log('callback - particles.js config loaded');
+        	});
+            $(document).ready(function(){
+              $('.carousel').carousel();
+              $('.materialboxed').materialbox();
+            });
+		</script>
+	{% endblock %}
