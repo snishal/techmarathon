@@ -1,6 +1,6 @@
 <?php
 
-require_once 'RegisterMember.php';
+require_once 'Registeration.php';
 
 function updateCount() {
 
@@ -38,7 +38,7 @@ function getCount() {
 
 function getRegistrations() {
 
-	$register = new RegisterMember;
+	$register = new Registeration;
 
 	$registrations = $register->getRegistrations();
 

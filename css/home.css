@@ -134,12 +134,13 @@ body {
 .a_nav.after:after {
     bottom: -0.25em;
 }
-
+/*top bottom lines*/
 .a_nav.before:before,
 .a_nav.after:after {
-    height: 5px;
+    height: 10px;
     background: grey;
 }
+
 
 .square {
     box-sizing: border-box;

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Register Member for Event
+ * Registeration Handling for Event
  */
 require_once "DB.php";
 require_once "Event.php";
 
-class RegisterMember {
+class Registeration {
 
 	private $server = "techmarathon.co.in";
 	private $user = "webmaster";
