@@ -1,4 +1,4 @@
-/*$('#main').css('display', "none");
+$('#main').css('display', "none");
 $( document ).ready(function() {
     odoo.default({ el: '.js-odoo', from: '', to: 'TECHMARATHON', animationDelay: 1000 });
     setTimeout(
@@ -18,14 +18,14 @@ $( document ).ready(function() {
         }, 9000);
     setTimeout(
         function() {
-            */document.body.style.background = 'black'
+            document.body.style.background = 'black'
             $('#headline').css('display', "none");
             $('#main').css('display', "block");
-            /*if ($(window).width() > 500){
+            if ($(window).width() > 800){
                 particlesJS.load('particles-js', '/js/particles.json', function() {
                     console.log('callback - particles.js config loaded');
                 });
-            }*/
-        //}, 9100);
+            }
+        }, 9100);
     
-//});
+});

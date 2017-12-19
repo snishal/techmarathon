@@ -8,29 +8,52 @@
     	<link rel="stylesheet" href="/css/materialize.min.css" />
         <link rel="stylesheet" href="/css/base.css" />
         <link rel="stylesheet" href="/css/home.css" />
-        <link rel="stylesheet" href="/css/registrationt.css" />
+        <style type="text/css">
+            *{
+                color: white;
+            }
+            .description{
+                text-align: center;
+                margin-bottom: 5%;
+                font-size: 20px;
+            }
+            .eventImage{
+                width: 250px;
+            }
+            @media only screen and (max-width: 768px) {
+                .eventImage{
+                    width: 125px;
+                }
+                .banner-text{
+                    font-size: 18px;
+                }
+                .description{
+                    font-size: 15px;
+                }
+            }
+        </style>
     {%endblock%}
     
     {%block main%}
     	<div class="banner">
             <div class="row banner-text">
-                <div class="col s4">
+                <div class="col m4 s12">
                     <h2 class="animated zoomIn">{{title}}</h2>
                 	{{tagline}}
                 </div>
-                <div class="col s4">
-                	<img src="/{{image}}" height="300" width="250">
+                <div class="col m4 s6 offset-s5">
+                	 <img class="materialboxed eventImage" data-caption="{{title}} : {{tagline}}" src="/{{image}}">
                 </div>
             </div>
-            <div class="row discussion">
-                <div class="row col s6 offset-s3 animated jello">
-                <a href="/register" class="col s4 waves-effect waves-light btn"><i class="material-icons left">apps</i>Register</a>
+            <div class="row col m12 s12">
+                <div class="col m6 s12 animated jello">
+                <a href="/register" class="col m4 s12 waves-effect waves-light btn"><i class="material-icons left">apps</i>Register</a>
                 </div>
             </div>
         </div>
-        <div>
-            	{{description|raw}}
-            </div>
+        <div class="description">
+            {{description|raw}}
+        </div>
     {%endblock%}
 
     {%block contactUS%}{%endblock%}
@@ -39,22 +62,14 @@
 		<script type="text/javascript" src="/js/particles.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/materialize.min.js"></script>	
-		<script type="text/javascript">
+		<script type="text/javascript" src="/js/rwd.js"></script>
+        <script type="text/javascript">
 			$('#headline').css('display', "none");
 			$('#main').css('display', "block");
-			particlesJS.load('particles-js', '/js/particles.json', function() {
-            	console.log('callback - particles.js config loaded');
-        	});
+			if($(window).width() > 800){
+                particlesJS.load('particles-js', '/js/particles.json', function() {
+                	console.log('callback - particles.js config loaded');
+            	});
+            }
 		</script>
-	<!--<div id="user1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-    <div id="college" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-bars"></i></div>
-    <div id="mobile" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-phone"></i></div>
-    <div id="email1" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-    <div id="user2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-    <div id="email2" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-    <div id="user3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-    <div id="email3" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-    <div id="user4" class="w3-col" style="width:0px"><i class="w3-xxlarge fa fa-user"></i></div>
-    <div id="email4" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-    <div class="row">-->
 	{% endblock %}

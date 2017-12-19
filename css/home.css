@@ -328,7 +328,13 @@ body {
 
 .pallete:hover .overlayIcon {
     cursor: pointer;
-    top: 40%;
+    top: 35%;
+    height: 100%;
+}
+
+.pallete:hover .socialIcon {
+    cursor: pointer;
+    top: 25%;
     height: 100%;
 }
 
@@ -358,6 +364,8 @@ body {
     text-align: center;
     white-space: nowrap;
     color: white;
+    font-size: 18px;
+    letter-spacing: 2px;
     position: absolute;
     overflow: hidden;
     top: 50%;
@@ -583,22 +591,44 @@ body {
 			
 /* Mobile Phone Media Query */
 @media only screen and (max-width: 768px) {
-    
+
     #headline{
         margin-top: 50%;
     }
-    .nav-logo{
-        height: 10%;
-        width: 30%;
+
+    .collapsible{
+        border: solid thin black;
+        box-shadow: 1px 3px 5px #000000;
     }
-    .logo_text{
+
+    .collapsible-header{
+        background: #2c2c2c;
+        border: solid thin black;
+        color: white;
+    }
+
+    .collapsible-body{
+        color: #00bebe;
+    }
+
+    #teamText{
         font-size: 18px;
     }
-    .btn{
-        width: 40%;
+
+    .ourTeam img{
+        height: 100%;
     }
-    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
-        height: 100vh;
-        line-height: 30px;
+
+    .ourTeam{
+        height: 150px;
     }
+
+    .pallete{
+        max-width: 100%;
+    }
+
+    .text{
+        font-size: 10px;
+    }
+
 }

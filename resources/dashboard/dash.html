@@ -3,7 +3,9 @@
 	<head>
 		<title>{%block title%}{{ title }}{%endblock%}</title>
 		{%block stylesheets%}
-		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+		<link rel="shortcut icon" href="/images/icon.ico" />
+		<link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<link rel="stylesheet" href="/css/base.css" />
 		<link rel="stylesheet" href="/css/dashboard.css" />
 		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
@@ -43,42 +45,44 @@
 									<button title="Click to show/hide content" type="button" onclick="showRegistration()" style="float:right">Show/hide</button>
 								</div>
 							</div>
-							<div id="spoiler" style="display:none">
+							<div id="spoiler" style="display:none;">
 								{% for key,event in registrations if event|length>0 %}
-									<table>
-										<tr>
-											<td>{{ key }}</td>
-											<td>{{event|length}}</td>
-										</tr>
-										<tr>	
-											<th>Serial Number</th>
-											<th>Leader Name</th>
-											<th>Leader Email</th>
-											<th>Leader Number</th>
-											<th>College</th>
-											<th>Member1Name</th>
-											<th>Member1Number</th>
-											<th>Member2Name</th>
-											<th>Member2Number</th>
-											<th>Member3Name</th>
-											<th>Member3Number</th>
-										</tr>
-										{% for registration in event %}
-											<tr>
-												<td>{{registration.id}}</td>
-												<td>{{registration.leaderName}}</td>
-												<td>{{registration.leaderEmail}}</td>
-												<td>{{registration.leaderNumber}}</td>
-												<td>{{registration.college}}</td>
-												<td>{{registration.member1Name}}</td>
-												<td>{{registration.member1Number}}</td>
-												<td>{{registration.member2Name}}</td>
-												<td>{{registration.member2Number}}</td>
-												<td>{{registration.member3Name}}</td>
-												<td>{{registration.member3Number}}</td>
+									<div style="overflow-x: auto;">
+										<table>
+											<tr style="background: black;color:white;">
+												<td colspan="2"><b>{{ key }}</b></td>
+												<td colspan="9">Registrations: {{event|length}}</td>
 											</tr>
-										{% endfor %}
-									</table>
+											<tr>	
+												<th>Serial Number</th>
+												<th>Leader Name</th>
+												<th>Leader Email</th>
+												<th>Leader Number</th>
+												<th>College</th>
+												<th>Member1Name</th>
+												<th>Member1Number</th>
+												<th>Member2Name</th>
+												<th>Member2Number</th>
+												<th>Member3Name</th>
+												<th>Member3Number</th>
+											</tr>
+											{% for registration in event %}
+												<tr>
+													<td>{{registration.id}}</td>
+													<td>{{registration.leaderName}}</td>
+													<td>{{registration.leaderEmail}}</td>
+													<td>{{registration.leaderNumber}}</td>
+													<td>{{registration.college}}</td>
+													<td>{{registration.member1Name}}</td>
+													<td>{{registration.member1Number}}</td>
+													<td>{{registration.member2Name}}</td>
+													<td>{{registration.member2Number}}</td>
+													<td>{{registration.member3Name}}</td>
+													<td>{{registration.member3Number}}</td>
+												</tr>
+											{% endfor %}
+										</table>
+									</div>
 								{%endfor%}
 							</div>
 						{% endblock %}
