@@ -111,7 +111,7 @@ class Event {
 		$db->mk_conn($this->server, 'root', '', $this->dbName);
 		$eventName = str_replace(" ", "", $eventName);
 		$eventName = str_replace("-", "", $eventName);
-		$sql = "Create Table $eventName(id int Auto_increment Primary Key, leaderName varchar(100) not null, leaderEmail varchar(100) not null, leaderNumber varchar(10) not null, college varchar(100) not null, member1Name varchar(100), member1Number varchar(10), member2Name varchar(100), member2Number varchar(10), member3Name varchar(100), member3Number varchar(10))";
+		$sql = "Create Table $eventName(id int Auto_increment, leaderName varchar(100) not null, leaderEmail varchar(100) not null Primary Key, leaderNumber varchar(10) not null, college varchar(100) not null, member1Name varchar(100), member1Number varchar(10), member2Name varchar(100), member2Number varchar(10), member3Name varchar(100), member3Number varchar(10))";
 		$result = $db->query($sql);
 		$db->close();
 
@@ -141,7 +141,17 @@ class Event {
 	public function updateEvent($oldEventName, $eventName, $eventTagline, $eventDescription, $eventImage, $eventType) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn($this->server, 'root', '', $this->dbName);
+
+		$tb1 = str_replace(" ", "", $oldEventName);
+		$tb1 = str_replace("-", "", $tb1);
+
+		$tb2 = str_replace(" ", "", $eventName);
+		$tb2 = str_replace("-", "", $tb2);
+
+		$sql = "RENAME TABLE $tb1 TO $tb2;";
+		$result = $db->query($sql);
+
 		$sql = "update events set eventName = '$eventName', eventTagline = '$eventTagline', eventDescription = '$eventDescription', eventImage = '$eventImage', eventType='$eventType' where eventName = '$oldEventName'";
 		$result = $db->query($sql);
 		$db->close();

@@ -13,7 +13,7 @@
                 color: white;
             }
             .description{
-                text-align: center;
+                padding-left: 5%;
                 margin-bottom: 5%;
                 font-size: 20px;
             }
@@ -33,20 +33,20 @@
             }
         </style>
     {%endblock%}
-    
+    {% block video %}{%endblock%}
     {%block main%}
-    	<div class="banner">
+    	<div class="banner" id="cover">
             <div class="row banner-text">
                 <div class="col m4 s12">
-                    <h2 class="animated zoomIn">{{title}}</h2>
+                    <h2 class="animated zoomIn" style="color: #00bebe;">{{title}}</h2>
                 	{{tagline}}
                 </div>
-                <div class="col m4 s6 offset-s5">
+                <div class="col m4 s6 offset-s2">
                 	 <img class="materialboxed eventImage" data-caption="{{title}} : {{tagline}}" src="/{{image}}">
                 </div>
             </div>
             <div class="row col m12 s12">
-                <div class="col m6 s12 animated jello">
+                <div class="col m8 s12 animated jello">
                 <a href="/register" class="col m4 s12 waves-effect waves-light btn"><i class="material-icons left">apps</i>Register</a>
                 </div>
             </div>

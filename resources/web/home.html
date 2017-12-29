@@ -2,32 +2,34 @@
 <html>
 
 <head>
-    <title>{{ title }}</title>
-    <!--
-    Concerting Events into Json using twig function 
-    raw removes symbols like &quot
-    -->
-    <script type="text/javascript">
-    var jsonEvents = {{(events | json_encode | raw)}};
-    </script>
-    {% block stylesheets %}
+
     <link rel="shortcut icon" href="/images/icon.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="/css/materialize.min.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/home.css" /> {% endblock %}
+    <title>{{ title }}</title>
+
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+        <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/css/materialize.min.css" />
+        <link rel="stylesheet" href="/css/animate.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/home.css" /> 
+    {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <!--<audio autoplay>
-      <source src="/song.mp3" type="audio/mp3">
-    </audio>-->
-    <div class="js-odoo" id='headline'></div>
+
+    {% block video %}
+    <div id="intro">
+        <video id="teaserVideo">
+          <source src="/teaser.webm" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <a class="waves-effect waves-light btn" id = "skipBtn" onclick="skipVideo()"><i class="material-icons right">send</i>Skip</a>
+    </div>
+    {%endblock%}
     <div id='main'>
         <div id="canvas-wrap">
             <div id="particles-js"></div>
@@ -41,33 +43,33 @@
                         <div class="square"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></div>
                     </div>
                     <div class="logo col s2">
-                        <img src="/images/tm2.png" class='nav-logo nav-logo-circle'></img>
+                        <img src="/images/logo.jpg" class='nav-logo nav-logo-circle'></img>
                     </div>
                     <div class="row col s5 nav-text">
                         <div class="square"><a class="nav-link before after a_nav" href="/#footer">Contact</a></div>
                         <div class="square"><a class="nav-link before after a_nav" href="/register">Register</a></div>
                         <div class="square"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></div>
-                        <div class="square"><a class="nav-link before after a_nav" href="/documents/schedule.pdf" target="blank">Schedule</a></div>
+                        <div class="square"><a class="nav-link before after a_nav" href="schedule.pdf" target="blank">Schedule</a></div>
                     </div>
                 </div>
                 <div class="fixed-action-btn vertical">
-                <a href="/" class="btn-floating btn-large grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Home">
-                  <i class="large material-icons">home</i>
-                </a>
-                <ul>
-                    <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Schedule"><i class="material-icons">schedule</i></a></li>
-                    <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Sponsors"><i class="material-icons">wc</i></a></li>
-                    <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Register"><i class="material-icons">whatshot</i></a></li>
-                    <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Contact"><i class="material-icons">contact_mail</i></a></li>
-                    <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Our Team"><i class="material-icons">group</i></a></li>
-                    <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="About Us"><i class="material-icons">info</i></a></li>
-                    <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Events"><i class="material-icons">view_carousel</i></a></li>  
-                </ul>
-            </div>
+                    <a href="/" class="btn-floating btn-large cyan accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Home">
+                      <i class="large material-icons">home</i>
+                    </a>
+                    <ul>
+                        <li><a href="schedule.pdf" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Schedule"><i class="material-icons">schedule</i></a></li>
+                        <li><a href="/sponsors" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Sponsors"><i class="material-icons">wc</i></a></li>
+                        <li><a href="/register" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Register"><i class="material-icons">whatshot</i></a></li>
+                        <li><a href="/#footer" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Contact"><i class="material-icons">contact_mail</i></a></li>
+                        <li><a href="/#ourTeam" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Our Team"><i class="material-icons">group</i></a></li>
+                        <li><a href="/#aboutUs" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="About Us"><i class="material-icons">info</i></a></li>
+                        <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Events"><i class="material-icons">view_carousel</i></a></li>  
+                    </ul>
+                </div>
             </header>
             {% endblock %}
             <!-- Sponsors and registration -->
-            {% block main %} {% block banner %}
+            {% block main %}{% block banner %}
             <div class="banner">
                 <div class="row banner-text">
                     <div class="col s12 m4 offset-m4 center">
@@ -77,7 +79,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m8 offset-m2 center animated zoomIn" id="tagline">
-                        Everyone can run a few miles, only winners can run a marathon.
+                        Delve into the War of Dark World
                     </div>
                 </div>
                 <div class="row discussion">
@@ -110,11 +112,11 @@
                 <div class="row desc2">
                     <div class="col s12 m5">
                         <h3>SANGANIKA</h3>
-                        <p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 17-18th February, 2017.</p>
+                        <p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 2-3rd February, 2018.</p>
                     </div>
                     <div class="col s12 m6 offset-m1">
                         <h3>TECH MARATHON</h3>
-                        <p>Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 17-18th Feb, 2017. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more, we present to you new events such as SQLized, Appcombat and TV Fandom. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.
+                        <p>Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2018. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.
                         </p>
                     </div>
                 </div>
@@ -131,41 +133,15 @@
             <br>
             <br>
             <div class="row">
-                <div class="col m3 offset-m1 s4 offset-s2 ourTeam pallete">
-                    <img src="/images/krishna.jpg" class="responsive-img imgTile"/>';
-                    <div class="overlayBackground"></div>
-                    <div class="overlayIcon" style="left: 0%;"><i class="fa fa-facebook-official fa-3x" aria-hidden="true" style="color: white;"></i> <i class="fa fa-linkedin fa-3x" aria-hidden="true" style="color: white;"></i></div>
-                    <div class="overlayText">
-                    <div class="text"><b>Krishna Aggarwal</b></div>
-                    </div>
+                <div class="chip">
+                    <img src="/images/tm2.png" alt="Contact Person">
+                    akjsdkjas
                 </div>
-                <div class="col m3 s4 ourTeam pallete">
-                    <img src="/images/mansi.jpg" class="responsive-img imgTile" />';
-                    <div class="overlayBackground"></div>
-                    <div class="overlayIcon socialIcon" style="left: 0%;"><i class="fa fa-facebook-official fa-3x" aria-hidden="true" style="color: white;"></i>
-                        <br/>
-                        <i class="fa fa-google-plus-square fa-google-plus-square fa-3x" aria-hidden="true" style="color: white;"></i>
-                        <i class="fa fa-instagram fa-3x" aria-hidden="true" style="color: white;"></i></div>
-                    <div class="overlayText">
-                    <div class="text"><b>Mansi Rohilla</b></div>
-                    </div>
+                <div class="chip">
+                    <img src="/images/tm2.png" alt="Contact Person">
+                    akjsdkjas
                 </div>
-                <div class="col m3 s4 offset-s2 ourTeam pallete">
-                    <img src="/images/tarun.jpg" class="responsive-img imgTile" />';
-                    <div class="overlayBackground"></div>
-                    <div class="overlayIcon" style="left: 0%;"><i class="fa fa-facebook-official fa-3x" aria-hidden="true" style="color: white;"></i></div>
-                    <div class="overlayText">
-                    <div class="text"><b>Tarun</b></div>
-                    </div>
-                </div>
-                <div class="col m3 s4 ourTeam pallete">
-                    <img src="/images/rishabh.jpg" class="responsive-img imgTile"/>';
-                    <div class="overlayBackground"></div>
-                    <div class="overlayIcon" style="left: 0%;"><i class="fa fa-facebook-official fa-3x" aria-hidden="true" style="color: white;"></i></div>
-                    <div class="overlayText">
-                    <div class="text"><b>Rishabh</b></div>
-                    </div>
-                </div>
+                
             </div>
             <br>
             <br> {% endblock %} {% endblock %} {% block contactUS %}
@@ -184,50 +160,57 @@
                         <div class="input-field col s12">
                             <i class="material-icons md-light prefix">question_answer</i> {{contactUsForm.getElementByName('query')}}
                         </div>
-                        {{contactUsForm.getElementByName('submitQuery')}} {{contactUsForm.getEnd()}}
+                        <div class="col s12 center">
+                            <button class="btn waves-effect waves-light center" type="submit" name="submitQuery">
+                                Submit
+                            </button>
+                        </div>
+                        {{contactUsForm.getEnd()}}
                     </fieldset>
                 </div>
             </div>
-            {%endblock%} {% block footer%}
+            {%endblock%} 
+        </div>
+    </div>
+    {% block footer%}
             <footer class="row footer">
                 <div class="col-4 footer-left">
-                    <img src="../images/tm2.png" class='footer-logo'></img>
+                    <img src="/images/logo.jpg" class='footer-logo'></img>
                     <div class="footer-links">
-                        <a class="foot-link" href="/">Home |</a>
-                        <a class="foot-link" href="#">Events |</a>
-                        <a class="foot-link" href="#">Schedule |</a>
-                        <a class="foot-link" href="#">About |</a>
-                        <a class="foot-link" href="#">FAQ |</a>
-                        <a class="foot-link" href="#">Contact</a>
+                        <a class="foot-link" href="/">Home </a>|
+                        <a class="foot-link" href="#eventsBtn">Events </a>|
+                        <a class="foot-link" href="#ourTeam">Our Team </a>|
+                        <a class="foot-link" href="/register">Register </a>|
+                        <a class="foot-link" href="/sponsors">Sponsors </a>|
+                        <a class="foot-link" href="schedule.pdf">Schedule</a>
                     </div>
                     <div class="footer-college-name">Deen Dayal Upadhyaya College</div>
                 </div>
                 <div class="col-4 footer-center">
                     <br/>
                     <!--padding ki bharpai kar dega ye-->
+                    <div style="width:90%;height:200px;">
+                        <div id="map" style="width:100%;height:100%;background:grey"></div>
+                    </div>
+                    <br>
                     <div>
-                        <i class="fa fa-map-marker left"></i>Sector 3, Dwarka, Delhi
+                        <i class="fa fa-phone left"></i><font color="white">+91-9935590973</font>
                     </div>
                     <div>
-                        <i class="fa fa-phone left"></i>9871169186
-                    </div>
-                    <div>
-                        <i class="fa fa-envelope left"></i><a class="foot-link" href="#">DDUC_TM-mail@gmail.com</a>
+                        <i class="fa fa-envelope left"></i><font color="white">dductechmarathon@gmail.com</font>
                     </div>
                 </div>
                 <div class="col-4 footer-right">
                     <div class="footer-about">
                         <h4>About this Event</h4>
                         <!--<strike>   ye meri styling me kaam aega  -->
-                        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                        <font color="white">Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.</font>
                     </div>
+                    <br/>
                     <div class="footer-icons">
-                        <a class="foot-link" href="#"><i class="fa fa-facebook"></i></a>
-                        <a class="foot-link" href="#"><i class="fa fa-instagram"></i></a>
-                        <a class="foot-link" href="#"><i class="fa fa-twitter"></i></a>
-                        <a class="foot-link" href="#"><i class="fa fa-linkedin"></i></a>
-                        <a class="foot-link" href="#"><i class="fa fa-github"></i></a>
-                        <a class="foot-link" href="#"><i class="fa fa-quora"></i></a>
+                        <a class="foot-link" href="https://www.facebook.com/techmarathon"><i class="fa fa-facebook"></i></a>
+                        <a class="foot-link" href="https://www.instagram.com/tm.dduc"><i class="fa fa-instagram"></i></a>
+                        <a class="foot-link" href="https://twitter.com/dduc_tm"><i class="fa fa-twitter"></i></a>
                     </div>
                 </div>
             </footer>
@@ -235,15 +218,11 @@
                 © Copyright 2018. All Rights Reserved | Tech Marathon | Annual Tech-Fest | Deen Dayal Upadhyaya College
             </div>
             {% endblock %}
-        </div>
-    </div>
 </body>
 {% block scripts %}
 <script type="text/javascript" src="/js/particles.js"></script>
-<script src="https://cdn.rawgit.com/coderitual/odoo/feature/codevember16/lib/odoo.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/materialize.js"></script>
-<!--<script type="text/javascript" src="/js/animation.js"></script>-->
 <script type="text/javascript" src="/js/script.js"></script>
 <script type="text/javascript" src="/js/rwd.js"></script>
 <script type="text/javascript">
@@ -260,6 +239,7 @@ function displayEvents(id) {
 
     var events = '';
     if ($(window).width() < 800) {
+
 
         events = events + '<div class="carousel-fixed-item center"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
         events = events + '<div class="carousel">';
@@ -310,6 +290,7 @@ function displayEvents(id) {
 
     }
 }
+var jsonEvents = {{(events | json_encode | raw)}};
 displayEvents('');
 $('#All').css('color', '#00bebe');
 
@@ -323,18 +304,47 @@ if ($(window).width() < 800) {
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '<li>';
     aboutus = aboutus + '  <div class="collapsible-header"><i class="material-icons">place</i>Sanganika</div>';
-    aboutus = aboutus + '  <div class="collapsible-body"><span>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 17-18th February, 2017.</span></div>';
+    aboutus = aboutus + '  <div class="collapsible-body"><span>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 2-3rd February, 2018.</span></div>';
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '<li>';
     aboutus = aboutus + '  <div class="collapsible-header"><i class="material-icons">whatshot</i>Tech Marathon</div>';
-    aboutus = aboutus + '  <div class="collapsible-body"><span>Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 17-18th Feb, 2017. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more, we present to you new events such as SQLized, Appcombat and TV Fandom. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.</span></div>';
+    aboutus = aboutus + '  <div class="collapsible-body"><span>Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2017. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.</span></div>';
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '</ul>';
 
     $('#aboutUs').html(aboutus);
 
 }
-</script>   
+
+function validateForm(form){
+    if(document.getElementById('name').valid && document.getElementById('email').valid && document.getElementById('query').value != ""){
+        return true;
+    }else{  
+        Materialize.toast('Invalid Submission', 2000)
+        return false;
+    }
+    
+}
+
+</script> 
+<script>
+  function myMap() {
+            var myLatlng = new google.maps.LatLng(28.605370, 77.037953);
+            var mapOptions = {
+            zoom: 13,
+            center: myLatlng
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                title:"Deen Dayal Upadhyaya College\nSector-3, Dwarka\nNew Delhi-110 078"
+        });
+            // To add the marker to the map, call setMap();
+            marker.setMap(map);
+        }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCf3usAOrzx1OBMzB4zr10yh6Sr_1Qhw4&callback=myMap"></script>
+{{ script|raw }}  
 {% endblock %}
 
 </html>

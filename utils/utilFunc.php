@@ -1,6 +1,11 @@
 <?php
 
-require_once 'Registeration.php';
+function filter_data($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+}
 
 function updateCount() {
 
@@ -33,16 +38,6 @@ function getCount() {
 	$row = $result->fetch_assoc();
 
 	return $row['ViewCount'];
-
-}
-
-function getRegistrations() {
-
-	$register = new Registeration;
-
-	$registrations = $register->getRegistrations();
-
-	return $registrations;
 
 }
 
@@ -112,7 +107,7 @@ function auth_user() {
 	$realm = 'Restricted area';
 
 //user => password
-	$users = array('admin' => 'admin', 'guest' => 'guest');
+	$users = array('webmaster' => 'techmarathon');
 
 	if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
 		header('HTTP/1.1 401 Unauthorized');

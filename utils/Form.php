@@ -61,6 +61,18 @@ class Form {
 
 			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<br/>";
 
+		} elseif ($type == "select") {
+
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<select name='$name'>";
+
+			foreach ($extraParams['options'] as $key => $value) {
+
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<option value='$value'>$value</option>";
+
+			}
+
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "</select>";
+
 		} else {
 			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<input type='$type' name='$name' ";
 
