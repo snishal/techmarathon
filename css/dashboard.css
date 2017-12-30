@@ -1,5 +1,6 @@
 *{
 	color: #00bebe;
+	box-sizing: border-box;
 }
 body{
 	background: #313136;
@@ -73,8 +74,9 @@ button:hover{
 	padding: 5%;
 }
 #tile{
+	margin-top: 5%;
 	display: flex;
-	
+	text-align: center;
 }
 #count{
 	background: #1a1a1a;

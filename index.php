@@ -1,8 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(~0);
 session_start();
 
 require_once 'vendor/autoload.php';
-require_once 'utils/form.php';
+require_once 'utils/Form.php';
 require_once 'utils/Registeration.php';
 require_once 'utils/utilFunc.php';
 
@@ -10,9 +12,20 @@ if (!isset($_SESSION['id'])) {
 	$_SESSION['id'] = 1;
 }
 
-$script = '';
+$script = '<script>
+				var video = "<video id=\"teaserVideo\">";
+				video = video + "<source src=\"/teaser.webm\" type=\"video/webm\">";
+          		video = video + "Your browser does not support the video tag.";
+        		video = video + "</video>";
+        		video = video + "<a class=\"waves-effect waves-light btn\" id = \"skipBtn\" onclick=\"skipVideo()\">";
+        		video = video + "<i class=\"material-icons right\">send</i>Skip</a>";
+
+        		$("#intro").html(video);
+
+           </script>';
+
 if ($_SESSION['id'] == 2) {
-	$script = '<script>skipVideo();</script>';
+	$script = '';
 }
 
 if ($_SESSION['id'] == 1) {

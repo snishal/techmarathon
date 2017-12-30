@@ -1,14 +1,7 @@
 {%extends 'web/home.html'%}
 
     {%block stylesheets%}
-	    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    	<link rel="stylesheet" href="/css/materialize.min.css" />
-        <link rel="stylesheet" href="/css/base.css" />
-        <link rel="stylesheet" href="/css/home.css" />
-        <style>
+	    <style>
         	h2{
         		color: #00bebe;
         	}
@@ -61,10 +54,6 @@
     {%block contactUS%}{%endblock%}
     
     {% block scripts %}
-		<script type="text/javascript" src="/js/particles.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/materialize.min.js"></script>	
-		<script type="text/javascript" src="/js/rwd.js"></script>
 		<script type="text/javascript">
 			$('#headline').css('display', "none");
 			$('#main').css('display', "block");
@@ -73,10 +62,8 @@
                 	console.log('callback - particles.js config loaded');
             	});
             }
-		</script>
-  
-		<script type="text/javascript">
-			function validateForm(form){
+			
+            function validateForm(form){
 			    if(document.getElementById('leaderName').valid && document.getElementById('leaderCollege').valid && document.getElementById('leaderMobile').valid && document.getElementById('leaderEmail').valid && document.getElementById('member1Name').valid && document.getElementById('member1Email').valid && document.getElementById('member2Name').valid &&document.getElementById('member2Email').valid && document.getElementById('member3Name').valid &&document.getElementById('member3Email').valid){
 			        return true;
 			    }else{

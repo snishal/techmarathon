@@ -1,14 +1,7 @@
 {%extends 'web/home.html'%}
 
     {%block stylesheets%}
-	    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    	<link rel="stylesheet" href="/css/materialize.min.css" />
-        <link rel="stylesheet" href="/css/base.css" />
-        <link rel="stylesheet" href="/css/home.css" />
-        <style type="text/css">
+	      <style type="text/css">
             .slider{
                 margin-bottom: 7%;
             }
@@ -51,13 +44,7 @@
     {%endblock%}
     {%block contactUS%}{%endblock%}
     {% block scripts %}
-		<script type="text/javascript" src="/js/particles.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/animation.js"></script>
-		<script type="text/javascript" src="/js/materialize.min.js"></script>	
-        <script type="text/javascript" src="/js/rwd.js"></script>
 		<script type="text/javascript">
-			$('#headline').css('display', "none");
 			if($(window).width() > 800){
                 particlesJS.load('particles-js', '/js/particles.json', function() {
                     console.log('callback - particles.js config loaded');

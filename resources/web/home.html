@@ -6,15 +6,15 @@
     <link rel="shortcut icon" href="/images/icon.ico" />
     <title>{{ title }}</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/materialize.min.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/home.css" /> 
     {% block stylesheets %}
-        <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
         <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="/css/materialize.min.css" />
         <link rel="stylesheet" href="/css/animate.css" />
-        <link rel="stylesheet" href="/css/base.css" />
-        <link rel="stylesheet" href="/css/home.css" /> 
     {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -23,11 +23,7 @@
 
     {% block video %}
     <div id="intro">
-        <video id="teaserVideo">
-          <source src="/teaser.webm" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <a class="waves-effect waves-light btn" id = "skipBtn" onclick="skipVideo()"><i class="material-icons right">send</i>Skip</a>
+        
     </div>
     {%endblock%}
     <div id='main'>
@@ -37,19 +33,19 @@
             <header class="header" id="header">
                 <div class="row navigation-bar">
                     <div class="row col s5 nav-text">
-                        <div class="square"><a class="nav-link before after a_nav" href="/">Home</a></div>
-                        <div class="square"><a class="nav-link before after a_nav" href="/#eventsBtn">Events</a></div>
-                        <div class="square"><a class="nav-link before after a_nav" href="/#aboutUs">About us</a></div>
-                        <div class="square"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="/">Home</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#eventsBtn">Events</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#aboutUs">About us</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></div>
                     </div>
-                    <div class="logo col s2">
-                        <img src="/images/logo.jpg" class='nav-logo nav-logo-circle'></img>
+                    <div class="col s2">
+                        <img src="/images/logo.jpg" id='nav-logo'></img>
                     </div>
                     <div class="row col s5 nav-text">
-                        <div class="square"><a class="nav-link before after a_nav" href="/#footer">Contact</a></div>
-                        <div class="square"><a class="nav-link before after a_nav" href="/register">Register</a></div>
-                        <div class="square"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></div>
-                        <div class="square"><a class="nav-link before after a_nav" href="schedule.pdf" target="blank">Schedule</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#footer">Contact</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="/register">Register</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></div>
+                        <div class="square col s3"><a class="nav-link before after a_nav" href="schedule.pdf" target="blank">Schedule</a></div>
                     </div>
                 </div>
                 <div class="fixed-action-btn vertical">
@@ -85,7 +81,7 @@
                 <div class="row discussion">
                     <div class="row col m6 s12 offset-m3 animated jello">
                         <a href="/registration" class="col s12 m4 waves-effect waves-light btn linkBtn"><i class="material-icons left">apps</i>Register</a>
-                        <a class="col s12 m8 offset-m1 waves-effect waves-light btn linkBtn"><i class="material-icons left">chat</i>Discussion</a>
+                        <a class="col s12 m8 offset-m1 waves-effect waves-light btn disabled"><i class="material-icons left">chat</i>Discussion</a>
                     </div>
                 </div>
             </div>
@@ -171,7 +167,7 @@
             </div>
             {%endblock%} 
         </div>
-    </div>
+        
     {% block footer%}
             <footer class="row footer">
                 <div class="col-4 footer-left">
@@ -218,14 +214,57 @@
                 © Copyright 2018. All Rights Reserved | Tech Marathon | Annual Tech-Fest | Deen Dayal Upadhyaya College
             </div>
             {% endblock %}
+    </div>
 </body>
-{% block scripts %}
 <script type="text/javascript" src="/js/particles.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/materialize.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
-<script type="text/javascript" src="/js/rwd.js"></script>
+<script>
+  function initMap() {
+            var myLatlng = new google.maps.LatLng(28.605370, 77.037953);
+            var mapOptions = {
+            zoom: 13,
+            center: myLatlng
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                title:"Deen Dayal Upadhyaya College\nSector-3, Dwarka\nNew Delhi-110 078"
+        });
+            // To add the marker to the map, call setMap();
+            marker.setMap(map);
+        }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsq2q-OC-a1-88kJp1kZ3ouL52H0iK7_o&callback=initMap"></script>
+{% block scripts %}
+
+{{ script|raw }}  
+
+
 <script type="text/javascript">
+function validateForm(form){
+    if(document.getElementById('name').valid && document.getElementById('email').valid && document.getElementById('query').value != ""){
+        return true;
+    }else{  
+        Materialize.toast('Invalid Submission', 2000)
+        return false;
+    }
+    
+}
+
+function skipVideo() {
+    if(video!=null) video.pause();
+    
+    $('#intro').css('display', 'none');
+    $('#main').css('display', 'block');
+    if ($(window).width() > 800){
+        particlesJS.load('particles-js', '/js/particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    }
+}
+
 function displayEvents(id) {
     $('#All').css('color', 'white');
     $('#Technical').css('color', 'white');
@@ -290,6 +329,20 @@ function displayEvents(id) {
 
     }
 }
+
+var video = document.getElementById("teaserVideo");
+
+if(video != null){
+    video.play();
+    $('#main').css('display', 'none');
+    video.onended = function() {
+        skipVideo();
+    };
+}else{
+    skipVideo();
+}
+
+
 var jsonEvents = {{(events | json_encode | raw)}};
 displayEvents('');
 $('#All').css('color', '#00bebe');
@@ -316,35 +369,7 @@ if ($(window).width() < 800) {
 
 }
 
-function validateForm(form){
-    if(document.getElementById('name').valid && document.getElementById('email').valid && document.getElementById('query').value != ""){
-        return true;
-    }else{  
-        Materialize.toast('Invalid Submission', 2000)
-        return false;
-    }
-    
-}
-
 </script> 
-<script>
-  function myMap() {
-            var myLatlng = new google.maps.LatLng(28.605370, 77.037953);
-            var mapOptions = {
-            zoom: 13,
-            center: myLatlng
-            }
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                title:"Deen Dayal Upadhyaya College\nSector-3, Dwarka\nNew Delhi-110 078"
-        });
-            // To add the marker to the map, call setMap();
-            marker.setMap(map);
-        }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCf3usAOrzx1OBMzB4zr10yh6Sr_1Qhw4&callback=myMap"></script>
-{{ script|raw }}  
 {% endblock %}
 
 </html>

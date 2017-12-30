@@ -1,16 +1,21 @@
 {%extends 'web/home.html'%}
 
     {%block stylesheets%}
-	    <link href="https://fonts.googleapis.com/css?family=Nova Flat" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    	<link rel="stylesheet" href="/css/materialize.min.css" />
-        <link rel="stylesheet" href="/css/base.css" />
-        <link rel="stylesheet" href="/css/home.css" />
-        <style type="text/css">
+	    <style type="text/css">
             *{
                 color: white;
+            }
+            #cover{
+                background: url('/images/wall.jpg');
+                z-index: 0;
+            }
+            #ashes{
+                position: absolute;
+                background: url('/images/ashes.png');
+                height: 500px;
+                width: 100%;
+                top: 200px;
+                z-index: 1;
             }
             .description{
                 padding-left: 5%;
@@ -36,6 +41,7 @@
     {% block video %}{%endblock%}
     {%block main%}
     	<div class="banner" id="cover">
+            <div id="ashes"></div>
             <div class="row banner-text">
                 <div class="col m4 s12">
                     <h2 class="animated zoomIn" style="color: #00bebe;">{{title}}</h2>
@@ -59,11 +65,7 @@
     {%block contactUS%}{%endblock%}
     
     {% block scripts %}
-		<script type="text/javascript" src="/js/particles.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/materialize.min.js"></script>	
-		<script type="text/javascript" src="/js/rwd.js"></script>
-        <script type="text/javascript">
+		<script type="text/javascript">
 			$('#headline').css('display', "none");
 			$('#main').css('display', "block");
 			if($(window).width() > 800){

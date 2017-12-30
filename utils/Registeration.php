@@ -41,7 +41,7 @@ class Registeration {
 			$eventName = $event['eventName'];
 			$eventName = str_replace(" ", "", $eventName);
 			$eventName = str_replace("-", "", $eventName);
-
+			
 			$db = new DB;
 			$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
 			$sql = "SELECT * from $eventName";
