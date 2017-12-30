@@ -1,7 +1,7 @@
 if ($(window).width() < 800){
     var menu = '<ul id="slide-out" class="side-nav" style="background: #1a1a1a;">';
     menu = menu + '<li><div class="background">';
-    menu = menu + '<img src="/images/logo.jpg" height="50" width="50" style="margin-top: 20px;">';
+    menu = menu + '<img src="/images/logo.jpg" height="50" width="50" style="margin-top: 20px;border-radius:50%;">';
     menu = menu + '</div></li>';
     menu = menu + '<li><a href="/#" style="color:#00bebe;">Home</a></li>';
     menu = menu + '<li><a href="/#eventsBtn" style="color:#00bebe;">Events</a></li>';
