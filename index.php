@@ -14,6 +14,7 @@ if (!isset($_SESSION['id'])) {
 
 $script = '<script>
 				var video = "<video id=\"teaserVideo\" >";
+				video = video + "<source src=\"/teaser.mp4\" type=\"video/mp4\">";
 				video = video + "<source src=\"/teaser.webm\" type=\"video/webm\">";
           		video = video + "Your browser does not support the video tag.";
         		video = video + "</video>";

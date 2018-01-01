@@ -4,9 +4,9 @@ body {
 #teaserVideo {
     position: fixed;
     right: 0;
-    bottom: 0;
+    top: 10%;
     min-width: 100%; 
-    min-height: 100%;
+    max-height: 80%;
 }
 #skipBtn{
     margin-top: 40%;
@@ -43,6 +43,9 @@ body {
 .navigation-bar {
     margin-top: 30px;
     padding-bottom: 30px;
+}
+.navigation-bar .col{
+    padding: 1rem;
 }
 .nav-link {
     font-size: 20px;
