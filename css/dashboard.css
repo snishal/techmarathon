@@ -1,18 +1,24 @@
+*{
+	color: #00bebe;
+	box-sizing: border-box;
+}
+body{
+	background: #313136;
+}
 button:hover{
 	cursor: pointer;
 }
 .nav{
 	width: inherit;
-	box-shadow: 2px 0px 5px #888888;
+	box-shadow: 2px 0px 5px #000000;
 	height:100vh;
 	position: fixed;
-	background: #ff6d86;
+	background: #222225;/*#ff6d86;*/
 	z-index: 1;
 }
 .nav h2{
 	padding: 15px;
-	background-color: #ec4260;
-	color: white;
+	background-color: #1a1a1a;/*#ec4260;*/
 	text-align: center;
 }
 .nav h2 i{
@@ -24,13 +30,10 @@ button:hover{
 }
 .nav ul a{
 	text-decoration: none;
-	color: black;
+	/*color: black;*/
 }
 .nav ul i{
 	margin-right: 5%;
-}
-.fa{
-	color: white;
 }
 .nav ul li{
 	font-size: 20px;
@@ -38,10 +41,9 @@ button:hover{
 	padding-bottom:20px;
 	padding-left: 10%;
 	list-style-type: none;
-	color: white;
 }
 .nav li:hover{
-	background: #d25050;
+	background: #2c2c2c;/*#d25050;*/
 	color: white;
 	cursor: pointer;
 }
@@ -49,36 +51,40 @@ button:hover{
 	color: white;
 }
 .active{
-	background: #d25050;
-}
-#body {
-	background: white;
+	background: #111111;/*#d25050;*/
 }
 #header{
-	background: #FF9F9D;
+	background: #1a1a1a;
 	padding: 20px;
 	text-align: right;
-	color: white;
+	display: flex;
+	justify-content: space-between;
 }
 #header i{
 	margin-right: 1%;
+}
+#header header{
+	display: flex;
+	font-weight: bold;
+}
+#logout:hover{
+	cursor: pointer;
 }
 #main{
 	padding: 5%;
 }
 #tile{
 	display: flex;
-	color: white;
+	text-align: center;
 }
 #count{
-	background: #ffb3b3 ;
+	background: #1a1a1a;
 	width: 40%;
     padding: 4%;
     margin: 5% auto;
     position: relative;
     height: 120px;
-    box-shadow: 1px 3px 5px #888888;
-    
+    box-shadow: 1px 3px 5px #000000;
     font-size: 20px;
     border-radius: 1%;
 
@@ -89,13 +95,13 @@ button:hover{
 }
 
 #reg{
-	background: #ffb3b3 ;
+	background: #1a1a1a;
 	width: 40%;
     padding: 3%;
     margin: 5% auto;
     position: relative;
     height: 120px;
-    box-shadow: 1px 3px 5px #888888;
+    box-shadow: 1px 3px 5px #000000;
     
     font-size: 20px;
     border-radius: 1%;
@@ -106,7 +112,7 @@ button{
 	width: 100px;
 	border-radius: 3%;
 	height: 50px;
-	background-color: #f1b695;
+	background-color: #1a1a1a;
 }
 
 
@@ -119,14 +125,10 @@ table {
 th, td {
     text-align: left;
     padding: 8px;
+    font-family: 'Roboto', sans-serif;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
-
-th {
-    background-color: #4CAF50;
-    color: white;
-}
+tr:nth-child(even){background-color: #222225;}
 
 @media only screen and (max-width: 768px) {
 	/* For mobile phones: */

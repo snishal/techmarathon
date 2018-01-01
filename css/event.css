@@ -10,12 +10,12 @@ a{
     box-sizing: border-box;  
     display: flex;
     justify-content: space-between;
-    box-shadow: 1px 3px 5px #888888;
+    background: #1a1a1a;
+    box-shadow: 1px 3px 5px #000000;
 }
 .icon{
   width: 10%;
   height: 10%;
-	 border-radius: 50%;
 }
 .overlay {
   transition: .5s ease;
@@ -27,13 +27,14 @@ a{
   -ms-transform: translate(-50%, -50%);
 }
 .overlay button{
-     border:2px green solid;
+     border:2px grey solid;
      cursor: pointer;
      padding: 2px 2px;
      font-size: 15px;
+     font-family: 'Roboto', sans-serif;
 }
 .overlay button:hover{
-     background: #4CAF50;
+     background: #2f2f2f;
 }
 .tile:hover .icon{
   opacity:0.2;

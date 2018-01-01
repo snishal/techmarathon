@@ -13,8 +13,8 @@
 		</div>
 		<img src="/{{ event.eventImage|e }}" class='icon'></img>
 		<div class='overlay'>
-			<a href='/adminPanel/events/updateEvent?id={{event.eventId}}'><button>Update Event</button></a>
-			<a href='/adminPanel/events/deleteEvent?id={{event.eventId}}'><button>Delete Event</button></i></a>
+			<a href='/adminPanel/events/updateEvent?name={{event.eventName}}'><button>Update Event</button></a>
+			<a href='/adminPanel/events/deleteEvent?name={{event.eventName}}'><button>Delete Event</button></i></a>
 		</div>
 	</div>
 {% endfor %}

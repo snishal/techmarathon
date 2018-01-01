@@ -2,74 +2,136 @@
 
 class Form {
 
-	private $form = '';
+	private $startForm = '';
+	private $elementForm = array();
+	private $endForm = '';
 
 	function startForm($action, $method, $extraParams = '') {
 
-		$this->form = $this->form . "<form action='$action' method='$method' ";
+		$this->startForm = $this->startForm . "<form action='$action' method='$method' ";
 
 		if (is_array($extraParams)) {
+
 			foreach ($extraParams as $key => $value) {
 				if ($key != 'header') {
-					$this->form = $this->form . " $key = '$value' ";
+					$this->startForm = $this->startForm . " $key = '$value' ";
 				}
 
 			}
 		}
 
-		$this->form = $this->form . ">";
+		$this->startForm = $this->startForm . ">";
 
-		if (isset($extraParams['header'])) {
-
-			$this->form = $this->form . "<br/>" . $extraParams['header'] . "<br/>";
-
+		if (is_array($extraParams) && array_key_exists('header', $extraParams)) {
+			$this->startForm = $this->startForm . $extraParams['header'] . "<br/>";
 		}
 
 	}
 
-	function addItem($type = '', $name = '', $extraParams = '') {
+	function addItem($type, $name, $accessName, $extraParams = '') {
+
+		if (!array_key_exists($accessName, $this->elementForm)) {
+			$this->elementForm[$accessName] = '';
+		}
+
 		if ($type == "textarea") {
-			$this->form = $this->form . "<textarea name='$name'";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<textarea name='$name'";
 
 			if (is_array($extraParams)) {
 				foreach ($extraParams as $key => $value) {
-					if ($key != 'value') {
+					if ($key != 'value' && $key != 'div' && $key != 'label') {
 
-						$this->form = $this->form . " $key = '$value' ";
+						$this->elementForm[$accessName] = $this->elementForm[$accessName] . " $key = '$value' ";
 
 					}
 				}
 			}
 
-			$this->form = $this->form . ">";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . ">";
 
-			if (isset($extraParams['value'])) {
-				$this->form = $this->form . $extraParams['value'];
+			if (is_array($extraParams) && isset($extraParams['value'])) {
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . $extraParams['value'];
 			}
 
-			$this->form = $this->form . "</textarea><br/>";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "</textarea>";
+
+			if (is_array($extraParams) && array_key_exists('label', $extraParams) && array_key_exists('id', $extraParams)) {
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . '<label for="' . $extraParams['id'] . '">' . $extraParams['label'] . '</label>';
+			}
+
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<br/>";
+
+		} elseif ($type == "select") {
+
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<select name='$name'>";
+
+			foreach ($extraParams['options'] as $key => $value) {
+
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<option value='$value'>$value</option>";
+
+			}
+
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "</select>";
 
 		} else {
-			$this->form = $this->form . "<input type='$type' name='$name' ";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<input type='$type' name='$name' ";
 
 			if (is_array($extraParams)) {
 				foreach ($extraParams as $key => $value) {
 
-					$this->form = $this->form . " $key = '$value' ";
+					if ($key != 'div' && $key != 'label') {
 
+						$this->elementForm[$accessName] = $this->elementForm[$accessName] . " $key = '$value' ";
+
+					}
 				}
 			}
 
-			$this->form = $this->form . "/><br/>";
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "/>";
+			if (is_array($extraParams) && array_key_exists('label', $extraParams) && array_key_exists('id', $extraParams)) {
+				$this->elementForm[$accessName] = $this->elementForm[$accessName] . '<label for="' . $extraParams['id'] . '">' . $extraParams['label'] . '</label>';
+			}
+			$this->elementForm[$accessName] = $this->elementForm[$accessName] . "<br/>";
 		}
+
 	}
 
-	function endForm() {
-		$this->form = $this->form . "</form>";
+	function endForm($extraParams = '') {
+		$this->endForm = $this->endForm . "</form>";
 	}
 
 	function displayForm() {
-		echo $this->form;
+		echo $this->startForm;
+		foreach ($this->elementForm as $key => $value) {
+			# code...
+			echo $value;
+		}
+		echo $this->endForm;
+	}
+
+	function getStart() {
+		echo $this->startForm;
+	}
+
+	function getAllElements() {
+
+		foreach ($this->elementForm as $key => $value) {
+			# code...
+			echo $value;
+		}
+
+	}
+
+	function getElementByName($accessName) {
+
+		echo $this->elementForm[$accessName];
+
+	}
+
+	function getEnd() {
+
+		echo $this->endForm;
+
 	}
 
 }

@@ -1,142 +1,80 @@
-/*
-var circles = [],
-    canvas = document.getElementById("background"),
-    context = canvas.getContext("2d"),
-    
-    // SETTINGS 
-    opacity = 1,                                      // the opacity of the circles 0 to 1
-    colors = ['rgba(13, 165, 102,' + opacity + ')'      // an array of rgb colors for the circles
-              ],
-    minSize = 1,                                        // the minimum size of the circles in px
-    maxSize = 10,                                       // the maximum size of the circles in px
-    numCircles = 300,                                   // the number of circles
-    minSpeed = -3,                                     // the minimum speed, recommended: -maxspeed
-    maxSpeed = 3,                                    // the maximum speed of the circles
-    expandState = true;                                      // the direction of expansion
+if ($(window).width() < 800){
+    var menu = '<ul id="slide-out" class="side-nav" style="background: #1a1a1a;">';
+    menu = menu + '<li><div class="background">';
+    menu = menu + '<img src="/images/logo.jpg" height="50" width="50" style="margin-top: 20px;border-radius:50%;">';
+    menu = menu + '</div></li>';
+    menu = menu + '<li><a href="/#" style="color:#00bebe;">Home</a></li>';
+    menu = menu + '<li><a href="/#eventsBtn" style="color:#00bebe;">Events</a></li>';
+    menu = menu + '<li><a href="/#aboutUs" style="color:#00bebe;">About Us</a></li>';
+    menu = menu + '<li><a href="/#ourTeam" style="color:#00bebe;">Our Team</a></li>';
+    menu = menu + '<li><a href="/#footer" style="color:#00bebe;">Contact</a></li>';
+    menu = menu + '<li><a href="/register" style="color:#00bebe;">Register</a></li>';
+    menu = menu + '<li><a href="/sponsors" style="color:#00bebe;">Sponsors</a></li>';
+    menu = menu + '<li><a href="schedule.pdf" style="color:#00bebe;">Schedule</a></li>';
+    menu = menu + '</ul>';
+    menu = menu + '<a href="#" data-activates="slide-out" class="btn btn-floating cyan pulse button-collapse"><i class="material-icons">arrow_forward</i></a>';
 
-function buildArray() {
-    'use strict';
-    
-    for (var i =0; i < numCircles ; i++){
-        var color = Math.floor(Math.random() * (colors.length - 1 + 1)) + 1,
-            left = Math.floor(Math.random() * (canvas.width - 0 + 1)) + 0,
-            top = Math.floor(Math.random() * (canvas.height - 0 + 1)) + 0,
-            size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize,
-            leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
-            topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
-            expandState = expandState;
-           
-            while(leftSpeed == 0 || topSpeed == 0){
-                leftSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10,
-                topSpeed = (Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed)/10;
-            }
-        var circle = {color:color, left:left, top:top, size:size, leftSpeed:leftSpeed, topSpeed:topSpeed, expandState:expandState };
-        circles.push(circle);
-    }
-}
+    $('#header').html(menu);
 
-function build(){
-    'use strict';
-    
-    for(var h = 0; h < circles.length; h++){
-        var curCircle = circles[h];
-        context.fillStyle = colors[curCircle.color-1];
-        context.beginPath();
-        if(curCircle.left > canvas.width+curCircle.size){
-            curCircle.left = 0-curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
-        }else if(curCircle.left < 0-curCircle.size){
-            curCircle.left = canvas.width+curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
-        }else{
-            curCircle.left = curCircle.left+curCircle.leftSpeed;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
-        }
-        
-        if(curCircle.top > canvas.height+curCircle.size){
-            curCircle.top = 0-curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
-
-        }else if(curCircle.top < 0-curCircle.size){
-            curCircle.top = canvas.height+curCircle.size;
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false);
-        }else{
-            curCircle.top = curCircle.top+curCircle.topSpeed;
-            if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == false){
-              curCircle.size = curCircle.size-0.1;
-            }
-            else if(curCircle.size != maxSize && curCircle.size != minSize && curCircle.expandState == true){
-              curCircle.size = curCircle.size+0.1;
-            }
-            else if(curCircle.size == maxSize && curCircle.expandState == true){
-              curCircle.expandState = false;
-              curCircle.size = curCircle.size-0.1;
-            }
-            else if(curCircle.size == minSize && curCircle.expandState == false){
-              curCircle.expandState = true;
-              curCircle.size = curCircle.size+0.1;
-            }
-            context.arc(curCircle.left, curCircle.top, curCircle.size, 0, 2 * Math.PI, false); 
-        }
-        
-        context.closePath();
-        context.fill();
-        context.ellipse;
-    }
-}
-
-
-var xVal = 0;
-
-window.requestAnimFrame = (function (callback) {
-    'use strict';
-    return window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-        window.setTimeout(callback, 1000/60);
-    };
-})();
-
-function animate() {
-    'use strict';
-    var canvas = document.getElementById("background"),
-        context = canvas.getContext("2d");
-
-    // clear the canvas
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-
-    // draw the next frame
-    xVal++;
-    build();
-
-    //console.log("Prep: animate ==> requestAnimFrame");
-    // request a new frame
-    requestAnimFrame(function () {
-        animate();
+    $('.button-collapse').sideNav({
+        menuWidth: 230, // Default is 300
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true, // Choose whether you can drag to open on touch screens,
+        onOpen: function(el) {}
     });
 }
-window.onload = function () {
-    'use strict';
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 5;
-    buildArray();
-    animate();
-};
 
+function validateText(element)
+{
+    var textPattern =  /^[A-Za-z ]{2,40}$/;
+    var flag = 0;
+    if(element.value == null || !textPattern.test(element.value)){
+        flag = 1;
+    }
+    if(flag==0){
+      $(element).removeClass("invalid");
+      $(element).addClass("valid");
+      element.valid = true;
+    }else{
+        $(element).removeClass("valid");
+        $(element).addClass("invalid");
+        element.valid = false;
+    }
+}
 
-window.onresize = function () {
-    'use strict';
-    console.log("resize");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    //buildArray();
-    animate();
-};
-*/
-particlesJS.load('particles-js', '/js/particles.json', function() {
-  console.log('callback - particles.js config loaded');
-});
+function validateNumber(element)
+{
+    var Pattern =  /^[0-9]{10,10}$/;
+    var flag = 0;
+    if(element.value == null || !Pattern.test(element.value)){
+        flag = 1;
+    }
+    if(flag==0){
+      $(element).removeClass("invalid");
+      $(element).addClass("valid");
+      element.valid = true;
+    }else{
+        $(element).removeClass("valid");
+        $(element).addClass("invalid");
+        element.valid = false;
+    }
+}
+
+function validateEmail(element)
+{
+    var Pattern =  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var flag = 0;
+    if(element.value == null || !Pattern.test(element.value)){
+        flag = 1;
+    }
+    if(flag==0){
+      $(element).removeClass("invalid");
+      $(element).addClass("valid");
+      element.valid = true;
+    }else{
+        $(element).removeClass("valid");
+        $(element).addClass("invalid");
+        element.valid = false;
+    }
+}
+    

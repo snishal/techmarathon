@@ -1,0 +1,59 @@
+{%extends 'web/home.html'%}
+
+    {%block stylesheets%}
+	      <style type="text/css">
+            .slider{
+                margin-bottom: 7%;
+            }
+        </style>
+    {%endblock%}
+    {% block video %}{%endblock%}
+    {%block main%}
+        <div class="slider">
+            <ul class="slides">
+              <li>
+                <img src="/images/cover.jpeg"> <!-- random image -->
+                <div class="caption center-align">
+                  <!--<h3>Coming Soon</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+                </div>
+              </li>
+              <li>
+                <img src="/images/cover.jpeg"> <!-- random image -->
+                <div class="caption left-align">
+                  <!--<h3>Coming Soon</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+                </div>
+              </li>
+              <li>
+                <img src="/images/cover.jpeg"> <!-- random image -->
+                <div class="caption right-align">
+                  <!--<h3>Coming Soon</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+                </div>
+              </li>
+              <li>
+                <img src="/images/cover.jpeg"> <!-- random image -->
+                <div class="caption center-align">
+                  <!--<h3>Coming Soon</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+                </div>
+              </li>
+            </ul>
+          </div>
+    {%endblock%}
+    {%block contactUS%}{%endblock%}
+    {% block scripts %}
+		<script type="text/javascript">
+			if($(window).width() > 800){
+                particlesJS.load('particles-js', '/js/particles.json', function() {
+                    console.log('callback - particles.js config loaded');
+                });
+            }
+            $(document).ready(function(){
+                $('.slider').slider({
+                    interval: 3000
+                });
+            });
+		</script>
+	{% endblock %}
