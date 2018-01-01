@@ -1,12 +1,5 @@
 <?php
 
-/*
-
-user: webmaster
-pass: iPTnnG1EolksQRrA
-
- */
-
 class DB {
 
 	private $conn;

@@ -54,7 +54,7 @@ if (isset($_POST['submitQuery'])) {
 	if (!empty($_POST['eventDescription'])) {
 
 		$eventDescription = "description/" . $eventName . ".html";
-		$description = filter_data($_POST['eventDescription']);
+		$description = $_POST['eventDescription'];
 
 		$descFile = fopen("../" . $eventDescription, "w");
 		fwrite($descFile, $description);
@@ -95,7 +95,7 @@ if (isset($_POST['submitQuery'])) {
 	unlink("../" . $olddesc);
 
 	$eventDescription = "description/" . $eventName . ".html";
-	$description = filter_data($_POST['eventDescription']);
+	$description = $_POST['eventDescription'];
 	$descFile = fopen("../" . $eventDescription, "w");
 	fwrite($descFile, $description);
 	fclose($descFile);

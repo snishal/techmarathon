@@ -107,8 +107,7 @@ class Event {
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
 		$sql = "INSERT into events values('$eventName', '$eventTagline', '$eventDescription', '$eventImage', '$eventType')";
 		$result = $db->query($sql);
-		$db->close();
-		$db->mk_conn($this->server, 'root', 'Sahil@123', $this->dbName);
+
 		$eventName = str_replace(" ", "", $eventName);
 		$eventName = str_replace("-", "", $eventName);
 		$sql = "Create Table $eventName(id int Auto_increment unique, leaderName varchar(100) not null, leaderEmail varchar(100) not null Primary Key, leaderNumber varchar(10) not null, college varchar(100) not null, member1Name varchar(100), member1Number varchar(10), member2Name varchar(100), member2Number varchar(10), member3Name varchar(100), member3Number varchar(10))";
@@ -127,14 +126,12 @@ class Event {
 		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
 		$sql = "DELETE from events where eventName = '$eventName'";
 		$result = $db->query($sql);
-		$db->close();
 
 		$eventName = str_replace(" ", "", $eventName);
 		$eventName = str_replace("-", "", $eventName);
-		
-		$db->mk_conn($this->server, 'root', 'Sahil@123', $this->dbName);
+
 		$sql = "DROP TABLE $eventName";
-		$result = $db->query($sql);		
+		$result = $db->query($sql);
 		$db->close();
 
 		if ($result) {
@@ -146,7 +143,7 @@ class Event {
 	public function updateEvent($oldEventName, $eventName, $eventTagline, $eventDescription, $eventImage, $eventType) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, 'root', 'Sahil@123', $this->dbName);
+		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
 
 		$tb1 = str_replace(" ", "", $oldEventName);
 		$tb1 = str_replace("-", "", $tb1);

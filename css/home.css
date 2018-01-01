@@ -292,8 +292,8 @@ body {
 @media only screen and (max-width: 768px) {
 
     #skipBtn{
-        margin-top: 70%;
-        margin-left: 40%;
+        margin-top: 90%;
+        margin-left: 35%;
     }
     .collapsible{
         border: solid thin black;
