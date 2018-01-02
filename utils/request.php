@@ -26,10 +26,10 @@ if (isset($_POST['submitQuery'])) {
 	$mail->SMTPSecure = 'tls';
 	$mail->Port = 587;
 	$mail->SMTPAuth = true;
-	$mail->Username = "snishal33@gmail.com";
-	$mail->Password = "Sahil@123456";
+	$mail->Username = "dductechmarathon@gmail.com";
+	$mail->Password = "dduc@TM18";
 	$mail->setFrom('snishal33@gmail.com', 'Sahil Nishal');
-	$mail->addAddress('snishal33@gmail.com', 'Sahil Nishal');
+	$mail->addAddress('dductechmarathon@gmail.com', 'TechMarathon Dduc');
 	$mail->Subject = 'Query';
 	$mail->isHTML(false);
 	$mail->Body = 'Name : ' . $name . " \n";
