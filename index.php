@@ -128,6 +128,8 @@ if (empty($uri[1])) {
 		echo $twig->render('web/event.html', array('title' => $eventName, 'tagline' => $event->getEventTagline($eventName), 'description' => file_get_contents($event->getEventDescription($eventName)), 'image' => $event->getEventImage($eventName)));
 	}
 
+}elseif ($uri[1] == 'schedule.pdf') {
+	$errorMsg = "Schedule will be out Soon";
 } else if ($uri[1] == 'adminPanel') {
 
 	if (!auth_user()) {

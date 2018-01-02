@@ -292,6 +292,12 @@ body {
     bottom: 50%;
     left: 44%;
 }
+.chip{
+    background-color: #424242;
+}
+.chip a{
+    color: white;
+}
 @media only screen and (max-width: 768px) {
 
     #skipBtn{
