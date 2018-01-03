@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/home.css" /> 
+    <link rel="stylesheet" href="/css/animate.css" />
     {% block stylesheets %}
-        <link rel="stylesheet" href="/css/animate.css" />
     {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -23,79 +23,79 @@
 
     {% block video %}
     <div id="intro">
-        
     </div>
     {%endblock%}
     <div id='main'>
+        {% block header%}
+        <div id="header" class="nav-down">
+            <div class="row navigation-bar">
+                <div class="row col s5 nav-text">
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/">Home</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/events">Events</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/#aboutUs">About us</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></div>
+                </div>
+                <div class="col s2">
+                    <img src="/images/logo.jpg" id='nav-logo'/>
+                </div>
+                <div class="row col s5 nav-text">
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/#footer">Contact</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/register">Register</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="schedule.pdf" target="blank">Schedule</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="fixed-action-btn vertical">
+            <a href="/" class="btn-floating btn-large cyan accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Home">
+              <i class="large material-icons">home</i>
+            </a>
+            <ul>
+                <li><a href="schedule.pdf" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Schedule"><i class="material-icons">schedule</i></a></li>
+                <li><a href="/sponsors" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Sponsors"><i class="material-icons">wc</i></a></li>
+                <li><a href="/register" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Register"><i class="material-icons">whatshot</i></a></li>
+                <li><a href="/#footer" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Contact"><i class="material-icons">contact_mail</i></a></li>
+                <li><a href="/#ourTeam" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Our Team"><i class="material-icons">group</i></a></li>
+                <li><a href="/#aboutUs" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="About Us"><i class="material-icons">info</i></a></li>
+                <li><a href="/events" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Events"><i class="material-icons">view_carousel</i></a></li>  
+            </ul>
+        </div>
+        {% endblock %}    
         <div id="canvas-wrap">
             <div id="particles-js"></div>
-            {% block header%}
-            <header class="header" id="header">
-                <div class="row navigation-bar">
-                    <div class="row col s5 nav-text">
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/">Home</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#eventsBtn">Events</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#aboutUs">About us</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></div>
-                    </div>
-                    <div class="col s2">
-                        <img src="/images/logo.jpg" id='nav-logo'></img>
-                    </div>
-                    <div class="row col s5 nav-text">
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#footer">Contact</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/register">Register</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="schedule.pdf" target="blank">Schedule</a></div>
-                    </div>
-                </div>
-                <div class="fixed-action-btn vertical">
-                    <a href="/" class="btn-floating btn-large cyan accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Home">
-                      <i class="large material-icons">home</i>
-                    </a>
-                    <ul>
-                        <li><a href="schedule.pdf" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Schedule"><i class="material-icons">schedule</i></a></li>
-                        <li><a href="/sponsors" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Sponsors"><i class="material-icons">wc</i></a></li>
-                        <li><a href="/register" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Register"><i class="material-icons">whatshot</i></a></li>
-                        <li><a href="/#footer" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Contact"><i class="material-icons">contact_mail</i></a></li>
-                        <li><a href="/#ourTeam" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Our Team"><i class="material-icons">group</i></a></li>
-                        <li><a href="/#aboutUs" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="About Us"><i class="material-icons">info</i></a></li>
-                        <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Events"><i class="material-icons">view_carousel</i></a></li>  
-                    </ul>
-                </div>
-            </header>
-            {% endblock %}
-            <!-- Sponsors and registration -->
             {% block main %}{% block banner %}
-            <div class="banner">
-                <div class="row banner-text">
-                    <div class="col s12 m4 offset-m4 center">
-                        <h2 class="animated zoomIn"> Tech Marathon </h2>
-                        <h2 class="animated zoomIn" id="sm"><small>2018</small> </h2>
+            <div class="row banner top">
+                <div class="col m3 desktopSlider">
+                    <div class="carousel" id="technicalEventsSlider"></div>
+                    <div class="carousel-fixed-item center"><a id="viewEvent1" href="" class="btn waves-effect grey darken-3">View Event<i class="material-icons left">search</i><a></div>
+                </div>
+                <div class="col m6">
+                    <div class="row banner-text">
+                        <div class="col s12 m12 center">
+                            <h2 class="animated zoomIn"> Tech Marathon </h2>
+                            <h2 class="animated zoomIn" id="sm"><small>2018</small> </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 center animated zoomIn" id="tagline">
+                            Delve into the War of Dark World
+                        </div>
+                    </div>
+                    <div class="row discussion">
+                        <div class="row col m12 s12 animated jello">
+                            <a href="/register" class="col s12 m4 waves-effect waves-light btn linkBtn"><i class="material-icons left">apps</i>Register</a>
+                            <a href="https://www.facebook.com/events/145622169420771/?active_tab=discussion" class="col s12 m8 offset-m1 waves-effect waves-light btn" target="blank"><i class="material-icons left">chat</i>Discussion</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12 m8 offset-m2 center animated zoomIn" id="tagline">
-                        Delve into the War of Dark World
-                    </div>
-                </div>
-                <div class="row discussion">
-                    <div class="row col m6 s12 offset-m3 animated jello">
-                        <a href="/register" class="col s12 m4 waves-effect waves-light btn linkBtn"><i class="material-icons left">apps</i>Register</a>
-                        <a href="https://www.facebook.com/events/145622169420771/?active_tab=discussion" class="col s12 m8 offset-m1 waves-effect waves-light btn" target="blank"><i class="material-icons left">chat</i>Discussion</a>
-                    </div>
+                <div class="col m3 desktopSlider">
+                    <div class="carousel" id="nonTechnicalEventsSlider"></div>
+                    <div class="carousel-fixed-item center"><a id="viewEvent2" href="" class="btn waves-effect grey darken-3">View Event<i class="material-icons left">search</i><a></div>
                 </div>
             </div>
             {% endblock %}
-            <!-- Sponsors block ends here -->
-            {% block events %}
-            <div class="container center" id="eventsBtn">
-                <a id="All" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">All</a>
-                <a id="Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Technical</a>
-                <a id="Non-Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Non-Technical</a>
-            </div>
-            <div class="container" id="events">
-            </div>
-            {% endblock %} {% block aboutus %}
+            <div id="events"></div>
+            {% block aboutus %}
             <div id="aboutUs">
                 <a class="aboutus_heading">ABOUT US</a>
                 <br>
@@ -378,7 +378,7 @@
     {% block footer%}
             <footer class="row footer" style="margin-top: 5%;">
                 <div class="col-4 footer-left">
-                    <img src="/images/logo.jpg" class='footer-logo'></img>
+                    <img src="/images/logo.jpg" class='footer-logo'/>
                     <div class="footer-links">
                         <a class="foot-link" href="/">Home </a>|
                         <a class="foot-link" href="#eventsBtn">Events </a>|
@@ -439,13 +439,16 @@
                 position: myLatlng,
                 title:"Deen Dayal Upadhyaya College\nSector-3, Dwarka\nNew Delhi-110 078"
         });
-            // To add the marker to the map, call setMap();
-            marker.setMap(map);
-        }
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+    }
+    function toggleHeader(){
+        $('#header').css('display', 'none');
+    }
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsq2q-OC-a1-88kJp1kZ3ouL52H0iK7_o&callback=initMap"></script>
 {% block scripts %}
-
 {{ script|raw }}  
 
 
@@ -472,69 +475,71 @@ function skipVideo() {
     }
 }
 
-function displayEvents(id) {
-    $('#All').css('color', 'white');
-    $('#Technical').css('color', 'white');
-    $('#Non-Technical').css('color', 'white');
+function initializeEventSlider(){
 
-    if (id != '') $('#' + id).css('color', '#00bebe');
+    console.log("initializeEventSlider");
+    var slider1 = $('#technicalEventsSlider');
+    var slider2 = $('#nonTechnicalEventsSlider');
+    
+    slider1.carousel();
+    slider2.carousel();
 
-    var type = id;
-    var counter = 0;
-    if (id == 'All') type = '';
+    $.each(jsonEvents, function(key, value) {
+        if(value.eventType == 'Technical')
+            slider1.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
+        else
+            slider2.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
+    });
 
-    var events = '';
-    if ($(window).width() < 800) {
-
-
-        events = events + '<div class="carousel-fixed-item center"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
-        events = events + '<div class="carousel">';
-        events = events + '</div>';
-
-        $('#events').html(events);
-
-
-        var slider = $('.carousel');
-
-        slider.carousel();
-
-        $.each(jsonEvents, function(key, value) {
-            if (type == '' || value.eventType == type) {
-                slider.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
-            }
-        });
-
-        if (slider.hasClass('initialized')){
-            slider.removeClass('initialized');
-        }
-
-       //just reinit the carousel
-        slider.carousel({
-            onCycleTo: function (ele, dragged) {
-                $("#viewEvent").attr("href", $(ele).attr("href"));
-            }
-        });
-
-    }else{
-        $.each(jsonEvents, function(key, value) {
-            if (type == '' || value.eventType == type) {
-                if (counter == 0) events = events + '<div class="row">';
-                events = events + '<div class="pallete">';
-                events = events + '<img src="/' + value.eventImage + '" class="responsive-img imgTile" />';
-                events = events + '<div class="overlayBackground"></div>';
-                events = events + '<div class="overlayIcon"><a href="/events/' + value.eventName + '"><i class="medium circle-arrow material-icons">arrow_forward</i></a></div>';
-                events = events + '<div class="overlayText">';
-                events = events + '<div class="text"><b>' + value.eventName + '</b></div>';
-                events = events + '</div>';
-                events = events + '</div>';
-                if (counter == 2) events = events + '</div>';
-                counter++;
-                counter = counter % 3;
-            }
-        });
-        $('#events').html(events);
-
+    if (slider1.hasClass('initialized')){
+        slider1.removeClass('initialized');
     }
+
+    if (slider2.hasClass('initialized')){
+        slider2.removeClass('initialized');
+    }
+
+    //just reinit the carousel
+    slider1.carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent1").attr("href", $(ele).attr("href"));
+        }
+    });
+    slider2.carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent2").attr("href", $(ele).attr("href"));
+        }
+    });
+
+}
+
+function displayEvents() {
+    var events = '';
+    events = events + '<div class="carousel-fixed-item center"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
+    events = events + '<div class="carousel" id="mobileSlider">';
+    events = events + '</div>';
+
+    $('#events').html(events);
+
+    var slider = $('#mobileSlider');
+
+    slider.carousel();
+
+    $.each(jsonEvents, function(key, value) {
+        slider.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
+        
+    });
+
+    if (slider.hasClass('initialized')){
+        slider.removeClass('initialized');
+    }
+
+   //just reinit the carousel
+    slider.carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent").attr("href", $(ele).attr("href"));
+        }
+    });
 }
 
 var video = document.getElementById("teaserVideo");
@@ -551,8 +556,6 @@ if(video != null && $(window).width() > 800){
 
 
 var jsonEvents = {{(events | json_encode | raw)}};
-displayEvents('');
-$('#All').css('color', '#00bebe');
 
 if ($(window).width() < 800) {
 
@@ -573,8 +576,13 @@ if ($(window).width() < 800) {
     aboutus = aboutus + '</ul>';
 
     $('#aboutUs').html(aboutus);
-
+    $('.desktopSlider').css('display', 'none');
+    displayEvents();
+    $('.fixed-action-btn').css('display', 'none');
+}else{
+    initializeEventSlider();
 }
+
 
 </script> 
 {% endblock %}

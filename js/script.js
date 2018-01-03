@@ -4,7 +4,7 @@ if ($(window).width() < 800){
     menu = menu + '<img src="/images/logo.jpg" height="50" width="50" style="margin-top: 20px;border-radius:50%;">';
     menu = menu + '</div></li>';
     menu = menu + '<li><a href="/#" style="color:#00bebe;">Home</a></li>';
-    menu = menu + '<li><a href="/#eventsBtn" style="color:#00bebe;">Events</a></li>';
+    menu = menu + '<li><a href="/events" style="color:#00bebe;">Events</a></li>';
     menu = menu + '<li><a href="/#aboutUs" style="color:#00bebe;">About Us</a></li>';
     menu = menu + '<li><a href="/#ourTeam" style="color:#00bebe;">Our Team</a></li>';
     menu = menu + '<li><a href="/#footer" style="color:#00bebe;">Contact</a></li>';
@@ -15,6 +15,8 @@ if ($(window).width() < 800){
     menu = menu + '<a href="#" data-activates="slide-out" class="btn btn-floating cyan pulse button-collapse"><i class="material-icons">arrow_forward</i></a>';
 
     $('#header').html(menu);
+    $('#header').css('box-shawdow', 'none');
+    $('#header').css('position', 'static');
 
     $('.button-collapse').sideNav({
         menuWidth: 230, // Default is 300
@@ -22,6 +24,46 @@ if ($(window).width() < 800){
         draggable: true, // Choose whether you can drag to open on touch screens,
         onOpen: function(el) {}
     });
+}else{
+    // Hide Header on on scroll down
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 5;
+    var navbarHeight = $('#header').outerHeight();
+
+    $(window).scroll(function(event){
+        didScroll = true;
+    });
+
+    setInterval(function() {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        console.log("hasScrolled");
+        var st = $(this).scrollTop();
+        
+        // Make sure they scroll more than delta
+        if(Math.abs(lastScrollTop - st) <= delta)
+            return;
+        
+        // If they scrolled down and are past the navbar, add class .nav-up.
+        // This is necessary so you never see what is "behind" the navbar.
+        if (st > lastScrollTop && st > navbarHeight){
+            // Scroll Down
+            $('#header').removeClass('animated flipInX nav-down').addClass('animated flipOutX');
+        } else {
+            // Scroll Up
+            if(st + $(window).height() < $(document).height()) {
+                $('#header').removeClass('animated flipOutX').addClass('nav-down animated flipInX');
+            }
+        }
+        
+        lastScrollTop = st;
+    }
 }
 
 function validateText(element)

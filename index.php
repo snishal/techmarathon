@@ -117,18 +117,29 @@ if (empty($uri[1])) {
 
 } else if ($uri[1] == 'events') {
 
-	$eventName = urldecode($uri[2]);
-
-	$event = new Event;
-
-	$title = $event->eventExists($eventName);
-
-	if ($title) {
+	if (empty($uri[2])) {
 		$pageFound = true;
-		echo $twig->render('web/event.html', array('title' => $eventName, 'tagline' => $event->getEventTagline($eventName), 'description' => file_get_contents($event->getEventDescription($eventName)), 'image' => $event->getEventImage($eventName)));
+		$event = new Event;
+		$events = $event->getEvents();
+		foreach ($events as $key => $event) {
+			$events[$key]["eventDescription"] = file_get_contents($event["eventDescription"]);
+		}
+		echo $twig->render('web/events.html', array('title' => 'Events', 'events' => $events));
+
+	} else {
+		$eventName = urldecode($uri[2]);
+
+		$event = new Event;
+
+		$title = $event->eventExists($eventName);
+
+		if ($title) {
+			$pageFound = true;
+			echo $twig->render('web/event.html', array('title' => $eventName, 'tagline' => $event->getEventTagline($eventName), 'description' => file_get_contents($event->getEventDescription($eventName)), 'image' => $event->getEventImage($eventName)));
+		}
 	}
 
-}elseif ($uri[1] == 'schedule.pdf') {
+} elseif ($uri[1] == 'schedule.pdf') {
 	$errorMsg = "Schedule will be out Soon";
 } else if ($uri[1] == 'adminPanel') {
 
