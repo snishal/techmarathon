@@ -83,7 +83,7 @@
                     </div>
                     <div class="row discussion">
                         <div class="row col m12 s12 animated jello">
-                            <a href="/register" class="col s12 m4 waves-effect waves-light btn linkBtn"><i class="material-icons left">apps</i>Register</a>
+                            <a href="/register" class="col s12 m4 waves-effect waves-light btn linkBtn" style="margin-bottom: 5%;"><i class="material-icons left">apps</i>Register</a>
                             <a href="https://www.facebook.com/events/145622169420771/?active_tab=discussion" class="col s12 m8 offset-m1 waves-effect waves-light btn" target="blank"><i class="material-icons left">chat</i>Discussion</a>
                         </div>
                     </div>
@@ -515,9 +515,10 @@ function initializeEventSlider(){
 
 function displayEvents() {
     var events = '';
-    events = events + '<div class="carousel-fixed-item center"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
     events = events + '<div class="carousel" id="mobileSlider">';
     events = events + '</div>';
+    events = events + '<div class="carousel-fixed-item center" style="margin-bottom:5%;"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
+    
 
     $('#events').html(events);
 

@@ -17,6 +17,8 @@ if ($(window).width() < 800){
     $('#header').html(menu);
     $('#header').css('box-shawdow', 'none');
     $('#header').css('position', 'static');
+    $('#header').css('text-align', 'left');
+    $('#slide-out').css('text-align', 'center');
 
     $('.button-collapse').sideNav({
         menuWidth: 230, // Default is 300
@@ -54,11 +56,11 @@ if ($(window).width() < 800){
         // This is necessary so you never see what is "behind" the navbar.
         if (st > lastScrollTop && st > navbarHeight){
             // Scroll Down
-            $('#header').removeClass('animated flipInX nav-down').addClass('animated flipOutX');
+            $('#header').removeClass('animated flipInX nav-down').addClass('animated hinge');
         } else {
             // Scroll Up
             if(st + $(window).height() < $(document).height()) {
-                $('#header').removeClass('animated flipOutX').addClass('nav-down animated flipInX');
+                $('#header').removeClass('animated hinge').addClass('nav-down animated flipInX');
             }
         }
         
