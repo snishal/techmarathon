@@ -24,14 +24,11 @@ $script = '<script>
         		$("#intro").html(video);
 
            </script>';
-
-if ($_SESSION['id'] == 2) {
-	$script = '';
-}
-
 if ($_SESSION['id'] == 1) {
 	updateCount();
 	$_SESSION['id'] = 2;
+} else {
+	$script = '';
 }
 
 $loader = new Twig_Loader_Filesystem('resources');
@@ -95,7 +92,7 @@ if (empty($uri[1])) {
 
 	foreach ($events as $event) {
 
-		if ($event["eventName"] != "Lan Gaming") {
+		if ($event["eventName"] != "Lan Gaming" && $event["eventName"] != "Turncoat") {
 
 			if ($event["eventType"] == "Technical") {
 				$form->addItem('checkbox', 'event[]', 'Technical', array('id' => $event["eventName"], 'label' => $event["eventName"], 'value' => $event["eventName"]));
@@ -139,8 +136,11 @@ if (empty($uri[1])) {
 		}
 	}
 
-} elseif ($uri[1] == 'schedule.pdf') {
+} else if ($uri[1] == 'schedule.pdf') {
 	$errorMsg = "Schedule will be out Soon";
+} else if ($uri[1] == 'gallery') {
+	$pageFound = true;
+	echo $twig->render('web/gallery.html');
 } else if ($uri[1] == 'adminPanel') {
 
 	if (!auth_user()) {

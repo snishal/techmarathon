@@ -2,26 +2,6 @@
 
     {%block stylesheets%}
 	    <style type="text/css">
-            *{
-                color: white;
-            }
-            #cover{
-                background: url('/images/wall.jpg');
-                z-index: 0;
-            }
-            #ashes{
-                position: absolute;
-                background: url('/images/ashes.png');
-                height: 500px;
-                width: 90%;
-                top: 200px;
-                z-index: 1;
-            }
-            .description{
-                padding-left: 5%;
-                margin-bottom: 5%;
-                font-size: 20px;
-            }
             .eventImage{
                 width: 250px;
             }
@@ -29,19 +9,13 @@
                 .eventImage{
                     width: 125px;
                 }
-                .banner-text{
-                    font-size: 18px;
-                }
-                .description{
-                    font-size: 15px;
-                }
             }
         </style>
     {%endblock%}
     {% block video %}{%endblock%}
     {%block main%}
         <div class="row col m12 s12 top">
-            <div class="col m7 s12">
+            <div class="col m7 s12 white-text">
                 <h2 class="animated zoomIn" style="color: #00bebe;">{{title}}</h2>
                 {{tagline}}
 

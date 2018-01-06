@@ -10,7 +10,7 @@ if ($(window).width() < 800){
     menu = menu + '<li><a href="/#footer" style="color:#00bebe;">Contact</a></li>';
     menu = menu + '<li><a href="/register" style="color:#00bebe;">Register</a></li>';
     menu = menu + '<li><a href="/sponsors" style="color:#00bebe;">Sponsors</a></li>';
-    menu = menu + '<li><a href="schedule.pdf" style="color:#00bebe;">Schedule</a></li>';
+    menu = menu + '<li><a href="/gallery" style="color:#00bebe;">Gallery</a></li>';
     menu = menu + '</ul>';
     menu = menu + '<a href="#" data-activates="slide-out" class="btn btn-floating cyan pulse button-collapse"><i class="material-icons">arrow_forward</i></a>';
 
@@ -45,7 +45,6 @@ if ($(window).width() < 800){
     }, 250);
 
     function hasScrolled() {
-        console.log("hasScrolled");
         var st = $(this).scrollTop();
         
         // Make sure they scroll more than delta

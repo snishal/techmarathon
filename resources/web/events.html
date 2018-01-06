@@ -9,7 +9,7 @@
                 margin-bottom: 5%;
             }
             .card-content, .card-reveal{
-                color: #eeeeee;
+                color: white;
             }
         </style>
     {%endblock%}
@@ -27,12 +27,6 @@
     {%block contactUS%}{%endblock%}
     {% block scripts %}
 		<script type="text/javascript">
-			if($(window).width() > 800){
-                particlesJS.load('particles-js', '/js/particles.json', function() {
-                    console.log('callback - particles.js config loaded');
-                });
-            }
-
             var jsonEvents = {{(events | json_encode | raw)}};
             
             function displayEvents(id) {
