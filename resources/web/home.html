@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" href="/css/home.css" /> 
+    <link rel="stylesheet" href="/css/animate.css" />
     {% block stylesheets %}
-        <link rel="stylesheet" href="/css/animate.css" />
     {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -23,79 +23,79 @@
 
     {% block video %}
     <div id="intro">
-        
     </div>
     {%endblock%}
     <div id='main'>
+        {% block header%}
+        <div id="header" class="nav-down">
+            <div class="row navigation-bar">
+                <div class="row col s5 nav-text">
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/">Home</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/events">Events</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/#aboutUs">About us</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></div>
+                </div>
+                <div class="col s2">
+                    <img src="/images/logo.jpg" id='nav-logo'/>
+                </div>
+                <div class="row col s5 nav-text">
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/#footer">Contact</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/register">Register</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></div>
+                    <div class="square col s3"><a class="nav-link before after a_nav" href="/gallery">Gallery</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="fixed-action-btn vertical">
+            <a href="/" class="btn-floating btn-large cyan accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Home">
+              <i class="large material-icons">home</i>
+            </a>
+            <ul>
+                <li><a href="/gallery" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Gallery"><i class="material-icons">image</i></a></li>
+                <li><a href="/sponsors" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Sponsors"><i class="material-icons">wc</i></a></li>
+                <li><a href="/register" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Register"><i class="material-icons">whatshot</i></a></li>
+                <li><a href="/#footer" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Contact"><i class="material-icons">contact_mail</i></a></li>
+                <li><a href="/#ourTeam" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Our Team"><i class="material-icons">group</i></a></li>
+                <li><a href="/#aboutUs" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="About Us"><i class="material-icons">info</i></a></li>
+                <li><a href="/events" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Events"><i class="material-icons">view_carousel</i></a></li>  
+            </ul>
+        </div>
+        {% endblock %}    
         <div id="canvas-wrap">
             <div id="particles-js"></div>
-            {% block header%}
-            <header class="header" id="header">
-                <div class="row navigation-bar">
-                    <div class="row col s5 nav-text">
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/">Home</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#eventsBtn">Events</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#aboutUs">About us</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#ourTeam">Our Team</a></div>
-                    </div>
-                    <div class="col s2">
-                        <img src="/images/logo.jpg" id='nav-logo'></img>
-                    </div>
-                    <div class="row col s5 nav-text">
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/#footer">Contact</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/register">Register</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="/sponsors">Sponsors</a></div>
-                        <div class="square col s3"><a class="nav-link before after a_nav" href="schedule.pdf" target="blank">Schedule</a></div>
-                    </div>
-                </div>
-                <div class="fixed-action-btn vertical">
-                    <a href="/" class="btn-floating btn-large cyan accent-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Home">
-                      <i class="large material-icons">home</i>
-                    </a>
-                    <ul>
-                        <li><a href="schedule.pdf" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Schedule"><i class="material-icons">schedule</i></a></li>
-                        <li><a href="/sponsors" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Sponsors"><i class="material-icons">wc</i></a></li>
-                        <li><a href="/register" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Register"><i class="material-icons">whatshot</i></a></li>
-                        <li><a href="/#footer" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Contact"><i class="material-icons">contact_mail</i></a></li>
-                        <li><a href="/#ourTeam" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Our Team"><i class="material-icons">group</i></a></li>
-                        <li><a href="/#aboutUs" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="About Us"><i class="material-icons">info</i></a></li>
-                        <li><a href="/#eventsBtn" class="btn-floating grey darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Events"><i class="material-icons">view_carousel</i></a></li>  
-                    </ul>
-                </div>
-            </header>
-            {% endblock %}
-            <!-- Sponsors and registration -->
             {% block main %}{% block banner %}
-            <div class="banner">
-                <div class="row banner-text">
-                    <div class="col s12 m4 offset-m4 center">
-                        <h2 class="animated zoomIn"> Tech Marathon </h2>
-                        <h2 class="animated zoomIn" id="sm"><small>2018</small> </h2>
+            <div class="row banner top">
+                <div class="col m3 desktopSlider">
+                    <div class="carousel" id="technicalEventsSlider"></div>
+                    <div class="carousel-fixed-item center"><a id="viewEvent1" href="" class="btn waves-effect red lighten-1 pulse">Technical Events<i class="material-icons left">search</i><a></div>
+                </div>
+                <div class="col m6">
+                    <div class="row banner-text">
+                        <div class="col s12 m12 center">
+                            <h2 class="animated zoomIn"> Tech Marathon </h2>
+                            <h2 class="animated zoomIn" id="sm"><small>2018</small> </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 center animated zoomIn" id="tagline">
+                            Delve into the War of Dark World
+                        </div>
+                    </div>
+                    <div class="row discussion">
+                        <div class="row col m12 s12 animated jello">
+                            <a href="/register" class="col s12 m4 waves-effect waves-light btn linkBtn" style="margin-bottom: 5%;"><i class="material-icons left">apps</i>Register</a>
+                            <a href="schedule.pdf" class="col s12 m8 offset-m1 waves-effect waves-light btn" target="blank"><i class="material-icons left">schedule</i>Schedule</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12 m8 offset-m2 center animated zoomIn" id="tagline">
-                        Delve into the War of Dark World
-                    </div>
-                </div>
-                <div class="row discussion">
-                    <div class="row col m6 s12 offset-m3 animated jello">
-                        <a href="/register" class="col s12 m4 waves-effect waves-light btn linkBtn"><i class="material-icons left">apps</i>Register</a>
-                        <a href="https://www.facebook.com/events/145622169420771/?active_tab=discussion" class="col s12 m8 offset-m1 waves-effect waves-light btn" target="blank"><i class="material-icons left">chat</i>Discussion</a>
-                    </div>
+                <div class="col m3 desktopSlider">
+                    <div class="carousel" id="nonTechnicalEventsSlider"></div>
+                    <div class="carousel-fixed-item center"><a id="viewEvent2" href="" class="btn waves-effect red lighten-1 pulse">Non-Technical Events<i class="material-icons left">search</i><a></div>
                 </div>
             </div>
             {% endblock %}
-            <!-- Sponsors block ends here -->
-            {% block events %}
-            <div class="container center" id="eventsBtn">
-                <a id="All" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">All</a>
-                <a id="Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Technical</a>
-                <a id="Non-Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Non-Technical</a>
-            </div>
-            <div class="container" id="events">
-            </div>
-            {% endblock %} {% block aboutus %}
+            <div id="events"></div>
+            {% block aboutus %}
             <div id="aboutUs">
                 <a class="aboutus_heading">ABOUT US</a>
                 <br>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="col s12 m6 offset-m1">
                         <h3>TECH MARATHON</h3>
-                        <p>Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2018. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.
+                        <p>Tech-Marathon is an annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2018. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.
                         </p>
                     </div>
                 </div>
@@ -122,229 +122,229 @@
             </div>
             {% endblock %} 
             {% block ourteam %}
-            <a class="aboutus_heading" id="ourTeam">OUR TEAM</a>
-            <div id="teamText">These are our Team Bearers who have been working day and night to make this event successful one.</div>
+            <div id="ourTeam">
+                <a class="aboutus_heading">OUR TEAM</a>
+                <div id="teamText"><i class="large material-icons red-text">settings_voice laptop_chromebook theaters android http vpn_key settings_remote dns</i></div>
+                <hr><br><br> 
+                <div class="row">
 
-            <br> 
-            <br> 
-            <div class="row">
+                    <div class="col-2">
+                    </div>   
+                    <div class="col-2"> 
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="President"><i class="material-icons">person</i> KRISHNA AGARWAL</a>  
+                    </div>
+                
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/mansi.rohilla.5?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Vice-President"><i class="material-icons">person</i> MANSI ROHILLA</a>
+                     </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Secretary"><i class="material-icons">person</i> TARUN SHARMA</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Joint-Secretary"><i class="material-icons">person</i> RISHABH SINGH</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">
+                    </div>   
+                </div>
+                <br/>
+                <div class="row">
 
-                <div class="col-2">
-                </div>   
-                <div class="col-2"> 
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="President"><i class="material-icons">person</i> KRISHNA AGGARWAL</a>  
+                    <div class="col-1">
+                    </div>
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100008077091982&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Algowls' event head"><i class="material-icons">person</i> ROHIT SINGH</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100007398468921&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="AppCombat's event head"><i class="material-icons">person</i> YASHDEEP BACHHAS</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/disha.raj.3?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="AppCombat's event head"><i class="material-icons">person</i> DISHA RAJ</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/chaturjedi?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="C-benders' event head"><i class="material-icons">person</i> SAMARTH CHATURVEDI</a> 
+                    </div>
+                    </div>   
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/deeps.m.6?hc_ref=ARTDIx8_boiuqBixYCf4fBnRic8i34j3eFnSK9-ECuI0fh6Ycd_P61589RBjwUwI2Lk" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Battle of bytes' event head"><i class="material-icons">person</i> DEEPIKA KABRA</a>
+                      </div>
+                    </div>   
+                    <div class="col-1">
+                    </div>   
                 </div>
-            
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/mansi.rohilla.5?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Vice-President"><i class="material-icons">person</i> MANSI ROHILLA</a>
-                 </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Secretary"><i class="material-icons">person</i> Tarun Sharma</a>
-                </div>
-                </div>   
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Joint-Secretary"><i class="material-icons">person</i> RISHABH SINGH</a>
-                </div>
-                </div>   
-                <div class="col-2">
-                </div>   
-            </div>
-            <br/>
-            <div class="row">
+                <div class="row">
 
-                <div class="col-1">
+                    <div class="col-1">
+                    </div>   
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100004411992517&fref=ts&ref=br_tf" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="SQLised's event head"><i class="material-icons">person</i> AYUSH KUMAR SINGH</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/bhavana.sinha.56" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="SQLised's event head"><i class="material-icons">person</i> BHAVANA SINHA</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100001546618988&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Webgators' event head"><i class="material-icons">person</i> RASHAD KHAN</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100009331016219&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Webgators' event head"><i class="material-icons">person</i> ASHUTOSH TRIVEDI</a>
+                    </div>
+                    </div>
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/33poo" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="JunkyardWars' event head"><i class="material-icons">person</i> POOJA KHARB</a>
+                    </div>
+                    </div>   
+                    <div class="col-1">
+                    </div>   
                 </div>
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100008077091982&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Algowls' event head"><i class="material-icons">person</i> ROHIT SINGH</a>
-                </div>
-                </div>   
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100005730646086&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Algowls' event head"><i class="material-icons">person</i> SHIVANI VERMA</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/disha.raj.3?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="AppCombat's event head"><i class="material-icons">person</i> DISHA RAJ</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/chaturjedi?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Battle Of Bytes'/C-benders' event head"><i class="material-icons">person</i> SAMARTH CHATURVEDI</a> 
-                </div>
-                </div>   
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/deeps.m.6?hc_ref=ARTDIx8_boiuqBixYCf4fBnRic8i34j3eFnSK9-ECuI0fh6Ycd_P61589RBjwUwI2Lk" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Battle of bytes'/C-benders' event head"><i class="material-icons">person</i> DEEPIKA KABRA</a>
-                  </div>
-                </div>   
-                <div class="col-1">
-                </div>   
-            </div>
-            <div class="row">
+                
 
-                <div class="col-1">
-                </div>   
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100004411992517&fref=ts&ref=br_tf" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="SQLised's event head"><i class="material-icons">person</i> AYUSH KUMAR SINGH</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/bhavana.sinha.56" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="SQLised's event head"><i class="material-icons">person</i> BHAVANA SINHA</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100001546618988&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Webgators' event head"><i class="material-icons">person</i> RASHAD KHAN</a>
-                </div>
-                </div>   
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100009331016219&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Webgators' event head"><i class="material-icons">person</i> ASHUTOSH TRIVEDI</a>
-                </div>
-                </div>
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/33poo" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="JunkyardWars' event head"><i class="material-icons">person</i> POOJA KHARB</a>
-                </div>
-                </div>   
-                <div class="col-1">
-                </div>   
-            </div>
-            
+                <div class="row">
 
-            <div class="row">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="#" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Specwars' event head"><i class="material-icons">person</i> PRIYA JOSHI</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100002497376484&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Specwars' event head"><i class="material-icons">person</i> SHIKHA LAL</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100017439634784&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="SnakeJam's event head"><i class="material-icons">person</i> DIPTI MUNJAL</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100002091232855&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TreasureHunt's event head"><i class="material-icons">person</i> PALAK ARORA</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100004357239288&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TreasureHunt's event head"><i class="material-icons">person</i> MAHIMA GUPTA</a>
+                    </div>
+                    </div>   
+                    <div class="col-1">
+                    </div>   
+                </div>
+                <div class="row">
 
-                <div class="col-1">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100009807400614&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Reel Rundown's event head"><i class="material-icons">person</i> GOPIKA ARORA</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100013879547610&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Reel Rundown's event head"><i class="material-icons">person</i> PRITI KUMARI</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="#" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TvFandom's event head"><i class="material-icons">person</i> RICHA SHARMA</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100010833258651&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TvFandom's event head"><i class="material-icons">person</i> ADITI PARASHAR</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100002003049312&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Conundrum's event head "><i class="material-icons">person</i> NAINCY CHITTRANSH</a>
+                    </div>
+                    </div>   
+                    <div class="col-1">
+                    </div>   
                 </div>
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="#" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Specwars' event head"><i class="material-icons">person</i> PRIYA JOSHI</a>
-                </div>
-                </div>   
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100002497376484&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Specwars' event head"><i class="material-icons">person</i> SHIKHA LAL</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100017439634784&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="SnakeJam's event head"><i class="material-icons">person</i> DIPTI MUNJAL</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100002091232855&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TreasureHunt's event head"><i class="material-icons">person</i> PALAK ARORA</a>
-                </div>
-                </div>   
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100004357239288&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TreasureHunt's event head"><i class="material-icons">person</i> MAHIMA GUPTA</a>
-                </div>
-                </div>   
-                <div class="col-1">
-                </div>   
-            </div>
-            <div class="row">
+                <div class="row">
 
-                <div class="col-1">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100003030016093&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="LAN gaming's event head"><i class="material-icons">person</i> VINAY SHARMA</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/aayushiagarwal999?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="FunGames' organizer"><i class="material-icons">person</i> AYUSHI AGARWAL</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100002020941900&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Promotion head"><i class="material-icons">person</i> PUNEET BAGHEL</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100001279100611&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Sponsorship head and Conundrum's event head"><i class="material-icons">person</i> ASHNA WADHAWAN</a> 
+                    </div>
+                    </div>   
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100009317771330&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member"><i class="material-icons">person</i> MOHAMMAD MONISH</a>
+                    </div>
+                    </div>   
+                    <div class="col-1">
+                    </div>   
                 </div>
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100009807400614&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="RollCameraAction's/AdMad's event head"><i class="material-icons">person</i> GOPIKA AROAR</a>
-                </div>
-                </div>   
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100013879547610&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="RollCameraAction's/AdMad's event head"><i class="material-icons">person</i> PRITI KUMARI</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="#" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TvFandom's event head"><i class="material-icons">person</i> RICHA SHARMA</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100010833258651&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TvFandom's event head"><i class="material-icons">person</i> ADITI PARASHAR</a>
-                </div>
-                </div>   
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100002003049312&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Conundrum's event head "><i class="material-icons">person</i> NAINCY CHITTRANSH</a>
-                </div>
-                </div>   
-                <div class="col-1">
-                </div>   
-            </div>
-            <div class="row">
+                <br>
+                <div class="row">
 
-                <div class="col-1">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100001274809631&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="WebAdmin"><i class="material-icons">person</i> SAHIL NISHAL</a>
+                    </div>
+                    </div>   
+                    <div class="col-2">    
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100007398468921&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member"><i class="material-icons">person</i> YASHDEEP BACHHAS</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100000888857456&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member"><i class="material-icons">person</i> ARYAN HANS</a>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                    <div class="chip col-11">
+                        <a href="https://www.facebook.com/profile.php?id=100002433060433&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="WebAdmin and JunkyardWars' event head"><i class="material-icons">person</i> JASSA SINGH</a>
+                    </div>
+                    </div>      
+                    <div class="col-2">
+                    </div>   
                 </div>
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100003030016093&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="LAN gaming's event head"><i class="material-icons">person</i> VINAY SHARMA</a>
-                </div>
-                </div>   
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/aayushiagarwal999?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="FunGames' organizer"><i class="material-icons">person</i> AYUSHI AGARWAL</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100002020941900&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Promotion head"><i class="material-icons">person</i> PUNEET BAGHEL</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100001279100611&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Sponsorship head"><i class="material-icons">person</i> ASHNA WADHAWAN</a> 
-                </div>
-                </div>   
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100009317771330&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member"><i class="material-icons">person</i> MOHAMMED MONISH</a>
-                </div>
-                </div>   
-                <div class="col-1">
-                </div>   
-            </div>
-            <br>
-            <div class="row">
-
-                <div class="col-2">
-                </div>
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100001274809631&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="WebAdmin"><i class="material-icons">person</i> SAHIL NISHAL</a>
-                </div>
-                </div>   
-                <div class="col-2">    
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100007398468921&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member and AppCombat's event head"><i class="material-icons">person</i> YASHDEEP BACHHAS</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100000888857456&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member"><i class="material-icons">person</i> ARYAN HANS</a>
-                </div>
-                </div>
-                <div class="col-2">
-                <div class="chip col-11">
-                    <a href="https://www.facebook.com/profile.php?id=100002433060433&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="WebAdmin and JunkyardWars' event head"><i class="material-icons">person</i> JASSA SINGH</a>
-                </div>
-                </div>      
-                <div class="col-2">
-                </div>   
             </div>
             <br> {% endblock %}                
              {% endblock %} {% block contactUS %}
@@ -378,14 +378,14 @@
     {% block footer%}
             <footer class="row footer" style="margin-top: 5%;">
                 <div class="col-4 footer-left">
-                    <img src="/images/logo.jpg" class='footer-logo'></img>
+                    <img src="/images/logo.jpg" class='footer-logo'/>
                     <div class="footer-links">
                         <a class="foot-link" href="/">Home </a>|
-                        <a class="foot-link" href="#eventsBtn">Events </a>|
-                        <a class="foot-link" href="#ourTeam">Our Team </a>|
+                        <a class="foot-link" href="/events">Events </a>|
+                        <a class="foot-link" href="/#ourTeam">Our Team </a>|
                         <a class="foot-link" href="/register">Register </a>|
                         <a class="foot-link" href="/sponsors">Sponsors </a>|
-                        <a class="foot-link" href="schedule.pdf">Schedule</a>
+                        <a class="foot-link" href="/gallery">Gallery</a>
                     </div>
                     <div class="footer-college-name">Deen Dayal Upadhyaya College</div>
                 </div>
@@ -407,13 +407,13 @@
                     <div class="footer-about">
                         <h4>About this Event</h4>
                         <!--<strike>   ye meri styling me kaam aega  -->
-                        <font color="white">Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.</font>
+                        <font color="white">Tech-Marathon is an annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.</font>
                     </div>
                     <br/>
                     <div class="footer-icons">
-                        <a class="foot-link" href="https://www.facebook.com/techmarathon"><i class="fa fa-facebook fa-2x"></i></a>
-                        <a class="foot-link" href="https://www.instagram.com/tm.dduc"><i class="fa fa-instagram fa-2x"></i></a>
-                        <a class="foot-link" href="https://twitter.com/dduc_tm"><i class="fa fa-twitter fa-2x"></i></a>
+                        <a class="foot-link" target="blank" href="https://www.facebook.com/techmarathon"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a class="foot-link" target="blank" href="https://www.instagram.com/tm.dduc"><i class="fa fa-instagram fa-2x"></i></a>
+                        <a class="foot-link" target="blank" href="https://twitter.com/dduc_tm"><i class="fa fa-twitter fa-2x"></i></a>
                     </div>
                 </div>
             </footer>
@@ -439,15 +439,17 @@
                 position: myLatlng,
                 title:"Deen Dayal Upadhyaya College\nSector-3, Dwarka\nNew Delhi-110 078"
         });
-            // To add the marker to the map, call setMap();
-            marker.setMap(map);
-        }
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+    }
+    function toggleHeader(){
+        $('#header').css('display', 'none');
+    }
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsq2q-OC-a1-88kJp1kZ3ouL52H0iK7_o&callback=initMap"></script>
 {% block scripts %}
-
 {{ script|raw }}  
-
 
 <script type="text/javascript">
 function validateForm(form){
@@ -472,69 +474,71 @@ function skipVideo() {
     }
 }
 
-function displayEvents(id) {
-    $('#All').css('color', 'white');
-    $('#Technical').css('color', 'white');
-    $('#Non-Technical').css('color', 'white');
+function initializeEventSlider(){
 
-    if (id != '') $('#' + id).css('color', '#00bebe');
+    var slider1 = $('#technicalEventsSlider');
+    var slider2 = $('#nonTechnicalEventsSlider');
+    
+    slider1.carousel();
+    slider2.carousel();
 
-    var type = id;
-    var counter = 0;
-    if (id == 'All') type = '';
+    $.each(jsonEvents, function(key, value) {
+        if(value.eventType == 'Technical')
+            slider1.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
+        else
+            slider2.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
+    });
 
-    var events = '';
-    if ($(window).width() < 800) {
-
-
-        events = events + '<div class="carousel-fixed-item center"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
-        events = events + '<div class="carousel">';
-        events = events + '</div>';
-
-        $('#events').html(events);
-
-
-        var slider = $('.carousel');
-
-        slider.carousel();
-
-        $.each(jsonEvents, function(key, value) {
-            if (type == '' || value.eventType == type) {
-                slider.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
-            }
-        });
-
-        if (slider.hasClass('initialized')){
-            slider.removeClass('initialized');
-        }
-
-       //just reinit the carousel
-        slider.carousel({
-            onCycleTo: function (ele, dragged) {
-                $("#viewEvent").attr("href", $(ele).attr("href"));
-            }
-        });
-
-    }else{
-        $.each(jsonEvents, function(key, value) {
-            if (type == '' || value.eventType == type) {
-                if (counter == 0) events = events + '<div class="row">';
-                events = events + '<div class="pallete">';
-                events = events + '<img src="/' + value.eventImage + '" class="responsive-img imgTile" />';
-                events = events + '<div class="overlayBackground"></div>';
-                events = events + '<div class="overlayIcon"><a href="/events/' + value.eventName + '"><i class="medium circle-arrow material-icons">arrow_forward</i></a></div>';
-                events = events + '<div class="overlayText">';
-                events = events + '<div class="text"><b>' + value.eventName + '</b></div>';
-                events = events + '</div>';
-                events = events + '</div>';
-                if (counter == 2) events = events + '</div>';
-                counter++;
-                counter = counter % 3;
-            }
-        });
-        $('#events').html(events);
-
+    if (slider1.hasClass('initialized')){
+        slider1.removeClass('initialized');
     }
+
+    if (slider2.hasClass('initialized')){
+        slider2.removeClass('initialized');
+    }
+
+    //just reinit the carousel
+    slider1.carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent1").attr("href", $(ele).attr("href"));
+        }
+    });
+    slider2.carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent2").attr("href", $(ele).attr("href"));
+        }
+    });
+
+}
+
+function displayEvents() {
+    var events = '';
+    events = events + '<div class="carousel" id="mobileSlider">';
+    events = events + '</div>';
+    events = events + '<div class="carousel-fixed-item center" style="margin-bottom:5%;"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
+    
+
+    $('#events').html(events);
+
+    var slider = $('#mobileSlider');
+
+    slider.carousel();
+
+    $.each(jsonEvents, function(key, value) {
+        slider.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
+        
+    });
+
+    if (slider.hasClass('initialized')){
+        slider.removeClass('initialized');
+    }
+
+   //just reinit the carousel
+    slider.carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent").attr("href", $(ele).attr("href"));
+        }
+    });
 }
 
 var video = document.getElementById("teaserVideo");
@@ -551,8 +555,6 @@ if(video != null && $(window).width() > 800){
 
 
 var jsonEvents = {{(events | json_encode | raw)}};
-displayEvents('');
-$('#All').css('color', '#00bebe');
 
 if ($(window).width() < 800) {
 
@@ -568,13 +570,18 @@ if ($(window).width() < 800) {
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '<li>';
     aboutus = aboutus + '  <div class="collapsible-header"><i class="material-icons">whatshot</i>Tech Marathon</div>';
-    aboutus = aboutus + '  <div class="collapsible-body"><span>Tech-Marathon is the annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2017. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.</span></div>';
+    aboutus = aboutus + '  <div class="collapsible-body"><span>Tech-Marathon is an annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2017. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.</span></div>';
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '</ul>';
 
     $('#aboutUs').html(aboutus);
-
+    $('.desktopSlider').css('display', 'none');
+    displayEvents();
+    $('.fixed-action-btn').css('display', 'none');
+}else{
+    initializeEventSlider();
 }
+
 
 </script> 
 {% endblock %}

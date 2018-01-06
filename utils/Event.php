@@ -4,15 +4,10 @@ require_once "DB.php";
 
 class Event {
 
-	private $server = "techmarathon.co.in";
-	private $user = "webmaster";
-	private $pass = "iPTnnG1EolksQRrA";
-	private $dbName = "techmarathon";
-
 	public function eventExists($eventName) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "SELECT * from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
@@ -28,7 +23,7 @@ class Event {
 	public function getEvents() {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "SELECT * from events";
 		$result = $db->query($sql);
 		$db->close();
@@ -48,7 +43,7 @@ class Event {
 	public function getEventTagline($eventName) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "SELECT eventTagline from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
@@ -62,7 +57,7 @@ class Event {
 	public function getEventDescription($eventName) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "SELECT eventDescription from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
@@ -76,7 +71,7 @@ class Event {
 	public function getEventImage($eventName) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "SELECT eventImage from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
@@ -90,7 +85,7 @@ class Event {
 	public function getEventType($eventName) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "SELECT eventType from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 		$db->close();
@@ -104,7 +99,7 @@ class Event {
 	public function addEvent($eventName, $eventTagline, $eventDescription, $eventImage, $eventType) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "INSERT into events values('$eventName', '$eventTagline', '$eventDescription', '$eventImage', '$eventType')";
 		$result = $db->query($sql);
 
@@ -123,7 +118,7 @@ class Event {
 	public function deleteEvent($eventName) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 		$sql = "DELETE from events where eventName = '$eventName'";
 		$result = $db->query($sql);
 
@@ -143,7 +138,7 @@ class Event {
 	public function updateEvent($oldEventName, $eventName, $eventTagline, $eventDescription, $eventImage, $eventType) {
 
 		$db = new DB;
-		$db->mk_conn($this->server, $this->user, $this->pass, $this->dbName);
+		$db->mk_conn();
 
 		$tb1 = str_replace(" ", "", $oldEventName);
 		$tb1 = str_replace("-", "", $tb1);

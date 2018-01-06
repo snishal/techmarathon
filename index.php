@@ -24,14 +24,11 @@ $script = '<script>
         		$("#intro").html(video);
 
            </script>';
-
-if ($_SESSION['id'] == 2) {
-	$script = '';
-}
-
 if ($_SESSION['id'] == 1) {
 	updateCount();
 	$_SESSION['id'] = 2;
+} else {
+	$script = '';
 }
 
 $loader = new Twig_Loader_Filesystem('resources');
@@ -95,7 +92,7 @@ if (empty($uri[1])) {
 
 	foreach ($events as $event) {
 
-		if ($event["eventName"] != "Lan Gaming") {
+		if ($event["eventName"] != "Lan Gaming" && $event["eventName"] != "Turncoat") {
 
 			if ($event["eventType"] == "Technical") {
 				$form->addItem('checkbox', 'event[]', 'Technical', array('id' => $event["eventName"], 'label' => $event["eventName"], 'value' => $event["eventName"]));
@@ -117,19 +114,33 @@ if (empty($uri[1])) {
 
 } else if ($uri[1] == 'events') {
 
-	$eventName = urldecode($uri[2]);
-
-	$event = new Event;
-
-	$title = $event->eventExists($eventName);
-
-	if ($title) {
+	if (empty($uri[2])) {
 		$pageFound = true;
-		echo $twig->render('web/event.html', array('title' => $eventName, 'tagline' => $event->getEventTagline($eventName), 'description' => file_get_contents($event->getEventDescription($eventName)), 'image' => $event->getEventImage($eventName)));
+		$event = new Event;
+		$events = $event->getEvents();
+		foreach ($events as $key => $event) {
+			$events[$key]["eventDescription"] = file_get_contents($event["eventDescription"]);
+		}
+		echo $twig->render('web/events.html', array('title' => 'Events', 'events' => $events));
+
+	} else {
+		$eventName = urldecode($uri[2]);
+
+		$event = new Event;
+
+		$title = $event->eventExists($eventName);
+
+		if ($title) {
+			$pageFound = true;
+			echo $twig->render('web/event.html', array('title' => $eventName, 'tagline' => $event->getEventTagline($eventName), 'description' => file_get_contents($event->getEventDescription($eventName)), 'image' => $event->getEventImage($eventName)));
+		}
 	}
 
-}elseif ($uri[1] == 'schedule.pdf') {
+} else if ($uri[1] == 'schedule.pdf') {
 	$errorMsg = "Schedule will be out Soon";
+} else if ($uri[1] == 'gallery') {
+	$pageFound = true;
+	echo $twig->render('web/gallery.html');
 } else if ($uri[1] == 'adminPanel') {
 
 	if (!auth_user()) {

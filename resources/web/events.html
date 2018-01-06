@@ -1,0 +1,73 @@
+{%extends 'web/home.html'%}
+    {%block stylesheets%}
+        <style type="text/css">
+            .card{
+                margin-right: 3%;
+                margin-left: 3% !important;
+            }
+            #eventsBtn{
+                margin-bottom: 5%;
+            }
+            .card-content, .card-reveal{
+                color: white;
+            }
+        </style>
+    {%endblock%}
+    {% block video %}{%endblock%}
+    {%block main%}
+        <div class="container center top" id="eventsBtn">
+            <a id="All" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">All</a>
+            <a id="Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Technical</a>
+            <a id="Non-Technical" class="waves-effect waves-light btn-large grey darken-4" onclick="displayEvents(this.id)">Non-Technical</a>
+        </div>
+        <div id="events">
+        </div>
+    {%endblock%}
+
+    {%block contactUS%}{%endblock%}
+    {% block scripts %}
+		<script type="text/javascript">
+            var jsonEvents = {{(events | json_encode | raw)}};
+            
+            function displayEvents(id) {
+                $('#All').css('color', 'white');
+                $('#Technical').css('color', 'white');
+                $('#Non-Technical').css('color', 'white');
+
+                if (id != '') $('#' + id).css('color', '#00bebe');
+
+                var type = id;
+                var counter = 0;
+                if (id == 'All') type = '';
+
+                var eventCards = '';
+                $.each(jsonEvents, function(key, value) {
+                        if (type == '' || value.eventType == type) {
+                            if (counter == 0) eventCards = eventCards + '<div class="row">';
+                                eventCards = eventCards + '<div class="card col m3 s12 grey darken-3">';
+                                eventCards = eventCards + '<div class="card-image">';
+                                eventCards = eventCards + '<img class="materialboxed" src="/' + value.eventImage + '" data-caption="' + value.eventName  + ' : ' + value.eventTagline  + '">';
+                                eventCards = eventCards + '</div>';
+                                eventCards = eventCards + '<div class="card-content">';
+                                eventCards = eventCards + '<span class="card-title activator white-text">' + value.eventName + '<i class="material-icons right">more_vert</i></span>';
+                                eventCards = eventCards + '<a href="/events/' + value.eventName + '"><i class="material-icons right">arrow_forward</i></a>';
+                                eventCards = eventCards + '<p>' + value.eventTagline + '</p>';
+                                eventCards = eventCards + '</div>';
+                                eventCards = eventCards + '<div class="card-reveal grey darken-2">';
+                                eventCards = eventCards + '<span class="card-title white-text">' + value.eventName + '<i class="material-icons right">close</i></span>';
+                                eventCards = eventCards + '<p>' + value.eventDescription + '</p>';
+                                eventCards = eventCards + '</div>';
+                                eventCards = eventCards + '</div>';
+                                if (counter == 3) eventCards = eventCards + '</div>';
+                                counter++;
+                                counter = counter % 4;
+                        }
+                    });
+                    $('#events').html(eventCards);
+                    $('.materialboxed').materialbox();
+            }
+
+            displayEvents('');
+            $('#All').css('color', '#00bebe');
+		</script>
+	{% endblock %}

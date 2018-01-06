@@ -4,8 +4,14 @@ class DB {
 
 	private $conn;
 
-	function mk_conn($server, $username, $password, $db) {
-		$this->conn = new mysqli($server, $username, $password, $db);
+	function mk_conn() {
+
+		$server = "localhost";
+		$user = "webmaster";
+		$pass = "iPTnnG1EolksQRrA";
+		$dbName = "techmarathon";
+
+		$this->conn = new mysqli($server, $user, $pass, $dbName);
 
 		if ($this->conn->connect_error) {
 

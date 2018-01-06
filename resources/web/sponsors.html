@@ -2,14 +2,14 @@
 
     {%block stylesheets%}
 	      <style type="text/css">
-            .slider{
-                margin-bottom: 7%;
+            .indicators .active{
+              background-color: #00bebe !important;
             }
         </style>
     {%endblock%}
     {% block video %}{%endblock%}
     {%block main%}
-        <div class="slider">
+        <div class="slider top">
             <ul class="slides">
               <li>
                 <img src="/images/cover.jpeg"> <!-- random image -->
@@ -45,15 +45,10 @@
     {%block contactUS%}{%endblock%}
     {% block scripts %}
 		<script type="text/javascript">
-			if($(window).width() > 800){
-                particlesJS.load('particles-js', '/js/particles.json', function() {
-                    console.log('callback - particles.js config loaded');
-                });
-            }
-            $(document).ready(function(){
-                $('.slider').slider({
-                    interval: 3000
-                });
-            });
+      $(document).ready(function(){
+          $('.slider').slider({
+              interval: 3000
+          });
+      });
 		</script>
 	{% endblock %}

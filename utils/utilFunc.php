@@ -9,12 +9,8 @@ function filter_data($data) {
 
 function updateCount() {
 
-	$server = "techmarathon.co.in";
-	$user = "webmaster";
-	$pass = "iPTnnG1EolksQRrA";
-	$dbName = "techmarathon";
 	$db = new DB;
-	$db->mk_conn($server, $user, $pass, $dbName);
+	$db->mk_conn();
 	$sql1 = "update counter set ViewCount = ViewCount+1 where ViewCount = ViewCount";
 	$res = $db->query($sql1);
 	$sql2 = "Select ViewCount from counter";
@@ -25,12 +21,8 @@ function updateCount() {
 
 function getCount() {
 
-	$server = "techmarathon.co.in";
-	$user = "webmaster";
-	$pass = "iPTnnG1EolksQRrA";
-	$dbName = "techmarathon";
 	$db = new DB;
-	$db->mk_conn($server, $user, $pass, $dbName);
+	$db->mk_conn();
 	$sql = "SELECT ViewCount from counter";
 	$result = $db->query($sql);
 	$db->close();
