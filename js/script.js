@@ -12,7 +12,7 @@ if ($(window).width() < 800){
     menu = menu + '<li><a href="/sponsors" style="color:#00bebe;">Sponsors</a></li>';
     menu = menu + '<li><a href="/gallery" style="color:#00bebe;">Gallery</a></li>';
     menu = menu + '</ul>';
-    menu = menu + '<a href="#" data-activates="slide-out" class="btn btn-floating cyan pulse button-collapse"><i class="material-icons">arrow_forward</i></a>';
+    menu = menu + '<a href="#" data-activates="slide-out" class="btn-floating cyan pulse button-collapse"><i class="material-icons">arrow_forward</i></a>';
 
     $('#header').html(menu);
     $('#header').css('box-shawdow', 'none');
@@ -55,11 +55,11 @@ if ($(window).width() < 800){
         // This is necessary so you never see what is "behind" the navbar.
         if (st > lastScrollTop && st > navbarHeight){
             // Scroll Down
-            $('#header').removeClass('animated flipInX nav-down').addClass('animated hinge');
+            $('#header').removeClass('animated flipInX nav-down').addClass('animated flipOutX');
         } else {
             // Scroll Up
             if(st + $(window).height() < $(document).height()) {
-                $('#header').removeClass('animated hinge').addClass('nav-down animated flipInX');
+                $('#header').removeClass('animated flipOutX').addClass('nav-down animated flipInX');
             }
         }
         

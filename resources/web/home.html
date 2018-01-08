@@ -66,8 +66,14 @@
             {% block main %}{% block banner %}
             <div class="row banner top">
                 <div class="col m3 desktopSlider">
-                    <div class="carousel" id="technicalEventsSlider"></div>
-                    <div class="carousel-fixed-item center"><a id="viewEvent1" href="" class="btn waves-effect red lighten-1 pulse">Technical Events<i class="material-icons left">search</i><a></div>
+                    <div class="carousel" id="technicalEventsSlider">
+                        {% for event in events %}
+                            {% if event['eventType'] == 'Technical' %}
+                                <a class="carousel-item" id = "{{event['eventName']}}" href="/events/{{event['eventName']}}" ><img src="/{{event['eventImage']|split('.')[0]}}_low.jpg"></a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-fixed-item center"><a id="viewEvent1" href="" class="btn waves-effect red lighten-1 pulse"><a></div>
                 </div>
                 <div class="col m6">
                     <div class="row banner-text">
@@ -89,8 +95,14 @@
                     </div>
                 </div>
                 <div class="col m3 desktopSlider">
-                    <div class="carousel" id="nonTechnicalEventsSlider"></div>
-                    <div class="carousel-fixed-item center"><a id="viewEvent2" href="" class="btn waves-effect red lighten-1 pulse">Non-Technical Events<i class="material-icons left">search</i><a></div>
+                    <div class="carousel" id="nonTechnicalEventsSlider">
+                        {% for event in events %}
+                            {% if event['eventType'] == 'Non-Technical' %}
+                                <a class="carousel-item" id = "{{event['eventName']}}" href="/events/{{event['eventName']}}" ><img src="/{{event['eventImage']|split('.')[0]}}_low.jpg"></a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-fixed-item center"><a id="viewEvent2" href="" class="btn waves-effect red lighten-1 pulse"><a></div>
                 </div>
             </div>
             {% endblock %}
@@ -108,11 +120,11 @@
                 <div class="row desc2">
                     <div class="col s12 m5">
                         <h3>SANGANIKA</h3>
-                        <p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 2-3rd February, 2018.</p>
+                        <p>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 2nd-3rd February, 2018.</p>
                     </div>
                     <div class="col s12 m6 offset-m1">
                         <h3>TECH MARATHON</h3>
-                        <p>Tech-Marathon is an annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2018. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.
+                        <p>Tech-Marathon is an annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2nd-3rd Feb, 2018. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.
                         </p>
                     </div>
                 </div>
@@ -143,12 +155,12 @@
                     </div>
                     <div class="col-2">
                     <div class="chip col-11">
-                        <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Secretary"><i class="material-icons">person</i> TARUN SHARMA</a>
+                        <a href="https://www.facebook.com/tarun.sharma.50999405?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Secretary"><i class="material-icons">person</i> TARUN SHARMA</a>
                     </div>
                     </div>   
                     <div class="col-2">
                     <div class="chip col-11">
-                        <a href="https://www.facebook.com/k14011998?ref=br_rs_WyJrZXl3b3Jkc19zZWFyY2giXQ%3D%3D" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Joint-Secretary"><i class="material-icons">person</i> RISHABH SINGH</a>
+                        <a href="https://www.facebook.com/profile.php?id=100004685714732&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Joint-Secretary"><i class="material-icons">person</i> RISHABH SINGH</a>
                     </div>
                     </div>   
                     <div class="col-2">
@@ -166,7 +178,7 @@
                     </div>   
                     <div class="col-2">    
                     <div class="chip col-11">
-                        <a href="https://www.facebook.com/profile.php?id=100007398468921&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="AppCombat's event head"><i class="material-icons">person</i> YASHDEEP BACHHAS</a>
+                        <a href="https://www.facebook.com/profile.php?id=100003030016093&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="LAN gaming's event head"><i class="material-icons">person</i> VINAY SHARMA</a>
                     </div>
                     </div>
                     <div class="col-2">
@@ -269,7 +281,7 @@
                     </div>
                     <div class="col-2">
                     <div class="chip col-11">
-                        <a href="#" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TvFandom's event head"><i class="material-icons">person</i> RICHA SHARMA</a>
+                        <a href="https://www.facebook.com/profile.php?id=100009643216474&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="TvFandom's event head"><i class="material-icons">person</i> RICHA SHARMA</a>
                     </div>
                     </div>
                     <div class="col-2">
@@ -291,12 +303,12 @@
                     </div>
                     <div class="col-2">    
                     <div class="chip col-11">
-                        <a href="https://www.facebook.com/profile.php?id=100003030016093&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="LAN gaming's event head"><i class="material-icons">person</i> VINAY SHARMA</a>
+                        <a href="https://www.facebook.com/profile.php?id=100001279100611&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Sponsorship head and Conundrum's event head"><i class="material-icons">person</i> ASHNA WADHAWAN</a> 
                     </div>
                     </div>   
                     <div class="col-2">    
                     <div class="chip col-11">
-                        <a href="https://www.facebook.com/aayushiagarwal999?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="FunGames' organizer"><i class="material-icons">person</i> AYUSHI AGARWAL</a>
+                        <a href="https://www.facebook.com/aayushiagarwal999?ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="FunGames' organizer"><i class="material-icons">person</i> AAYUSHI AGARWAL</a>
                     </div>
                     </div>
                     <div class="col-2">
@@ -306,7 +318,7 @@
                     </div>
                     <div class="col-2">
                     <div class="chip col-11">
-                        <a href="https://www.facebook.com/profile.php?id=100001279100611&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Sponsorship head and Conundrum's event head"><i class="material-icons">person</i> ASHNA WADHAWAN</a> 
+                        <a href="https://www.facebook.com/profile.php?id=100003955386428&ref=br_rs" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Designing head"><i class="material-icons">person</i> DIVYANSHU TYAGI</a>
                     </div>
                     </div>   
                     <div class="col-2">
@@ -329,7 +341,7 @@
                     </div>   
                     <div class="col-2">    
                     <div class="chip col-11">
-                        <a href="https://www.facebook.com/profile.php?id=100007398468921&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member"><i class="material-icons">person</i> YASHDEEP BACHHAS</a>
+                        <a href="https://www.facebook.com/profile.php?id=100007398468921&fref=ts" class="materialboxed tooltipped" data-position="top" data-delay="50" data-tooltip="Web team-member and AppCombat's event head"><i class="material-icons">person</i> YASHDEEP BACHHAS</a>
                     </div>
                     </div>
                     <div class="col-2">
@@ -392,9 +404,7 @@
                 <div class="col-4 footer-center">
                     <br/>
                     <!--padding ki bharpai kar dega ye-->
-                    <div style="width:90%;height:200px;">
-                        <div id="map" style="width:100%;height:100%;background:grey"></div>
-                    </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.821556806663!2d77.03580691495434!3d28.60512959207181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d053340000001%3A0x43728703a210ae01!2sDeen+Dayal+Upadhyaya+College!5e0!3m2!1sen!2sin!4v1515343688532" width="600" height="450" frameborder="0" style="border:0; width: 90%; height: 200px;" allowfullscreen></iframe>
                     <br>
                     <div>
                         <i class="fa fa-phone left"></i><font color="white">+91-9935590973</font>
@@ -427,32 +437,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/materialize.js"></script>
 <script type="text/javascript" src="/js/script.js"></script>
-<script>
-  function initMap() {
-            var myLatlng = new google.maps.LatLng(28.605370, 77.037953);
-            var mapOptions = {
-            zoom: 13,
-            center: myLatlng
-            }
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                title:"Deen Dayal Upadhyaya College\nSector-3, Dwarka\nNew Delhi-110 078"
-        });
-        // To add the marker to the map, call setMap();
-        marker.setMap(map);
-    }
-    function toggleHeader(){
-        $('#header').css('display', 'none');
-    }
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsq2q-OC-a1-88kJp1kZ3ouL52H0iK7_o&callback=initMap"></script>
 {% block scripts %}
 {{ script|raw }}  
 
 <script type="text/javascript">
 function validateForm(form){
+
     if(document.getElementById('name').valid && document.getElementById('email').valid && document.getElementById('query').value != ""){
         return true;
     }else{  
@@ -474,48 +464,11 @@ function skipVideo() {
     }
 }
 
-function initializeEventSlider(){
-
-    var slider1 = $('#technicalEventsSlider');
-    var slider2 = $('#nonTechnicalEventsSlider');
-    
-    slider1.carousel();
-    slider2.carousel();
-
-    $.each(jsonEvents, function(key, value) {
-        if(value.eventType == 'Technical')
-            slider1.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
-        else
-            slider2.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
-    });
-
-    if (slider1.hasClass('initialized')){
-        slider1.removeClass('initialized');
-    }
-
-    if (slider2.hasClass('initialized')){
-        slider2.removeClass('initialized');
-    }
-
-    //just reinit the carousel
-    slider1.carousel({
-        onCycleTo: function (ele, dragged) {
-            $("#viewEvent1").attr("href", $(ele).attr("href"));
-        }
-    });
-    slider2.carousel({
-        onCycleTo: function (ele, dragged) {
-            $("#viewEvent2").attr("href", $(ele).attr("href"));
-        }
-    });
-
-}
-
 function displayEvents() {
     var events = '';
     events = events + '<div class="carousel" id="mobileSlider">';
     events = events + '</div>';
-    events = events + '<div class="carousel-fixed-item center" style="margin-bottom:5%;"><a id="viewEvent" href="" class="btn waves-effect white grey-text darken-text-2">View Event<a></div>';
+    events = events + '<div class="carousel-fixed-item center" style="margin-bottom:5%;"><a id="viewEvent" href="" class="btn waves-effect red lighten-1"><a></div>';
     
 
     $('#events').html(events);
@@ -525,7 +478,7 @@ function displayEvents() {
     slider.carousel();
 
     $.each(jsonEvents, function(key, value) {
-        slider.append('<a class="carousel-item" href="/events/' + value.eventName + '"><img src="' + value.eventImage + '"></a>');
+        slider.append('<a class="carousel-item" id="' + value.eventName + '"href="/events/' + value.eventName + '"><img src="' + value.eventImage.split('.')[0] + '_low.jpg"></a>');
         
     });
 
@@ -537,6 +490,7 @@ function displayEvents() {
     slider.carousel({
         onCycleTo: function (ele, dragged) {
             $("#viewEvent").attr("href", $(ele).attr("href"));
+            $("#viewEvent").html('<i class="material-icons left">zoom_in</i>' + $(ele).attr("id"));
         }
     });
 }
@@ -566,11 +520,11 @@ if ($(window).width() < 800) {
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '<li>';
     aboutus = aboutus + '  <div class="collapsible-header"><i class="material-icons">place</i>Sanganika</div>';
-    aboutus = aboutus + '  <div class="collapsible-body"><span>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 2-3rd February, 2018.</span></div>';
+    aboutus = aboutus + '  <div class="collapsible-body"><span>Sanganika, the root for which is “sanganak”, the Hindi word for a computer, is the Computer Science society of Deen Dayal Upadhyaya College, University of Delhi. It was formed in September 2009 and since its inception it has grown into an active society with professors and students working towards creating a nurturing atmosphere for education and excellence. Sanganika conducts Tech Marathon, the annual technical fest of Deen Dayal Upadhyaya College. This year Tech Marathon arrives on 2nd-3rd February, 2018.</span></div>';
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '<li>';
     aboutus = aboutus + '  <div class="collapsible-header"><i class="material-icons">whatshot</i>Tech Marathon</div>';
-    aboutus = aboutus + '  <div class="collapsible-body"><span>Tech-Marathon is an annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2-3rd Feb, 2017. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.</span></div>';
+    aboutus = aboutus + '  <div class="collapsible-body"><span>Tech-Marathon is an annual technical festival of Deen Dayal Upadhyaya College, University of Delhi.Comprising of mind boggling technical events and other fun filled non tech events this 2 day journey leave its participants in awe every year. This year, Tech Marathon comes on 2nd-3rd Feb, 2018. Along with classic events such as Algowls, Battle of Bytes, Conundrum and many more. So come forth, fire up your sabers and fight !! At this technical extravaganza we guarantee you an experience felt never before.</span></div>';
     aboutus = aboutus + '</li>';
     aboutus = aboutus + '</ul>';
 
@@ -579,10 +533,19 @@ if ($(window).width() < 800) {
     displayEvents();
     $('.fixed-action-btn').css('display', 'none');
 }else{
-    initializeEventSlider();
+    $('#technicalEventsSlider').carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent1").attr("href", $(ele).attr("href"));
+            $("#viewEvent1").html('<i class="material-icons left">zoom_in</i>' + $(ele).attr("id"));
+        }
+    });
+    $('#nonTechnicalEventsSlider').carousel({
+        onCycleTo: function (ele, dragged) {
+            $("#viewEvent2").attr("href", $(ele).attr("href"));
+            $("#viewEvent2").html('<i class="material-icons left">zoom_in</i>' + $(ele).attr("id"));
+        }
+    });
 }
-
-
 </script> 
 {% endblock %}
 

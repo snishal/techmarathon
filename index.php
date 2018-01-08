@@ -138,6 +138,11 @@ if (empty($uri[1])) {
 
 } else if ($uri[1] == 'schedule.pdf') {
 	$errorMsg = "Schedule will be out Soon";
+} else if ($uri[1] == 'test') {
+	$pageFound = true;
+	$event = new Event;
+	$events = $event->getEvents();
+	echo $twig->render('web/test.html', array('title' => 'Test', 'events' => $events));
 } else if ($uri[1] == 'gallery') {
 	$pageFound = true;
 	echo $twig->render('web/gallery.html');
@@ -218,6 +223,10 @@ if (empty($uri[1])) {
 	}
 }
 notFound:if (!$pageFound) {
-	echo $twig->render('404.html', array('error' => $errorMsg));
+	if (isset($_GET['param'])) {
+		echo $twig->render('404.html', array('error' => $_GET['param']));
+	} else {
+		echo $twig->render('404.html', array('error' => $errorMsg));
+	}
 }
 ?>

@@ -37,7 +37,7 @@ if (isset($_POST['submitQuery'])) {
 	$mail->Body = $mail->Body . 'Query : ' . $query;
 	$mail->send();
 
-	header("Location: /");
+	header('Location: /?param=Query sent successfully.');
 
 } elseif (isset($_POST['addEvent'])) {
 
@@ -74,11 +74,8 @@ if (isset($_POST['submitQuery'])) {
 	$event = new Event;
 
 	if ($event->addEvent($eventName, $eventTagline, $eventDescription, $eventImage, $eventType)) {
-
 		$event = null;
 		header("Location: /adminPanel/events");
-		exit;
-
 	}
 
 } elseif (isset($_POST['updateEvent'])) {
@@ -124,11 +121,8 @@ if (isset($_POST['submitQuery'])) {
 	}
 
 	if ($event->updateEvent($oldEventName, $eventName, $eventTagline, $eventDescription, $eventImage, $eventType)) {
-
 		$event = null;
 		header("Location: /adminPanel/events");
-		exit;
-
 	}
 
 } elseif (isset($_POST['Register'])) {
@@ -140,9 +134,7 @@ if (isset($_POST['submitQuery'])) {
 	}
 
 	$event = null;
-	header("Location: /");
-	exit;
-
+	header("Location: /?param=Registered successfully.");
 }
 
 ?>

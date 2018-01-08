@@ -1,0 +1,21 @@
+{%extends 'web/home.html'%}    
+    {%block stylesheets%}
+	{%endblock%}
+    {% block video %}{%endblock%}
+    {%block main%}
+        <div class="top white-text">
+            <div class="carousel" id="slider">
+                {% for event in events %}
+                    <a class="carousel-item" href="/events/{{event['eventName']}}" ><img src="https://lorempixel.com/250/250/nature/2"></a>
+                {% endfor %}
+            </div>
+        </div>
+    {%endblock%}
+
+    {%block contactUS%}{%endblock%}
+    
+    {% block scripts %}
+		<script type="text/javascript">
+			$('#slider').carousel();
+		</script>
+	{% endblock %}

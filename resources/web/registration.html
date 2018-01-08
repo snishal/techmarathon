@@ -18,6 +18,7 @@
     <div class='row container top'>
         <fieldset>
             <legend><h2>Registration Form</h2></legend>
+            <div class="red-text right-align">*Atleast 2 Members: 1 Leader and 1 Member</div>
             {{ form.getStart() }}
                 <div class="input-field col s12"> <i class="material-icons md-light prefix">account_circle</i>{{ form.getElementByName('leaderName') }}</div>
                 <div class="input-field col s12"> <i class="material-icons md-light prefix">location_city</i>{{ form.getElementByName('leaderCollege') }}</div>
@@ -57,22 +58,42 @@
     
     {% block scripts %}
 		<script type="text/javascript">
-			$('#headline').css('display', "none");
-			$('#main').css('display', "block");
-			if($(window).width() > 800){
+			
+            document.getElementById('member2Name').valid = true;
+            document.getElementById('member2Number').valid = true;
+            document.getElementById('member3Name').valid = true;
+            document.getElementById('member3Number').valid = true;
+            console.log(document.getElementById('member2Name').valid);
+
+            if($(window).width() > 800){
                 particlesJS.load('particles-js', '/js/particles.json', function() {
                 	console.log('callback - particles.js config loaded');
             	});
             }
-			
+
             function validateForm(form){
-			    if(document.getElementById('leaderName').valid && document.getElementById('leaderCollege').valid && document.getElementById('leaderMobile').valid && document.getElementById('leaderEmail').valid && document.getElementById('member1Name').valid && document.getElementById('member1Email').valid && document.getElementById('member2Name').valid &&document.getElementById('member2Email').valid && document.getElementById('member3Name').valid &&document.getElementById('member3Email').valid){
-			        return true;
-			    }else{
-			        Materialize.toast('Invalid Submission', 3000)
-			        return false;
-			    }
-			    
+			    var check = true;
+
+                for (var i = 0; i < 10; i++) {
+                    var ele = document.forms[0].elements[i];
+                    if(!ele.valid){
+                        check = false;
+                        Materialize.toast('Invalid ' + ele.id , 3000);
+                        break;
+                    }
+                }
+
+                if(check){
+                    console.log($('input[type="checkbox"]:checked').length);
+                    if($('input[type="checkbox"]:checked').length > 0){
+                        return true;
+                    }else{
+                        Materialize.toast('Select atleast One Event', 3000);
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
 			}
 		</script>
 	{% endblock %}
